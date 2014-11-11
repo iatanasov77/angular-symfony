@@ -1,0 +1,3 @@
+ia_client_home:
+    path:     /
+    defaults: { _controller: IAClientBundle:Default:index }

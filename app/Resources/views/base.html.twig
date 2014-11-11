@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}IA CRUD{% endblock %}Address Book</title>
+{% block stylesheets %}
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+{% endblock %}
+
+{% block scripts %}{% endblock %}
+</head>
+<body>
+
+    <div class="navbar navbar-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <h2>Address Book</h2>
+            </div>
+        </div>
+    </div>
+
+{% block content %}{% endblock %}
+   
+</body>
+</html>

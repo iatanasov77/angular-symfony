@@ -1,0 +1,7 @@
+IAClientBundle:
+    resource: "@IAClientBundle/Resources/config/routing.yml"
+    prefix:   /
+
+IAServerBundle:
+    resource: "@IAServerBundle/Resources/config/routing.yml"
+    prefix:   /

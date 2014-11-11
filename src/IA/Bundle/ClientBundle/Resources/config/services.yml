@@ -1,0 +1,7 @@
+parameters:
+#    ia_client.example.class: IA\Bundle\ClientBundle\Example
+
+services:
+#    ia_client.example:
+#        class: %ia_client.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

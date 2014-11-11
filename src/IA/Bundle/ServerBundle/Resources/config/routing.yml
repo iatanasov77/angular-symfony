@@ -1,0 +1,21 @@
+ia_server_list:
+    path:     /contacts
+    defaults: { _controller: IAServerBundle:Default:index }
+
+ia_server_detail:
+    path:     /detail/{id}
+    defaults: { _controller: IAServerBundle:Default:detail}
+
+ia_server_delete:
+    path:     /contacts/delete/{id}
+    defaults: { _controller: IAServerBundle:Default:delete }
+
+ia_server_save:
+    path:     /contacts/save
+    defaults: { _controller: IAServerBundle:Default:save }
+    requirements:
+        _method:  POST
+
+ia_server_test:
+    path:     /test
+    defaults: { _controller: IAServerBundle:Default:test }
