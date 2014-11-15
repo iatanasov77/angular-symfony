@@ -6,28 +6,40 @@ angular.module('exceptionOverride', []).factory('$exceptionHandler', function ()
     };
 });
 
+var $routeProviderReference;
 var app = angular.module('addressBook', ['config']);
 
-app.config(function ($routeProvider) {
-    $routeProvider
-        .when('/contacts',
-            {
-                controller: 'ContactsController',
-                templateUrl: ENV.assetsPath + '/application/templates/contacts.html'
-            })
-        .when('/add-contact',
-            {
-                controller: 'ContactEditController',
-                templateUrl: ENV.assetsPath + '/application/templates/editContact.html'
-            })
-        .when('/edit-contact/:contactId',
-            {
-                controller: 'ContactEditController',
-                templateUrl: ENV.assetsPath + '/application/templates/editContact.html'
-            })
-        .otherwise({ redirectTo: '/contacts' });
-});
+app.config(['$routeProvider', function ($routeProvider) {
+    $routeProviderReference = $routeProvider;
+}]);
 
+
+app.run(['$rootScope', '$http', '$route', function ($rootScope, $http, $route) {
+
+    $http.get('/routes').success(function (data) {
+
+        var j = 0,
+                currentRoute;
+
+        for (; j < data.routes.length; j++) {
+
+            currentRoute = data.routes[j];
+
+            $routeProviderReference.when(currentRoute.name, {
+                templateUrl: ENV.assetsPath + currentRoute.templateUrl,
+                controller: currentRoute.controller,
+                isFree: currentRoute.isFree
+            });
+
+        }
+
+        $routeProviderReference.otherwise({redirectTo: data.default});
+
+        $route.reload();
+
+    });
+
+}]);
 
 
 

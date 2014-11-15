@@ -1,3 +1,6 @@
+ia_server_routes:
+    path:     /routes
+    defaults: { _controller: IAServerBundle:Routes:index }
 ia_server_list:
     path:     /contacts
     defaults: { _controller: IAServerBundle:Default:index }

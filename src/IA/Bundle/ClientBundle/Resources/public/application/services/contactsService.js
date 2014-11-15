@@ -22,7 +22,6 @@ app.service('contactsService', function ($http, $q) {
 
     function getContacts(request) 
     {
-        alert("EHO");
         var request = $http({
             method: "post",
             url: "contacts",
