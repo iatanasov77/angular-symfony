@@ -2,6 +2,11 @@
 app.controller('ContactsController', [
     '$rootScope', '$scope', '$location', 'contactsService',
     function ($rootScope, $scope, $location, contactsService) {
+    
+        $scope.messagesView = ENV.assetsPath + "/application/templates/messages.html";
+        $scope.gridControlsView = ENV.assetsPath + "/application/templates/gridControls.html";
+        $scope.paginationView = ENV.assetsPath + "/application/templates/pagination.html";
+        
         $scope.request = {
             orderBy: 'firstName',
             orderDir: 'ASC',
@@ -34,7 +39,6 @@ app.controller('ContactsController', [
                     range.push(i);
                 }
                 $scope.range = range;
-                
                 $scope.contacts = response.entities;
             }, function(response) {
               // error

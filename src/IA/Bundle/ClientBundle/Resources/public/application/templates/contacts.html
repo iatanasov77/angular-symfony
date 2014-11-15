@@ -9,33 +9,8 @@
     <br /><br />
 
     <div ng-controller="ContactsController">
-        <div class="row">
-            <div class="alert alert-info" data-ng-bind="message.text" data-ng-show="message"></div>
-        </div>
-        <div class="row">
-            <div class="pull-left">
-
-                <select class="form-control" data-ng-model="request.ipp" data-ng-change="getContacts()">
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="50">50</option>    
-                </select>
-                Items Per Page
-
-            </div>
-            <div class="pull-right">
-                <form data-ng-submit="getContacts()">
-                    <select class="form-control" data-ng-model="request.search.key">
-                        <option value="firstName">First Name</option>
-                        <option value="lastName">Last Name</option>
-                        <option value="email">Email</option>    
-                    </select>
-                    <input type="text" data-ng-model="request.search.val" class="form-control" placeholder="Search">
-                    
-
-               </form>
-            </div>
-        </div>
+        <div data-ng-include="messagesView" class="row"></div>
+        <div data-ng-include="gridControlsView" class="row"></div>
 
         <table class="table table-striped table-condensed table-hover">
             <thead>
@@ -92,20 +67,6 @@
             </tbody>
         </table>
 
-        <div class="pagination pull-right">
-            <ul>
-                <li data-ng-class="{disabled: request.page == 1}">
-                    <a href data-ng-click="setPage(request.page-1)">« Prev</a>
-                </li>
-                <li data-ng-repeat="p in range"
-                    data-ng-class="{active: p == request.page}"
-                    data-ng-click="setPage(p)">
-                    <a href data-ng-bind="p">1</a>
-                </li>
-                <li data-ng-class="{disabled: request.page == range.length}">
-                    <a href data-ng-click="setPage(request.page+1)">Next »</a>
-                </li>
-            </ul>
-        </div>
+        <div data-ng-include="paginationView" class="pagination pull-right"></div>
     </div>
 </div>
