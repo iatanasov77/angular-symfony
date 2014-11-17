@@ -7,7 +7,7 @@ angular.module('exceptionOverride', []).factory('$exceptionHandler', function ()
 });
 
 var $routeProviderReference;
-var app = angular.module('addressBook', ['config']);
+var app = angular.module('addressBook', ['config', 'ui.tinymce']);
 
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProviderReference = $routeProvider;

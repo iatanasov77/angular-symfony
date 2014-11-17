@@ -42,13 +42,13 @@ class DefaultController extends Controller
     {
         if(intval($id)) {
             $er = $this->getDoctrine()->getRepository('IACmsBundle:Pages');
-            $contact = $er->find($id);
+            $page = $er->find($id);
         } else {
-            $contact = new Contact();
+            $page = new Page();
         }
 
         $serializer = SerializerBuilder::create()->build();
-        $json = $serializer->serialize($contact, 'json');
+        $json = $serializer->serialize($page, 'json');
 
         return new Response($json);
     }

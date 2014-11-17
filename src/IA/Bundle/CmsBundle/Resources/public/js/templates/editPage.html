@@ -9,58 +9,26 @@
     <br /><br />
 
     <div style="margin-left: 10px;">
-    <form name="formContact">
-        <div class="row add-contact">
+    <form name="formPage">
+        <div class="row add-page">
             <div class="span3">
-                First Name:
+                Alias:
                 <br />
-                <input name="firstName" data-ng-model="contact.firstName" type="text" required data-ng-pattern="/^[a-zA-Zа-яА-Я]*$/" placeholder="First Name">
-                <small class="error" data-ng-show="formContact.firstName.$invalid">
-                    Use alpha characters only.
+                <input name="alias" data-ng-model="page.alias" type="text" required data-ng-pattern="/^[a-zA-Z\-]*$/" placeholder="Alias">
+                <small class="error" data-ng-show="formPage.alias.$invalid">
+                    Use alpha characters and '-' only.
                 </small>
             </div>
             <div class="span3">
-                Last Name:
+                Title:
                 <br />
-                <input name="lastName" data-ng-model="contact.lastName" type="text" required data-ng-pattern="/^[a-zA-Zа-яА-Я]*$/" placeholder="Last Name">
-                <small class="error" data-ng-show="formContact.lastName.$invalid">
-                    Use alpha characters only.
-                </small>
+                <input name="title" data-ng-model="page.title" type="text" required placeholder="Title">
             </div>
             <div class="span3">
-                Email:
+                Text:
                 <br />
-                <input name="email" data-ng-model="contact.email" type="email" required placeholder="Email">
-                <small class="error" data-ng-show="formContact.email.$invalid">
-                    Type valid email address.
-                </small>
-            </div>
-            <div class="span3">
-                Address:
-                <br />
-                <input data-ng-model="contact.address" type="text" placeholder="Address">
-            </div>
-            <div class="span3">
-                <p></p>
-                Phones: <button data-ng-click="addPhone()" class="btn">Add Phone</button>
-                <p></p>
-            </div>
-            <div data-ng-repeat="phone in contact.phones">
-                <div>
-                    {{$index+1}}. 
-                    <input type="text"  data-ng-model="contact.phones[$index].phoneNumber" data-ng-pattern="/^[0-9 ]*$/" required placeholder="Phone Number" />
-                    <input type="text" data-ng-model="contact.phones[$index].description" required placeholder="Phone Description" />
-                    
-                    <button data-ng-click="removePhone($index)" data-ng-show="$index > 0" class="btn" >Remove</button>
-                </div>
+                <textarea class="tinyMCE" ui-tinymce="tinymceOptions" id="text" name="text" data-ng-model="page.text" required ></textarea>
                 
-            </div>
-            
-            <br /><br />
-            <div class="span3">
-                <button id="submitContact" class="btn btn-primary" type="button"
-                    data-ng-disabled="!contact.firstName || !contact.lastName || !contact.email"
-                    data-ng-click="saveContact()">Add Contact</button>
             </div>
         </div>
     </form>

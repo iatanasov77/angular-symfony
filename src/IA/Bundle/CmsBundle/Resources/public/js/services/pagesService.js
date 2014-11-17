@@ -3,14 +3,14 @@ app.service('pagesService', function ($http, $q) {
     
     // Return public API.
     return({
-        getPage: getPage,
-        getPages: getPages,
-        savePage: savePage,
-        removePage: removePage,
+        getItem: getItem,
+        getItems: getItems,
+        save: save,
+        remove: remove,
     });
 
     
-    function getPage(id) 
+    function getItem(id) 
     {
         var request = $http({
             method: "get",
@@ -20,7 +20,7 @@ app.service('pagesService', function ($http, $q) {
         return request.then( handleSuccess, handleError );
     }
 
-    function getPages(request) 
+    function getItems(request) 
     {
         var request = $http({
             method: "post",
@@ -31,7 +31,7 @@ app.service('pagesService', function ($http, $q) {
         return( request.then( handleSuccess, handleError ) );
     }
 
-    function savePage( page )
+    function save( page )
     {
         var request = $http({
             method: "post",
@@ -42,7 +42,7 @@ app.service('pagesService', function ($http, $q) {
         return request.then( handleSuccess, handleError);
     }
  
-    function removePage( id ) 
+    function remove( id ) 
     {
         var request = $http({
             method: "get",
