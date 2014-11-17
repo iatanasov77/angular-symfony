@@ -1,0 +1,40 @@
+{% extends "::base.html.twig" %}
+{% set assetsPath = "/bundles/iaangularapplication" %}
+
+{% block title %} :: Angular Application{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+
+    <link href="{{ asset(assetsPath~'/css/custom.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block scripts %}
+	{{ parent() }}
+
+        
+	<script src="{{ asset(assetsPath~'/vendor/angular/angular.js') }}"></script>
+        
+        <script src="{{ asset(assetsPath~'/vendor/tinymce/tinymce.min.js') }}"></script>
+        <script src="{{ asset(assetsPath~'/vendor/angular/ui/tinymce.js') }}"></script>
+
+	<script type="text/javascript">
+		var ENV = {
+			assetsPath: '{{ assetsPath }}'
+		}
+	</script>
+
+    
+    <script src="{{ asset(assetsPath~'/application/application.js') }}"></script>
+    <script src="{{ asset(assetsPath~'/application/controllers/controllers.js') }}"></script>
+    <script src="{{ asset(assetsPath~'/application/services/contactsService.js') }}"></script>
+    
+    <script src="/bundles/iacms/js/controllers/controllers.js"></script>
+    <script src="/bundles/iacms/js/services/pagesService.js"></script>
+{% endblock %}
+
+{% block content %}
+	<div ng-app="addressBook">
+    	<div ng-view class="example-animate-container" ng-animate="{enter: 'example-enter', leave: 'example-leave'}"></div>
+    </div>
+{% endblock %}

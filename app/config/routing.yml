@@ -1,5 +1,9 @@
-IAClientBundle:
-    resource: "@IAClientBundle/Resources/config/routing.yml"
+ia_angular_application:
+    resource: "@IAAngularApplicationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+ia_cms:
+    resource: "@IACmsBundle/Resources/config/routing.yml"
     prefix:   /
 
 IAServerBundle:

@@ -1,0 +1,3 @@
+ia_angularapplication_home:
+    path:     /
+    defaults: { _controller: IAAngularApplicationBundle:Default:index }

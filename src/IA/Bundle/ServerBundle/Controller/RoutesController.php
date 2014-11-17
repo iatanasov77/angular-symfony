@@ -11,9 +11,12 @@ class RoutesController extends Controller
     {
         $result = array(
             "routes" => array(
-                    array("name" => "/contacts", "templateUrl" => "/application/templates/contacts.html", "controller" => "ContactsController", "isFree" => true),
-                    array("name" => "/add-contact", "templateUrl" => "/application/templates/editContact.html", "controller" => "ContactEditController", "isFree" => true),
-                    array("name" => "/edit-contact/:contactId", "templateUrl" => "/application/templates/editContact.html", "controller" => "ContactEditController", "isFree" => true)
+                    array("name" => "/contacts", "templateUrl" => "/bundles/iaangularapplication/application/templates/contacts.html", "controller" => "ContactsController", "isFree" => true),
+                    array("name" => "/add-contact", "templateUrl" => "/bundles/iaangularapplication/application/templates/editContact.html", "controller" => "ContactEditController", "isFree" => true),
+                    array("name" => "/edit-contact/:contactId", "templateUrl" => "/bundles/iaangularapplication/js/templates/editContact.html", "controller" => "ContactEditController", "isFree" => true),
+                
+                    array("name" => "/pages", "templateUrl" => "/bundles/iacms/js/templates/pages.html", "controller" => "PagesController", "isFree" => true),
+                    array("name" => "/add-page", "templateUrl" => "/bundles/iacms/js/templates/editPage.html", "controller" => "PageEditController", "isFree" => true),
             ),
             "default" => "/contacts"
         );

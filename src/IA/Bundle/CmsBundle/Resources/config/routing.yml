@@ -1,0 +1,7 @@
+ia_cms_default_index:
+    path:     /pages
+    defaults: { _controller: IACmsBundle:Default:index }
+    
+ia_cms_default_create:
+    path:     /pages/create
+    defaults: { _controller: IACmsBundle:Default:create }
