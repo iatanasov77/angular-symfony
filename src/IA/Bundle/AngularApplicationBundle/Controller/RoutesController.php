@@ -1,6 +1,6 @@
 <?php
 
-namespace IA\Bundle\ServerBundle\Controller;
+namespace IA\Bundle\AngularApplicationBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
