@@ -1,3 +1,13 @@
+require.config({
+  paths: {
+    jquery: 'libs/jquery/jquery',
+    underscore: 'libs/underscore/underscore',
+    backbone: 'libs/backbone/backbone'
+  }
+});
+
+
+
 angular.module('config', []).constant('ENV', ENV);
 angular.module('exceptionOverride', []).factory('$exceptionHandler', function () {
     return function (exception, cause) {

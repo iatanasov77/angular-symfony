@@ -29,9 +29,9 @@ app.controller('PagesController', [
          * 
          * Get Contacts and init pagination params
          */
-        $scope.getPages = function()
+        $scope.getItems = function()
         {
-            var promise = pagesService.getPages($scope.request);
+            var promise = pagesService.getItems($scope.request);
             promise.then(function(response) {
                 $scope.totalItems = response.countTotal;
                 var range = [];
@@ -44,7 +44,7 @@ app.controller('PagesController', [
               // error
             });
         }
-        $scope.getPages();
+        $scope.getItems();
 
         /*
          * Change Paginator Page
@@ -52,7 +52,7 @@ app.controller('PagesController', [
         $scope.setPage = function( page ) 
         {
             $scope.request.page = page;
-            getContacts();
+            $scope.getItems();
         }
         
         /*
@@ -66,7 +66,7 @@ app.controller('PagesController', [
                 $scope.request.orderBy = orderBy;
             }
             
-            getContacts();
+            $scope.getItems();
         }
 
         /*
@@ -74,10 +74,10 @@ app.controller('PagesController', [
          */
         $scope.removeContact = function( id )
         {
-            contactsService.removeContact(id).then(function(response) {
+            pagesService.remove(id).then(function(response) {
                 $scope.message = {text: 'Remove Success!', type: 'info'};
                 
-                getContacts();
+                $scope.getItems();
             }, function(response) {
               // error
             });

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "97548297075ef544fbdf13a6b05ce42e",
+    "hash": "436466d535992bcedaa433baca514eab",
     "packages": [
         {
             "name": "appventus/assetic-injector-bundle",
@@ -1639,6 +1639,67 @@
             "time": "2014-04-28 14:01:06"
         },
         {
+            "name": "sp/bower-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Spea/SpBowerBundle.git",
+                "reference": "1a83ec1217d922de250a447c112a96305866eae7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Spea/SpBowerBundle/zipball/1a83ec1217d922de250a447c112a96305866eae7",
+                "reference": "1a83ec1217d922de250a447c112a96305866eae7",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/cache": "~1.0",
+                "doctrine/collections": "1.*",
+                "php": ">=5.3.3",
+                "symfony/assetic-bundle": "~2.1",
+                "symfony/framework-bundle": "~2.1",
+                "symfony/process": "~2.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.0.*",
+                "symfony/console": "~2.1"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.12-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sp\\BowerBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Martin Parsiegla",
+                    "email": "martin.parsiegla@gmail.com",
+                    "homepage": "http://speanet.info"
+                },
+                {
+                    "name": "Community contributions",
+                    "homepage": "https://github.com/Spea/SpBowerBundle/contributors"
+                }
+            ],
+            "description": "Handle asset dependencies with bower",
+            "keywords": [
+                "asset",
+                "bower",
+                "bower manager",
+                "dependencies"
+            ],
+            "time": "2014-07-26 12:48:06"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v5.3.0",
             "source": {
@@ -2082,24 +2143,20 @@
             "time": "2014-10-17 12:53:44"
         }
     ],
-    "packages-dev": [
-
-    ],
-    "aliases": [
-
-    ],
+    "packages-dev": [],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "doctrine/doctrine-fixtures-bundle": 20,
         "doctrine/data-fixtures": 20,
         "doctrine/doctrine-migrations-bundle": 20,
         "doctrine/migrations": 20,
-        "appventus/assetic-injector-bundle": 20
+        "appventus/assetic-injector-bundle": 20,
+        "sp/bower-bundle": 20
     },
+    "prefer-stable": false,
     "platform": {
         "php": ">=5.3.3"
     },
-    "platform-dev": [
-
-    ]
+    "platform-dev": []
 }
