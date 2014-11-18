@@ -1,0 +1,13 @@
+{
+    "require_all":
+    {
+        "javascripts":
+        {
+            "application":
+            [
+                "@IACmsBundle/Resources/public/js/controllers/controllers.js",
+                "@IACmsBundle/Resources/public/js/services/pagesService.js"
+            ]
+        }
+    }
+}

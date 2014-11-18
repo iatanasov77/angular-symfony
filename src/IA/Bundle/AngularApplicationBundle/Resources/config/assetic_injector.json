@@ -1,0 +1,28 @@
+{
+    "require_all":
+    {
+        "javascripts":
+        {
+            "application":
+            [
+                "@IAAngularApplicationBundle/Resources/public/application/application.js",
+                "@IAAngularApplicationBundle/Resources/public/application/controllers/controllers.js",
+                "@IAAngularApplicationBundle/Resources/public/application/services/contactsService.js"
+            ],
+            
+            "vendor":
+            {
+                "angularjs":
+                [
+                    "@IAAngularApplicationBundle/Resources/public/vendor/angular/angular.js",
+                    "@IAAngularApplicationBundle/Resources/public/vendor/angular/ui/tinymce.js"
+                ],
+                
+                "tinymce":
+                [ 
+                    "@IAAngularApplicationBundle/Resources/public/vendor/tinymce/tinymce.min.js"
+                ]
+            }
+        }
+    }
+}

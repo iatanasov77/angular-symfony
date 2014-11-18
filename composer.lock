@@ -4,8 +4,56 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ee28212fa12b57a8697534e1edcf89c7",
+    "hash": "97548297075ef544fbdf13a6b05ce42e",
     "packages": [
+        {
+            "name": "appventus/assetic-injector-bundle",
+            "version": "dev-master",
+            "target-dir": "AppVentus/AsseticInjectorBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AppVentus/AsseticInjectorBundle.git",
+                "reference": "277922d507e5beae0182c9867c908122a6059950"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AppVentus/AsseticInjectorBundle/zipball/277922d507e5beae0182c9867c908122a6059950",
+                "reference": "277922d507e5beae0182c9867c908122a6059950",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "AppVentus\\AsseticInjectorBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Leny Bernard (AppVentus)",
+                    "email": "leny@appventus.com",
+                    "homepage": "http://appventus.com"
+                },
+                {
+                    "name": "Paul Andrieux",
+                    "email": "paul@appventus.com",
+                    "homepage": "http://appventus.com"
+                }
+            ],
+            "description": "This bundle allow you to define global javascripts and stylesheets",
+            "homepage": "http://appventus.com",
+            "keywords": [
+                "assetic",
+                "injector"
+            ],
+            "time": "2014-02-23 17:45:25"
+        },
         {
             "name": "doctrine/annotations",
             "version": "v1.2.1",
@@ -713,12 +761,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations.git",
-                "reference": "1a9dffa64e33fdc10f4b4c3f5d7230b74d4a1021"
+                "reference": "f4fe9d9cc21a711d89d91d29c4a4e7945289cdd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/1a9dffa64e33fdc10f4b4c3f5d7230b74d4a1021",
-                "reference": "1a9dffa64e33fdc10f4b4c3f5d7230b74d4a1021",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/f4fe9d9cc21a711d89d91d29c4a4e7945289cdd0",
+                "reference": "f4fe9d9cc21a711d89d91d29c4a4e7945289cdd0",
                 "shasum": ""
             },
             "require": {
@@ -763,7 +811,7 @@
                 "database",
                 "migrations"
             ],
-            "time": "2014-08-18 18:03:07"
+            "time": "2014-10-30 14:49:25"
         },
         {
             "name": "doctrine/orm",
@@ -2034,18 +2082,24 @@
             "time": "2014-10-17 12:53:44"
         }
     ],
-    "packages-dev": [],
-    "aliases": [],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
     "minimum-stability": "stable",
     "stability-flags": {
         "doctrine/doctrine-fixtures-bundle": 20,
         "doctrine/data-fixtures": 20,
         "doctrine/doctrine-migrations-bundle": 20,
-        "doctrine/migrations": 20
+        "doctrine/migrations": 20,
+        "appventus/assetic-injector-bundle": 20
     },
-    "prefer-stable": false,
     "platform": {
         "php": ">=5.3.3"
     },
-    "platform-dev": []
+    "platform-dev": [
+
+    ]
 }

@@ -20,7 +20,7 @@ app.run(['$rootScope', '$http', '$route', '$templateCache', function ($rootScope
      * Clear Template Caache
      */
     $rootScope.$on('$viewContentLoaded', function() {
-        $templateCache.removeAll();
+        //$templateCache.removeAll();
     });
 
     /*
