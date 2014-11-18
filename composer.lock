@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "436466d535992bcedaa433baca514eab",
+    "hash": "5b6f1b8aa00b9631e0c0bf4b1460a70a",
     "packages": [
         {
             "name": "appventus/assetic-injector-bundle",

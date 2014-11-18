@@ -1,6 +1,7 @@
 {
     "name": "ia-angularapplication",
     "dependencies": {
+        "requirejs": "latest",
         "bootstrap": "latest",
         "angularjs": "latest"
     }
