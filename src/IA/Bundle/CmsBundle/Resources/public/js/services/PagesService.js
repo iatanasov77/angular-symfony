@@ -1,53 +1,52 @@
-
 define([], function() {
-    function ContactsService($http, $q) {
+    function PagesService ($http, $q) {
 
         // Return public API.
         return({
-            getContact: getContact,
-            getContacts: getContacts,
-            saveContact: saveContact,
-            removeContact: removeContact,
+            getItem: getItem,
+            getItems: getItems,
+            save: save,
+            remove: remove,
         });
 
 
-        function getContact(id) 
+        function getItem(id) 
         {
             var request = $http({
                 method: "get",
-                url: "contacts/detail/"+id,
+                url: "pages/"+id,
             });
 
             return request.then( handleSuccess, handleError );
         }
 
-        function getContacts(request) 
+        function getItems(request) 
         {
             var request = $http({
                 method: "post",
-                url: "contacts",
+                url: "pages",
                 data: request
             });
 
             return( request.then( handleSuccess, handleError ) );
         }
 
-        function saveContact( contact )
+        function save( page )
         {
             var request = $http({
                 method: "post",
-                url: "contacts/save",
-                data: contact
+                url: "pages/save",
+                data: page
             });
 
             return request.then( handleSuccess, handleError);
         }
 
-        function removeContact( id ) 
+        function remove( id ) 
         {
             var request = $http({
                 method: "get",
-                url: "contacts/delete/"+id,
+                url: "pages/delete/"+id,
             });
 
             return request.then( handleSuccess, handleError );
@@ -75,7 +74,7 @@ define([], function() {
         }
 
     }
-    ContactsService.$inject=['$http', '$q'];
+    PagesService.$inject=['$http', '$q'];
     
-    return ContactsService;
+    return PagesService;
 });

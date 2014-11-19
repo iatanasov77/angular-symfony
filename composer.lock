@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5b6f1b8aa00b9631e0c0bf4b1460a70a",
+    "hash": "6b7614aaa1c7197d25684bf86ce0b637",
     "packages": [
         {
             "name": "appventus/assetic-injector-bundle",
@@ -883,6 +883,63 @@
                 "orm"
             ],
             "time": "2014-06-03 19:53:45"
+        },
+        {
+            "name": "hearsay/require-js-bundle",
+            "version": "dev-master",
+            "target-dir": "Hearsay/RequireJSBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hearsayit/HearsayRequireJSBundle.git",
+                "reference": "e988f07ebefdea91de1df5a3871c6f27f7e65086"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hearsayit/HearsayRequireJSBundle/zipball/e988f07ebefdea91de1df5a3871c6f27f7e65086",
+                "reference": "e988f07ebefdea91de1df5a3871c6f27f7e65086",
+                "shasum": ""
+            },
+            "require": {
+                "kriswallsmith/assetic": ">= 1.0",
+                "php": ">=5.3.2",
+                "symfony/finder": ">=2.0",
+                "symfony/framework-bundle": ">=2.0.9",
+                "symfony/yaml": ">=2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*",
+                "squizlabs/php_codesniffer": "1.*",
+                "twig/extensions": "v1.0.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Hearsay\\RequireJSBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Montag",
+                    "email": "kmontag@cs.stanford.edu"
+                }
+            ],
+            "description": "This bundle provides integration of the RequireJS library into Symfony2",
+            "keywords": [
+                "amd",
+                "commonjs",
+                "requirejs",
+                "rjs"
+            ],
+            "time": "2014-03-27 10:06:40"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -2152,7 +2209,8 @@
         "doctrine/doctrine-migrations-bundle": 20,
         "doctrine/migrations": 20,
         "appventus/assetic-injector-bundle": 20,
-        "sp/bower-bundle": 20
+        "sp/bower-bundle": 20,
+        "hearsay/require-js-bundle": 20
     },
     "prefer-stable": false,
     "platform": {

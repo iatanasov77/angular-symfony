@@ -1,0 +1,34 @@
+hearsay_require_js:
+    require_js_src:      //cdnjs.cloudflare.com/ajax/libs/require.js/2.1.8/require.min.js
+    initialize_template: HearsayRequireJSBundle::initialize.html.twig
+    base_url:            js
+    base_dir:            ~ # Required
+    paths:
+        # Prototype
+        path:
+            location: ~ # Required
+            external: false
+    shim:
+        # Prototype
+        name:
+            deps:    []
+            exports: ~
+    options:
+        # Prototype
+        name:
+            value: ~ # Required
+    optimizer:
+        path:                    ~ # Required
+        hide_unoptimized_assets: false
+        almond_path:             ~
+        exclude:                 []
+        modules:
+            # Prototype
+            name:
+                include: ~
+                exclude: ~
+        options:
+            # Prototype
+            name:
+                value: ~ # Required
+        timeout: 60

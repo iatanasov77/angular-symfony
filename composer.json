@@ -25,7 +25,8 @@
         "doctrine/migrations": "dev-master",
         "jms/serializer-bundle": "~0.13",
         "appventus/assetic-injector-bundle": "dev-master",
-        "sp/bower-bundle": "dev-master"
+        "sp/bower-bundle": "dev-master",
+        "hearsay/require-js-bundle": "2.0.*@dev"
     },
     "scripts": {
         "post-install-cmd": [

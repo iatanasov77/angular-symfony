@@ -3,7 +3,7 @@ ia_server_list:
     defaults: { _controller: IAServerBundle:Default:index }
 
 ia_server_detail:
-    path:     /detail/{id}
+    path:     /contacts/detail/{id}
     defaults: { _controller: IAServerBundle:Default:detail}
 
 ia_server_delete:

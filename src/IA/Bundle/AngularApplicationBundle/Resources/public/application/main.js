@@ -1,6 +1,6 @@
+var assetsPath = '/bundles/iaangularapplication';
+var cmsAssetsPath = '/bundles/iacms';
 
-
-var assetsPath = '/bundles/iaangularapplication'
 
 /*
  * 
@@ -12,6 +12,9 @@ require.config({
         'application/controllers/Contacts':    assetsPath + '/application/controllers/ContactsController',
         'application/controllers/EditContact': assetsPath + '/application/controllers/EditContactController',
         'application/services/Contacts':       assetsPath + '/application/services/ContactsService',
+        'application/controllers/Pages':       cmsAssetsPath + '/js/controllers/PagesController',
+        'application/controllers/EditPage':    cmsAssetsPath + '/js/controllers/EditPageController',
+        'application/services/Pages':          cmsAssetsPath + '/js/services/PagesService',
         
         /*
          * Vendor Paths
@@ -38,15 +41,43 @@ require.config({
                 'angular/angular', 
                 'angular/route',
                 'angular/ui/tinymce'
-            ]
+            ],
+            exports: "app"
         }
     }
 });
 
 
-require(['application/application'],
-    function() {
+
+
+require(
+    [
+        'application/application',
+        'application/services/Contacts',
+        'application/controllers/Contacts',
+        'application/controllers/EditContact',
+
+        'application/services/Pages',
+        'application/controllers/Pages',
+        'application/controllers/EditPage'
+    ],
+    function(app,
+            ContactsService,
+            ContactsController,
+            EditContactController,
+            PagesService,
+            PagesController,
+            EditPageController) {
         'use strict';
+        
+        app.factory('contactsService', ContactsService);
+        app.controller('ContactsController', ContactsController);
+        app.controller('ContactEditController', EditContactController);
+    
+        app.factory('pagesService', PagesService);
+        app.controller('PagesController', PagesController);
+        app.controller('PageEditController', EditPageController);
+        
         angular.bootstrap(document, ['IAAngularApplication']);
     }
 );

@@ -1,0 +1,36 @@
+hearsay_require_js:
+    require_js_src:      //cdnjs.cloudflare.com/ajax/libs/require.js/2.1.8/require.min.js
+    initialize_template: HearsayRequireJSBundle::initialize.html.twig
+    base_url:            js
+    base_dir:            / # Required
+    paths:
+        'application/application':      
+            location: '/bundles/iaangularapplication/application/application'
+            external: true
+        'application/controllers/Contacts':
+            location: '/bundles/iaangularapplication/application/controllers/ContactsController'
+            external: true
+        'application/controllers/EditContact':
+            location: '/bundles/iaangularapplication/application/controllers/EditContactController'
+            external: true
+        'application/services/Contacts':
+            location: '/bundles/iaangularapplication/application/services/ContactsService'
+            external: true
+        'application/controllers/Pages':
+            location: '/bundles/iacms/js/controllers/PagesController'
+            external: true
+        'application/controllers/EditPage':
+            location: '/bundles/iacms/js/controllers/EditPageController'
+            external: true
+        'application/services/Pages':
+            location: '/bundles/iacms/js/services/PagesService'
+            external: true
+    shim:
+        # Prototype
+        name:
+            deps:    []
+            exports: ~
+    options:
+        # Prototype
+        name:
+            value: ~ # Required

@@ -1,15 +1,9 @@
-
 /*
  * 
  * AngularJs Application
  */
-define([
-        'application/services/Contacts',
-        'application/controllers/Contacts',
-        'application/controllers/EditContact'
-    ],
- 
-function(ContactsService, ContactsController, EditContactController){
+define([],
+function(){
     angular.module('config', []).constant('ENV', ENV);
     angular.module('exceptionOverride', []).factory('$exceptionHandler', function () {
         return function (exception, cause) {
@@ -58,10 +52,6 @@ function(ContactsService, ContactsController, EditContactController){
 
     }]);
     
-    
-    app.factory('contactsService', ContactsService);
-    app.controller('ContactsController', ContactsController);
-    app.controller('EditContactController', EditContactController);
-    
+    return app; 
 });
 
