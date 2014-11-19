@@ -1,0 +1,3 @@
+ia_navigation_render:
+    path:     /navigation/{menuId}
+    defaults: { _controller: IANavigationBundle:Default:render }

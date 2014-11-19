@@ -13,9 +13,16 @@
     <div class="navbar navbar-top">
         <div class="navbar-inner">
             <div class="container">
-                <h2>Address Book</h2>
+                <h2>IA Framework</h2>
             </div>
         </div>
+    </div>
+    
+    <div id="navigation">
+        {{ render(controller(
+            'IANavigationBundle:Default:render',
+            { 'menuId': 1 }
+        )) }}
     </div>
 
 {% block content %}{% endblock %}
