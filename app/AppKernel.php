@@ -38,7 +38,7 @@ class AppKernel extends Kernel
             new IA\Bundle\AngularApplicationBundle\IAAngularApplicationBundle(),
             new IA\Bundle\ServerBundle\IAServerBundle(),
             new IA\Bundle\CmsBundle\IACmsBundle(),
-            
+            new IA\Bundle\NavigationBundle\IANavigationBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
