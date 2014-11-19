@@ -9,6 +9,7 @@ require.config({
         angular:         assetsPath + '/vendor/angular/angular.min.js',
         angular_tinymce: assetsPath + '/vendor/angular/ui/tinymce.js',
         tinyMCE:         assetsPath + '/vendor/tinymce/tinymce.min.js',
+        
     }
 });
 
@@ -66,6 +67,7 @@ define(['app/config',
     app.factory('ideasDataSvc',ideasDataSvc);
     app.controller('ideasHomeController', ideasHomeController);
     app.controller('ideaDetailsController',ideaDetailsController);
+    
 });
 
 
