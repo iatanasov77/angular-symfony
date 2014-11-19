@@ -12,20 +12,23 @@
 
 {% block scripts %}
     {{ parent() }}
-    
+    <script type="text/javascript">
+        var ENV = {
+            assetsPath: '{{ assetsPath }}'
+        }
+    </script>
+    {#
     {% javascripts injector='vendor, application' %}
-        <script type="text/javascript">
-            var ENV = {
-                assetsPath: '{{ assetsPath }}'
-            }
-        </script>
-
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
+    #}
+    
+    <script type="text/javascript" src="{{assetsPath}}/vendor/require.js" data-main="{{ assetsPath }}/application/main.js"></script>
+    
 {% endblock %}
 
 {% block content %}
-	<div ng-app="addressBook">
-    	<div ng-view class="example-animate-container" ng-animate="{enter: 'example-enter', leave: 'example-leave'}"></div>
+	<div id="IAAngularApplication">
+    	<div data-ng-view class="example-animate-container" data-ng-animate="{enter: 'example-enter', leave: 'example-leave'}"></div>
     </div>
 {% endblock %}

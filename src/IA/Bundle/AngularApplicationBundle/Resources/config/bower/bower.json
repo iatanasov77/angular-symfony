@@ -1,5 +1,7 @@
 {
+    "directory" : "vendor",
     "name": "ia-angularapplication",
+    
     "dependencies": {
         "requirejs": "latest",
         "bootstrap": "latest",
