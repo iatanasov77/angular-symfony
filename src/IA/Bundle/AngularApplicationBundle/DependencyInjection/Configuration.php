@@ -18,11 +18,49 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('ia_angularapplication');
+        $rootNode = $treeBuilder->root('ia_angular_application');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $rootNode
+            ->children()
+                ->arrayNode( 'routing_angular')
+                    ->normalizeKeys(false)
+                    ->prototype('array')
+                        ->children()
+                            ->variableNode('routes')
+                
+                                //->defaultValue(array())
+                                //->useAttributeAsKey('name')
+                                //->prototype('array')
+                                //->normalizeKeys(false)
+                                //    ->children()
+                                //    ->end()
+                                //->end()
+                
+                            ->end()
+                            ->scalarNode('default')->end()
+                        ->end()
+                    ->end()
+                ->end()
+                ->arrayNode( 'requirejs')
+                    ->defaultValue(array())
+                    ->prototype('array')
+                        ->children()
+                            ->arrayNode( 'paths')
+                                ->defaultValue(array())
+                                ->prototype('array')
+                                ->normalizeKeys(false)
+                                ->end()
+                            ->end()
+                            ->arrayNode( 'shim')
+                                ->defaultValue(array())
+                                ->prototype('array')
+                                ->normalizeKeys(false)
+                                ->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end();
 
         return $treeBuilder;
     }

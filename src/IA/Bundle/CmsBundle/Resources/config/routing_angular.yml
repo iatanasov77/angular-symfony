@@ -1,0 +1,16 @@
+routes:
+    pages:
+        name: /pages
+        controller: PagesController
+        templateUrl: /bundles/iacms/js/templates/pages.html
+        isFree: true
+    addPage:
+        name: /add-page
+        controller: EditPageController
+        templateUrl: /bundles/iacms/js/templates/editPage.html
+        isFree: true
+    editPage:
+        name: /edit-page/:id
+        controller: EditPageController
+        templateUrl: /bundles/iacms/js/templates/editPage.html
+        isFree: true

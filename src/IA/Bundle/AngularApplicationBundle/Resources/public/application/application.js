@@ -23,31 +23,24 @@ function(){
         /*
          * Clear Template Caache
          */
-       $rootScope.$on('$viewContentLoaded', function() {
+        $rootScope.$on('$viewContentLoaded', function() {
            //$templateCache.removeAll();
-       });
+        });
        
-       $http.get('/routes').success(function (data) {
-
-            var j = 0,
-                    currentRoute;
-
-            for (; j < data.routes.length; j++) {
-
-                currentRoute = data.routes[j];
-
-                $routeProviderReference.when(currentRoute.name, {
-                    templateUrl: currentRoute.templateUrl,
-                    controller: currentRoute.controller,
-                    isFree: currentRoute.isFree
+       
+       /*
+        * Load Routes
+        */
+        $http.get('routes').success(function (data) {
+            angular.forEach(data.routes, function(route, key) {
+                this.when(route.name, {
+                    templateUrl: route.templateUrl,
+                    controller: route.controller,
+                    isFree: route.isFree
                 });
-
-            }
-
+            }, $routeProviderReference);
             $routeProviderReference.otherwise({redirectTo: data.default});
-
             $route.reload();
-
         });
 
     }]);
