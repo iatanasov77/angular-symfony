@@ -30,7 +30,6 @@ class AppKernel extends Kernel
              */
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppVentus\AsseticInjectorBundle\AvAsseticInjectorBundle(),
-            new Sp\BowerBundle\SpBowerBundle(),
             new Hearsay\RequireJSBundle\HearsayRequireJSBundle(),
             
             /*
@@ -42,10 +41,14 @@ class AppKernel extends Kernel
             new IA\Bundle\NavigationBundle\IANavigationBundle(),
         );
 
+        /*
+         * Developement Tools
+         */
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+            $bundles[] = new Sp\BowerBundle\SpBowerBundle();
         }
 
         return $bundles;

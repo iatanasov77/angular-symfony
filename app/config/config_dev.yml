@@ -24,8 +24,11 @@ monolog:
             type:  chromephp
             level: info
 
-assetic:
-    use_controller: true
+swiftmailer:
+    delivery_address: me@example.com
 
-#swiftmailer:
-#    delivery_address: me@example.com
+# SP Bower Configuration
+sp_bower:
+    bundles:
+        IAAngularApplicationBundle: ~
+        IACmsBundle: ~
