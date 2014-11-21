@@ -46,9 +46,18 @@ class IACmsExtension extends Extension implements PrependExtensionInterface
             throw new Exception('IACmsBundle require IAAngularApplicationBundle.');
             
         }
+           
+        $config = Yaml::parse(file_get_contents(__DIR__ . '/../Resources/config/routing_angular.yml'));
         
-        $config = array('routing_angular' => Yaml::parse(file_get_contents(__DIR__ . '/../Resources/config/routing_angular.yml')));
-        //$container->prependExtensionConfig( 'ia_angular_application', $config);
+        /*
+         * RequireJs Config
+         */
+        $container->prependExtensionConfig('hearsay_require_js', $config['requirejs']);
+        
+        /*
+         * AngularJs Config
+         */
+        $container->prependExtensionConfig( 'ia_angular_application', $config['angular']);
         
     }
     

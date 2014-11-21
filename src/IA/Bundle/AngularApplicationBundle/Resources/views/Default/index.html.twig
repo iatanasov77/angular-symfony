@@ -21,9 +21,11 @@
     {% javascripts injector='vendor, application' %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
-    #}
     
     <script type="text/javascript" src="{{assetsPath}}/vendor/require.js" data-main="{{ assetsPath }}/application/main.js"></script>
+    #}
+    
+    {{ require_js_initialize({ 'main' : asset(assetsPath~'/application/main.js') }) }}
     
 {% endblock %}
 

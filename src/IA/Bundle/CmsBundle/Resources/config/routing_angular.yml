@@ -1,16 +1,31 @@
-routes:
-    pages:
-        name: /pages
-        controller: PagesController
-        templateUrl: /bundles/iacms/js/templates/pages.html
-        isFree: true
-    addPage:
-        name: /add-page
-        controller: EditPageController
-        templateUrl: /bundles/iacms/js/templates/editPage.html
-        isFree: true
-    editPage:
-        name: /edit-page/:id
-        controller: EditPageController
-        templateUrl: /bundles/iacms/js/templates/editPage.html
-        isFree: true
+angular:
+    
+    routes:
+        pages:
+            name: /pages
+            controller: PagesController
+            templateUrl: /bundles/iacms/js/templates/pages.html
+            isFree: true
+        addPage:
+            name: /add-page
+            controller: EditPageController
+            templateUrl: /bundles/iacms/js/templates/editPage.html
+            isFree: true
+        editPage:
+            name: /edit-page/:id
+            controller: EditPageController
+            templateUrl: /bundles/iacms/js/templates/editPage.html
+            isFree: true
+requirejs:
+    paths:
+        'application/controllers/Pages':
+            location: '/bundles/iacms/js/controllers/PagesController'
+            external: true
+        'application/controllers/EditPage':
+            location: '/bundles/iacms/js/controllers/EditPageController'
+            external: true
+        'application/services/Pages':
+            location: '/bundles/iacms/js/services/PagesService'
+            external: true
+    shim:
+        

@@ -15,7 +15,7 @@ assetic:
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: "@IAAngularApplicationBundle/Resources/config/requirejs.yml" }
+
 
 framework:
     #esi:             ~

@@ -26,13 +26,17 @@ class IAAngularApplicationExtension extends Extension implements PrependExtensio
         // Configuration
         $configuration = new Configuration();
         $config = $this->processConfiguration( $configuration, $configs );
+        //echo "<pre>"; die(var_dump($config));
+        
+        $container->setParameter('ia_angular_application.routes', $config['routes']);
+        $container->setParameter('ia_angular_application.default', $config['default']);
+        
         
         /*
          * Load Service and parameters
          */
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
-        
         
     }
     
@@ -46,25 +50,20 @@ class IAAngularApplicationExtension extends Extension implements PrependExtensio
         // determine if AcmeGoodbyeBundle is registered
         if (!isset($bundles['HearsayRequireJSBundle'])) {
             throw new Exception('IAAngularApplicationBundle require HearsayRequireJSBundle.');
-            
         }
         
-        $config = array(
-            'require_js_src' => '/bundles/iaangularapplication/vendor/requirejs',
-            'base_url'       => 'js',
-            'base_dir'       => '/',
-            'paths'          => array(),
-            'shim'           => array()
-        );
-        
-        $container->prependExtensionConfig('hearsay_require_js', $config);
+        /*
+         * RequireJs Config
+         */
+        $requirejsConfig = Yaml::parse(file_get_contents(__DIR__ . '/../Resources/config/requirejs.yml'));  
+        $container->prependExtensionConfig('hearsay_require_js', $requirejsConfig);
         
         
         /*
-         * Load Angular Routes
+         * Angular Config
          */
-        $config = array('routing_angular' => Yaml::parse(file_get_contents(__DIR__ . '/../Resources/config/routing_angular.yml')));
-        $container->prependExtensionConfig( 'ia_angular_application', $config);
+        $angularConfig = Yaml::parse(file_get_contents(__DIR__ . '/../Resources/config/routing_angular.yml'));
+        $container->prependExtensionConfig( 'ia_angular_application', $angularConfig);
     }
     
 }

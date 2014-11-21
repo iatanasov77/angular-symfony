@@ -1,36 +1,48 @@
-hearsay_require_js:
-    require_js_src:      //cdnjs.cloudflare.com/ajax/libs/require.js/2.1.8/require.min.js
-    initialize_template: HearsayRequireJSBundle::initialize.html.twig
-    base_url:            js
-    base_dir:            / # Required
-    paths:
-        'application/application':      
-            location: '/bundles/iaangularapplication/application/application'
-            external: true
-        'application/controllers/Contacts':
-            location: '/bundles/iaangularapplication/application/controllers/ContactsController'
-            external: true
-        'application/controllers/EditContact':
-            location: '/bundles/iaangularapplication/application/controllers/EditContactController'
-            external: true
-        'application/services/Contacts':
-            location: '/bundles/iaangularapplication/application/services/ContactsService'
-            external: true
-        'application/controllers/Pages':
-            location: '/bundles/iacms/js/controllers/PagesController'
-            external: true
-        'application/controllers/EditPage':
-            location: '/bundles/iacms/js/controllers/EditPageController'
-            external: true
-        'application/services/Pages':
-            location: '/bundles/iacms/js/services/PagesService'
-            external: true
-    shim:
-        # Prototype
-        name:
-            deps:    []
-            exports: ~
-    options:
-        # Prototype
-        name:
-            value: ~ # Required
+
+require_js_src: '/bundles/iaangularapplication/vendor/require.js'
+base_url: js
+base_dir: /
+
+paths:
+    # Vendor Paths
+    'jquery/jquery':
+        location: '/bundles/iaangularapplication/vendor/jquery/jquery-1.11.1.min'
+        external: true
+    'angular/angular':        
+        location: '/bundles/iaangularapplication/vendor/angular/angular.min'
+        external: true
+    'angular/route':          
+        location: '//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-route'
+        external: true
+    'angular/ui/tinymce':     
+        location: '/bundles/iaangularapplication/vendor/angular/ui/tinymce'
+        external: true
+    'tinyMCE':                
+        location: '/bundles/iaangularapplication/vendor/tinymce/tinymce.min'
+        external: true
+
+    # Application Paths
+    'application/application':
+        location: '/bundles/iaangularapplication/application/application'
+        external: true
+    'application/controllers/Contacts':
+        location: '/bundles/iaangularapplication/application/controllers/ContactsController'
+        external: true
+    'application/controllers/EditContact':
+        location: '/bundles/iaangularapplication/application/controllers/EditContactController'
+        external: true
+    'application/services/Contacts':
+        location: '/bundles/iaangularapplication/application/services/ContactsService'
+        external: true
+
+shim:
+    'angular/route':
+        deps: ['angular/angular']
+    'angular/angular':
+        deps: ['jquery/jquery']
+    'angular/ui/tinymce':
+        deps: [ 'angular/angular', 'tinyMCE' ]
+    'application/application': 
+        deps: [ 'jquery/jquery', 'angular/angular', 'angular/route', 'angular/ui/tinymce' ]
+        exports: app
+    

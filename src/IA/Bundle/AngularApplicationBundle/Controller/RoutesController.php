@@ -9,8 +9,10 @@ class RoutesController extends Controller
 {
     public function indexAction()
     {
-        $routes = $this->container->getParameter('ia_angular_application.routing_angular');
-        return new JsonResponse($routes);
+        $routes = $this->container->getParameter('ia_angular_application.routes');
+        $default = $this->container->getParameter('ia_angular_application.default');
+        
+        return new JsonResponse(array('rotes'=>$routes, 'default'=>$default));
     }
 }
 

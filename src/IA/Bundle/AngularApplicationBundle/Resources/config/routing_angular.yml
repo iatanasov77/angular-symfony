@@ -1,3 +1,4 @@
+
 routes:
     contacts:
         name: /contacts
@@ -14,5 +15,5 @@ routes:
         controller: ContactEditController
         templateUrl: /bundles/iaangularapplication/application/templates/editContact.html
         isFree: true
-        
+
 default: /contacts
