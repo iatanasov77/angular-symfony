@@ -5,7 +5,7 @@
         {
             "application":
             [
-                "@IAAngularApplicationBundle/Resources/public/application/application.js",
+                "@IAAngularApplicationBundle/Resources/public/ia/application.js",
                 "@IAAngularApplicationBundle/Resources/public/application/controllers/controllers.js",
                 "@IAAngularApplicationBundle/Resources/public/application/services/contactsService.js"
             ],

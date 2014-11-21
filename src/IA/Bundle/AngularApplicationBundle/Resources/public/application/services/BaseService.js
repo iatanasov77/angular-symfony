@@ -1,12 +1,15 @@
-define(['ia/application'], function(app) {
-    app.factory('PagesService', ['$http', '$q', function($http, $q) {
 
+define(['ia/application'], function(app) {
+    app.factory('BaseService', ['$http', '$q', function($http, $q) {
+
+        var baseUrl;
+        
         // Return public API.
         return({
             getItem: getItem,
             getItems: getItems,
             save: save,
-            remove: remove,
+            remove: remove
         });
 
 
@@ -14,7 +17,7 @@ define(['ia/application'], function(app) {
         {
             var request = $http({
                 method: "get",
-                url: "pages/"+id,
+                url: baseUrl + "/detail/"+id,
             });
 
             return request.then( handleSuccess, handleError );
@@ -24,19 +27,19 @@ define(['ia/application'], function(app) {
         {
             var request = $http({
                 method: "post",
-                url: "pages",
+                url: baseUrl,
                 data: request
             });
 
             return( request.then( handleSuccess, handleError ) );
         }
 
-        function save( page )
+        function save( item )
         {
             var request = $http({
                 method: "post",
-                url: "pages/save",
-                data: page
+                url: baseUrl + "/save",
+                data: item
             });
 
             return request.then( handleSuccess, handleError);
@@ -46,7 +49,7 @@ define(['ia/application'], function(app) {
         {
             var request = $http({
                 method: "get",
-                url: "pages/delete/"+id,
+                url: baseUrl + "/delete/" + id,
             });
 
             return request.then( handleSuccess, handleError );
@@ -74,5 +77,6 @@ define(['ia/application'], function(app) {
         }
 
     }]);
-    
+
+    //return contactsService;
 });

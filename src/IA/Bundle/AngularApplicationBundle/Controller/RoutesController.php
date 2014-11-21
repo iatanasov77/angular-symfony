@@ -12,7 +12,7 @@ class RoutesController extends Controller
         $routes = $this->container->getParameter('ia_angular_application.routes');
         $default = $this->container->getParameter('ia_angular_application.default');
         
-        return new JsonResponse(array('rotes'=>$routes, 'default'=>$default));
+        return new JsonResponse(array('routes'=>$routes, 'default'=>$default));
     }
 }
 

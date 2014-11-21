@@ -22,18 +22,21 @@ paths:
         external: true
 
     # Application Paths
-    'application/application':
+    'ia/application':
         location: '/bundles/iaangularapplication/application/application'
-        external: true
-    'application/controllers/Contacts':
+        external: false
+    'ia/controllers/Contacts':
         location: '/bundles/iaangularapplication/application/controllers/ContactsController'
-        external: true
-    'application/controllers/EditContact':
+        external: false
+    'ia/controllers/EditContact':
         location: '/bundles/iaangularapplication/application/controllers/EditContactController'
-        external: true
-    'application/services/Contacts':
+        external: false
+    'ia/services/Contacts':
         location: '/bundles/iaangularapplication/application/services/ContactsService'
-        external: true
+        external: false
+    'ia/services/Base':
+        location: '/bundles/iaangularapplication/application/services/BaseService'
+        external: false
 
 shim:
     'angular/route':
@@ -42,7 +45,7 @@ shim:
         deps: ['jquery/jquery']
     'angular/ui/tinymce':
         deps: [ 'angular/angular', 'tinyMCE' ]
-    'application/application': 
+    'ia/application': 
         deps: [ 'jquery/jquery', 'angular/angular', 'angular/route', 'angular/ui/tinymce' ]
         exports: app
     

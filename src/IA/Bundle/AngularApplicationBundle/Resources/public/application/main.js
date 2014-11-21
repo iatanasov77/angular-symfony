@@ -1,6 +1,7 @@
 require(
     [
-        'application/application',
+        'ia/application',
+        'ia/services/Base',
         'application/services/Contacts',
         'application/controllers/Contacts',
         'application/controllers/EditContact',
@@ -9,23 +10,7 @@ require(
         'application/controllers/Pages',
         'application/controllers/EditPage'
     ],
-    function(app,
-            ContactsService,
-            ContactsController,
-            EditContactController,
-            PagesService,
-            PagesController,
-            EditPageController) {
-        'use strict';
-        
-        app.factory('contactsService', ContactsService);
-        app.controller('ContactsController', ContactsController);
-        app.controller('ContactEditController', EditContactController);
-    
-        app.factory('pagesService', PagesService);
-        app.controller('PagesController', PagesController);
-        app.controller('PageEditController', EditPageController);
-        
+    function() {
         angular.bootstrap("#IAAngularApplication", ['IAAngularApplication']);
     }
 );
