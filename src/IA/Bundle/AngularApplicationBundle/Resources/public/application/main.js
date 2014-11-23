@@ -2,9 +2,9 @@ require(
     [
         'ia/application',
         'ia/services/Base',
-        'application/services/Contacts',
-        'application/controllers/Contacts',
-        'application/controllers/EditContact',
+        'ia/services/Contacts',
+        'ia/controllers/Contacts',
+        'ia/controllers/EditContact',
 
         'application/services/Pages',
         'application/controllers/Pages',

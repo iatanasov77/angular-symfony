@@ -1,13 +1,9 @@
 
-define(['ia/application'], function(app) {
-    app.factory('ContactsService', ['$http', '$q', 'BaseService', function($http, $q, BaseService) {
-        var baseUrl = '/contacts';
+define(['ia/application', 'ia/services/Base'], function(app) {
+    app.factory('ContactsService', function (BaseService, $sce) {
+        var ContactsService = Object.create(BaseService);
+        ContactsService.baseUrl = '/contacts';
 
-        var ContactsService = function() {
-            BaseService.apply(this, arguments);
-        };
-        ContactsService.prototype = new BaseService();
-        
         return ContactsService;
-    }]);
+    }); 
 });

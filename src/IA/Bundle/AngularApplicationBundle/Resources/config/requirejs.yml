@@ -1,6 +1,6 @@
 
 require_js_src: '/bundles/iaangularapplication/vendor/require.js'
-base_url: js
+#base_url: js
 base_dir: /
 
 paths:
@@ -24,19 +24,19 @@ paths:
     # Application Paths
     'ia/application':
         location: '/bundles/iaangularapplication/application/application'
-        external: false
+        external: true
     'ia/controllers/Contacts':
         location: '/bundles/iaangularapplication/application/controllers/ContactsController'
-        external: false
+        external: true
     'ia/controllers/EditContact':
         location: '/bundles/iaangularapplication/application/controllers/EditContactController'
-        external: false
+        external: true
     'ia/services/Contacts':
         location: '/bundles/iaangularapplication/application/services/ContactsService'
-        external: false
+        external: true
     'ia/services/Base':
         location: '/bundles/iaangularapplication/application/services/BaseService'
-        external: false
+        external: true
 
 shim:
     'angular/route':
