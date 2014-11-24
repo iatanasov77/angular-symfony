@@ -11,4 +11,6 @@
 /bin/
 /composer.phar
 /nbproject/
+/src/IA/Bundle/AngularApplicationBundle/Resources/public/components/
+/src/IA/Bundle/CmsBundle/Resources/public/components/
 

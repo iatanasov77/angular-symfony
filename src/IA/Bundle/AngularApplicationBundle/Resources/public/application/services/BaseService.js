@@ -3,32 +3,34 @@ define(['ia/application'], function(app) {
     app.factory('BaseService', ['$http', '$q', function($http, $q) {
 
         var baseUrl;
+        var data;
         
         // Return public API.
-        return({
+        return {
             getItem: getItem,
             getItems: getItems,
             save: save,
             remove: remove
-        });
+        };
 
 
         function getItem(id) 
         {
             var request = $http({
                 method: "get",
-                url: baseUrl + "/detail/"+id,
+                url: this.baseUrl + "/detail/"+id,
             });
 
             return request.then( handleSuccess, handleError );
         }
 
-        function getItems(request) 
+        function getItems(requestData) 
         {
+            
             var request = $http({
                 method: "post",
-                url: baseUrl,
-                data: request
+                url: this.baseUrl,
+                data: requestData
             });
 
             return( request.then( handleSuccess, handleError ) );
@@ -38,7 +40,7 @@ define(['ia/application'], function(app) {
         {
             var request = $http({
                 method: "post",
-                url: baseUrl + "/save",
+                url: this.baseUrl + "/save",
                 data: item
             });
 
@@ -73,10 +75,10 @@ define(['ia/application'], function(app) {
 
         function handleSuccess( response ) 
         {
+            //return response;
             return response.data;
         }
 
-    }]);
-
-    //return contactsService;
+    }]);  
+    
 });

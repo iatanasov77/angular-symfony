@@ -2,9 +2,8 @@
 
 define(['ia/application'], function(app) {
     app.controller('ContactsController', 
-        ['$rootScope', '$scope', '$location', 'ContactsService', 
-        function($rootScope, $scope, $location, service) {
-
+        ['$scope', '$location', 'ContactsService', 
+        function($scope, $location, service) {
             $scope.messagesView = ENV.assetsPath + "/application/templates/messages.html";
             $scope.gridControlsView = ENV.assetsPath + "/application/templates/gridControls.html";
             $scope.paginationView = ENV.assetsPath + "/application/templates/pagination.html";
@@ -36,6 +35,7 @@ define(['ia/application'], function(app) {
                 var promise = service.getItems($scope.request);
                 
                 promise.then(function(response) {
+                    //console.log(response);
                     $scope.totalItems = response.countTotal;
                     var range = [];
                     for( var i = 1; i <= Math.ceil( $scope.totalItems / $scope.request.ipp ); i++ ) {
@@ -46,7 +46,9 @@ define(['ia/application'], function(app) {
                 }, function(response) {
                   // error
                 });
-            }
+                
+                 
+            };
             $scope.getContacts();
             
 
