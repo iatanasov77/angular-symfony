@@ -30,7 +30,7 @@ define(['ia/application'], function(app) {
              * 
              * Get Contacts and init pagination params
              */
-            $scope.getContacts = function()
+            function getContacts()
             {
                 var promise = service.getItems($scope.request);
                 
@@ -49,7 +49,8 @@ define(['ia/application'], function(app) {
                 
                  
             };
-            $scope.getContacts();
+            $scope.getContacts = getContacts;
+            getContacts();
             
 
             /*

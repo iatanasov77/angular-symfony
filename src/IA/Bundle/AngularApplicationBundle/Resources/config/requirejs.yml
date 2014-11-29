@@ -1,12 +1,12 @@
 
-require_js_src: '/bundles/iaangularapplication/vendor/require.js'
+require_js_src: '/bundles/iaangularapplication/vendor/requirejs/require.js'
 #base_url: js
 base_dir: /
 
 paths:
     # Vendor Paths
     'jquery/jquery':
-        location: '/bundles/iaangularapplication/vendor/jquery/jquery-1.11.1.min'
+        location: '/bundles/iaangularapplication/vendor/jquery/dist/jquery.min'
         external: true
     'angular/angular':        
         location: '/bundles/iaangularapplication/vendor/angular/angular.min'
@@ -15,7 +15,7 @@ paths:
         location: '//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-route'
         external: true
     'angular/ui/tinymce':     
-        location: '/bundles/iaangularapplication/vendor/angular/ui/tinymce'
+        location: '/bundles/iaangularapplication/vendor/angular-ui-tinymce/src/tinymce'
         external: true
     'tinyMCE':                
         location: '/bundles/iaangularapplication/vendor/tinymce/tinymce.min'

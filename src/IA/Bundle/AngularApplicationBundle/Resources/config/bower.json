@@ -5,12 +5,18 @@
     "dependencies": {
         "requirejs": "latest",
         "bootstrap": "latest",
-        "angularjs": "latest"
+        "components-font-awesome": "latest",
+        "angular": "latest",
+        "tinymce":   "latest",
+        "angular-ui-tinymce": "latest"
     },
     "install" : {
         "path"  : {
             "js": "_js/",
             "css": "_css/"
         }
+    },
+    "scripts": {
+        "postinstall": "bower-requirejs -c web/assets/js/main.js"
     }
 }

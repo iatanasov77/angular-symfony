@@ -12,4 +12,4 @@
 /composer.phar
 /nbproject/
 */Resources/public/vendor/*
-
+/node_modules/
