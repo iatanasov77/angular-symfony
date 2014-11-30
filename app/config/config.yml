@@ -3,7 +3,7 @@
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    bundles:        [ IAAngularApplicationBundle ]
+    bundles:        [ IAAngularApplicationBundle, IAAngularAdminPanelBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~

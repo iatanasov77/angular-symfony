@@ -3,9 +3,10 @@
     "name": "ia-angularapplication",
     
     "dependencies": {
-        "requirejs": "latest",
-        "angular": "latest",
-        "angular-ui-tinymce": "latest"
+        "bootstrap": "latest",
+        "components-font-awesome": "latest",
+        "metisMenu": "latest",
+        "tinymce":   "latest"
     },
     "install" : {
         "path"  : {

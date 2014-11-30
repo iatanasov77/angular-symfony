@@ -1,0 +1,7 @@
+parameters:
+#    ia_angular_admin_panel.example.class: IA\Bundle\AngularAdminPanelBundle\Example
+
+services:
+#    ia_angular_admin_panel.example:
+#        class: %ia_angular_admin_panel.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

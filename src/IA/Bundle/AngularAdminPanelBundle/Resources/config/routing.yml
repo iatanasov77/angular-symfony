@@ -1,0 +1,3 @@
+ia_angularadminpanel_home:
+    path:     /
+    defaults: { _controller: IAAngularAdminPanelBundle:Default:index }

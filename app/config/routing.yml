@@ -1,3 +1,7 @@
+ia_angular_admin_panel:
+    resource: "@IAAngularAdminPanelBundle/Resources/config/routing.yml"
+    prefix:   /
+
 ia_navigation:
     resource: "@IANavigationBundle/Resources/config/routing.yml"
     prefix:   /

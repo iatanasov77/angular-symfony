@@ -39,3 +39,7 @@ sp_bower:
             config_dir: Resources/config
             asset_dir: ../public/vendor
             cache: ../public/vendor/cache
+        IAAngularAdminPanelBundle:
+            config_dir: Resources/config
+            asset_dir: ../public/vendor
+            cache: ../public/vendor/cache
