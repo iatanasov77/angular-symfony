@@ -4,9 +4,9 @@ define(['ia/application'], function(app) {
     app.controller('ContactsController', 
         ['$scope', '$location', 'ContactsService', 
         function($scope, $location, service) {
-            $scope.messagesView = ENV.assetsPath + "/application/templates/messages.html";
-            $scope.gridControlsView = ENV.assetsPath + "/application/templates/gridControls.html";
-            $scope.paginationView = ENV.assetsPath + "/application/templates/pagination.html";
+            $scope.messagesView = ENV.assetsPath + "/js/Templates/messages.html";
+            $scope.gridControlsView = ENV.assetsPath + "/js/Templates/gridControls.html";
+            $scope.paginationView = ENV.assetsPath + "/js/Templates/pagination.html";
 
             $scope.request = {
                 orderBy: 'firstName',
