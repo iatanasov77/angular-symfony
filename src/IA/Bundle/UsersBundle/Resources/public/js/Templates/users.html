@@ -4,15 +4,15 @@
 
 <div class="container view">
     <header>
-        <h3>Pages</h3>
+        <h3>Users</h3>
     </header>
 
     <div>
-        <a class="nav-pills hover" href="#/add-page">Add Page</a>
+        <a class="nav-pills hover" href="#/add-user">Add User</a>
     </div>
     <br /><br />
 
-    <div ng-controller="PagesController">
+    <div ng-controller="UsersController">
         <div data-ng-include="messagesView" class="row"></div>
         <div data-ng-include="gridControlsView" class="row"></div>
 
@@ -27,17 +27,17 @@
                             </span>
                         </a>
                     </th>
-                    <th class="firstName">
-                        <a ng-click="setOrder('alias')">Alias&nbsp;
-                            <span data-ng-show="request.orderBy=='alias'">
+                    <th class="username">
+                        <a ng-click="setOrder('username')">Username&nbsp;
+                            <span data-ng-show="request.orderBy=='username'">
                                 <span data-ng-show="request.orderDir=='DESC'" class="glyphicon glyphicon-arrow-up"></span>
                                 <span data-ng-show="request.orderDir=='ASC'" class="glyphicon glyphicon-arrow-down"></span>
                             </span>
                         </a>
                     </th>
-                    <th class="lastName">
-                        <a ng-click="setOrder('title')">Title&nbsp;
-                            <span data-ng-show="request.orderBy=='title'">
+                    <th class="email">
+                        <a ng-click="setOrder('email')">Title&nbsp;
+                            <span data-ng-show="request.orderBy=='email'">
                                 <span data-ng-show="request.orderDir=='DESC'" class="glyphicon glyphicon-arrow-up"></span>
                                 <span data-ng-show="request.orderDir=='ASC'" class="glyphicon glyphicon-arrow-down"></span>
                             </span>
@@ -52,9 +52,8 @@
             <tbody>
                 <tr ng-repeat="item in items">
                     <td>{{item.id}}</td>
-                    <td>{{item.alias}}</td>
-                    <td>{{item.title}}</td>
-                   
+                    <td>{{item.username}}</td>
+                    <td>{{item.email}}</td>
                     <td><a ng-click="editItem(item.id)" class="glyphicon glyphicon-edit" href="javascript:void(0);"></a></td>
                     <td><a ng-click="removeItem(item.id)" class="glyphicon glyphicon-remove" href="javascript:void(0);"></a></td>
                 </tr>

@@ -1,6 +1,6 @@
 define(['ia/application'], function(app){
-    app.controller('PagesController', 
-        ['$rootScope', '$scope', '$location', 'PagesService', 
+    app.controller('UsersController', 
+        ['$rootScope', '$scope', '$location', 'UsersService', 
         function($rootScope, $scope, $location, service) {
 
             $scope.messagesView = "/bundles/iaangularadminpanel/js/Templates/messages.html";
@@ -8,7 +8,7 @@ define(['ia/application'], function(app){
             $scope.paginationView = "/bundles/iaangularadminpanel/js/Templates/pagination.html";
 
             $scope.request = {
-                orderBy: 'title',
+                orderBy: 'id',
                 orderDir: 'ASC',
                 search: null,
                 ipp: 5,
@@ -88,7 +88,7 @@ define(['ia/application'], function(app){
              */
             $scope.editItem = function( id )
             {
-                $location.path("edit-page/"+id);
+                $location.path("edit-user/"+id);
             }
 
             /*
