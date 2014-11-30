@@ -1,0 +1,3 @@
+ia_users_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: IAUsersBundle:Default:index }

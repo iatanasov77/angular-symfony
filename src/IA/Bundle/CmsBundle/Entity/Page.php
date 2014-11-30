@@ -28,21 +28,21 @@ class Page
      *
      * @ORM\Column(name="alias", type="string", length=64)
      */
-    protected $_alias;
+    protected $alias;
 
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
      */
-    protected $_title;
+    protected $title;
     
     /**
      * @var string
      *
      * @ORM\Column(name="text", type="text")
      */
-    protected $_text;
+    protected $text;
 
     /**
      * Get _id
@@ -51,7 +51,7 @@ class Page
      */
     public function getId()
     {
-        return $this->_id;
+        return $this->id;
     }
 
     /**
@@ -62,7 +62,7 @@ class Page
      */
     public function setAlias($alias)
     {
-        $this->_alias = $alias;
+        $this->alias = $alias;
     
         return $this;
     }
@@ -74,7 +74,7 @@ class Page
      */
     public function getAlias()
     {
-        return $this->_alias;
+        return $this->alias;
     }
 
     /**
@@ -85,7 +85,7 @@ class Page
      */
     public function setTitle($title)
     {
-        $this->_title = $title;
+        $this->title = $title;
     
         return $this;
     }
@@ -97,7 +97,7 @@ class Page
      */
     public function getTitle()
     {
-        return $this->_title;
+        return $this->title;
     }
 
     /**
@@ -108,7 +108,7 @@ class Page
      */
     public function setText(\longtext $text)
     {
-        $this->_text = $text;
+        $this->text = $text;
     
         return $this;
     }
@@ -120,6 +120,6 @@ class Page
      */
     public function getText()
     {
-        return $this->_text;
+        return $this->text;
     }
 }
