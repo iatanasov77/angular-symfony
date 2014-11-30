@@ -1,6 +1,6 @@
 <div class="container view">
     <header>
-        <h3>Edit Page</h3>
+        <h3>Edit User</h3>
     </header>
 
     <div>
@@ -12,28 +12,30 @@
     <form name="formPage">
         <div class="row add-page">
             <div class="span3">
-                Alias:
+                Email:
                 <br />
-                <input name="alias" data-ng-model="item.alias" type="text" required data-ng-pattern="/^[a-zA-Z\-]*$/" placeholder="Alias">
-                <small class="error" data-ng-show="formPage.alias.$invalid">
-                    Use alpha characters and '-' only.
-                </small>
-            </div>
-            <div class="span3">
-                Title:
-                <br />
-                <input name="title" data-ng-model="item.title" type="text" required placeholder="Title">
-            </div>
-            <div class="span3">
-                Text:
-                <br />
-                <textarea class="tinyMCE" ui-tinymce="tinymceOptions" id="text" name="text" data-ng-model="item.text" required ></textarea>
+                <input name="email" data-ng-model="item.email" type="text" required placeholder="Email">
                 
+            </div>
+            <div class="span3">
+                Username:
+                <br />
+                <input name="username" data-ng-model="item.username" type="text" required placeholder="Username">
+            </div>
+            <div class="span3">
+                Password:
+                <br />
+                <input name="passwoord" data-ng-model="item.password" type="password" required placeholder="Password">
+            </div>
+            <div class="span3">
+                Confirm Password:
+                <br />
+                <input name="confirmpassword" data-ng-model="item.confirmpassword" type="password" required placeholder="Confirm Password">
             </div>
             <br /><br />
             <div class="span3">
                 <button id="submitPage" class="btn btn-primary" type="button"
-                    data-ng-disabled="!item.alias || !item.title || !item.text"
+                    data-ng-disabled="!item.email || !item.username || !item.password"
                     data-ng-click="save()">Save</button>
             </div>
         </div>
