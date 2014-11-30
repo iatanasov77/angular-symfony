@@ -1,16 +1,16 @@
-{% set assetsPath = "/bundles/iaangularapplication" %}
+{% set assetsPath = "/bundles/iaangularadminpanel" %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{% block title %}IA Framework{% endblock %}Address Book</title>
+    <title>{% block title %}IA AdminPanel{% endblock %}Address Book</title>
     
 {% block stylesheets %}
      <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/bundles/iaangularapplication/vendor/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/bundles/iaangularadminpanel/vendor/bootstrap/dist/css/bootstrap.min.css" />
      <!-- MetisMenu CSS -->
-    <link href="/bundles/iaangularapplication/vendor/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <link href="/bundles/iaangularadminpanel/vendor/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
     <!-- Custom Fonts -->
-    <link rel="stylesheet" href="/bundles/iaangularapplication/vendor/components-font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/bundles/iaangularadminpanel/vendor/components-font-awesome/css/font-awesome.min.css" />
     <link href="{{ asset(assetsPath~'/css/sb-admin-2.css') }}" rel="stylesheet" />
     <link href="{{ asset(assetsPath~'/css/custom.css') }}" rel="stylesheet" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -26,10 +26,10 @@
 {% endblock %}
 
 {% block scripts %}
-    <script type="text/javascript" src="/bundles/iaangularapplication/vendor/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="/bundles/iaangularapplication/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/bundles/iaangularapplication/vendor/metisMenu/dist/metisMenu.min.js"></script>
-    <script type="text/javascript" src="/bundles/iaangularapplication/js/sb-admin-2.js"></script>
+    <script type="text/javascript" src="/bundles/iaangularadminpanel/vendor/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/bundles/iaangularadminpanel/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/bundles/iaangularadminpanel/vendor/metisMenu/dist/metisMenu.min.js"></script>
+    <script type="text/javascript" src="/bundles/iaangularadminpanel/js/sb-admin-2.js"></script>
     <script type="text/javascript">
         var ENV = {
             assetsPath: '{{ assetsPath }}'
@@ -42,7 +42,7 @@
     
     <script type="text/javascript" src="{{assetsPath}}/vendor/require.js" data-main="{{ assetsPath }}/application/main.js"></script>
     #}
-    {{ require_js_initialize({ 'main' : asset(assetsPath~'/application/main.js') }) }}
+    {{ require_js_initialize({ 'main' : asset(assetsPath~'/js/main.js') }) }}
 {% endblock %}
 </head>
 <body>

@@ -6,7 +6,7 @@
         "bootstrap": "latest",
         "components-font-awesome": "latest",
         "metisMenu": "latest",
-        "tinymce":   "latest"
+        "angular-ui-tinymce": "latest"
     },
     "install" : {
         "path"  : {

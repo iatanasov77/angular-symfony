@@ -4,8 +4,7 @@
     
     "dependencies": {
         "requirejs": "latest",
-        "angular": "latest",
-        "angular-ui-tinymce": "latest"
+        "angular": "latest"
     },
     "install" : {
         "path"  : {
