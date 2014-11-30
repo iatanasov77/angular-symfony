@@ -3,9 +3,9 @@ define(['ia/application'], function(app){
         ['$rootScope', '$scope', '$location', 'PagesService', 
         function($rootScope, $scope, $location, pagesService) {
 
-            $scope.messagesView = ENV.assetsPath + "/application/templates/messages.html";
-            $scope.gridControlsView = ENV.assetsPath + "/application/templates/gridControls.html";
-            $scope.paginationView = ENV.assetsPath + "/application/templates/pagination.html";
+            $scope.messagesView = "/bundles/iaangularadminpanel/js/Templates/messages.html";
+            $scope.gridControlsView = "/bundles/iaangularadminpanel/js/Templates/gridControls.html";
+            $scope.paginationView = "/bundles/iaangularadminpanel/js/Templates/pagination.html";
 
             $scope.request = {
                 orderBy: 'title',

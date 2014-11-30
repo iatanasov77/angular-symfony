@@ -56,26 +56,11 @@ class DefaultController extends Controller
     public function saveAction()
     {
     	$data = $this->get("request")->getContent();
-
-        $serializer = SerializerBuilder::create()->build();
-        $contact = $serializer->deserialize($data, 'IA\Bundle\CmsBundle\Entity\Page', 'json');
-        $phones = $contact->getPhones();
-
-        $entityManager = $this->getDoctrine()->getManager();
-        $contact = $entityManager->merge($contact);
         
-        /**
-         * This not right but i don't know how to do
-         */
-        foreach($phones as $k => $phone) {
-            $phone->setContact($contact);
-            if(!$phone->getCreated()) {
-                $phone->setCreated(new \DateTime());
-                $phone->setModified(new \DateTime());
-            }
-            
-            $entityManager->merge($phone);
-        }
+        $entityManager = $this->getDoctrine()->getManager();
+        $serializer = SerializerBuilder::create()->build();
+        $page = $serializer->deserialize($data, 'IA\Bundle\CmsBundle\Entity\Page', 'json');
+        $entityManager->persist($page);
         $entityManager->flush();
         
         $response = array(

@@ -18,6 +18,8 @@ define(['ia/application'], function(app) {
                 height: "200px",
                 width: "650px"
             };
+            
+            console.log($scope.tinymceOptions);
 
             var id = $routeParams.id ? parseInt($routeParams.id, 10) : 0;
             var promise = service.getItem(id);

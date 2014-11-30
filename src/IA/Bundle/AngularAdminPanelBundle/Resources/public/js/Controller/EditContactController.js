@@ -5,7 +5,7 @@ define(['ia/application'], function(app) {
         
         function($rootScope, $scope, $location, $routeParams, contactsService) {
             var contactId = $routeParams.contactId ? parseInt($routeParams.contactId, 10) : 0;
-            var contactPromise = contactsService.getContact(contactId);
+            var contactPromise = contactsService.getItem(contactId);
 
             contactPromise.then(function(data) {
                 $scope.contact = data;  
