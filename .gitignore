@@ -7,10 +7,10 @@
 !app/logs/.gitkeep
 /app/phpunit.xml
 /build/
-/vendor/
+/vendor/*
 /bin/
 /composer.phar
 /nbproject/
-/src/IA/Bundle/AngularApplicationBundle/Resources/public/components/
-/src/IA/Bundle/CmsBundle/Resources/public/components/
+*/Resources/public/vendor/*
+/node_modules/
 

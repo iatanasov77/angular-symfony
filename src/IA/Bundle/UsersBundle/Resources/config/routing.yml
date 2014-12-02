@@ -1,0 +1,18 @@
+ia_users_service_index:
+    path:     /service/users
+    defaults: { _controller: IAUsersBundle:Service:index }
+    
+ia_users_service_detail:
+    path:     /service/users/detail/{id}
+    defaults: { _controller: IAUsersBundle:Service:detail}
+
+ia_users_service_delete:
+    path:     /service/users/delete/{id}
+    defaults: { _controller: IAUsersBundle:Service:delete }
+
+ia_users_service_save:
+    path:     /service/users/save
+    defaults: { _controller: IAUsersBundle:Service:save }
+    requirements:
+        _method:  POST
+

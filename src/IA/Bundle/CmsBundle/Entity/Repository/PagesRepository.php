@@ -12,4 +12,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class PagesRepository extends EntityRepository
 {
+    public function countTotal() 
+    {
+        $query = $this->getEntityManager()->createQuery('SELECT COUNT(p) FROM IACmsBundle:Page p');
+
+        return $query->getSingleScalarResult();
+    }
 }

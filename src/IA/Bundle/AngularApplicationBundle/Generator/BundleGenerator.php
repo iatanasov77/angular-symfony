@@ -1,6 +1,5 @@
 <?php
 
-
 namespace IA\Bundle\AngularApplicationBundle\Generator;
 
 use Symfony\Component\Filesystem\Filesystem;
@@ -45,3 +44,4 @@ class BundleGenerator extends Generator
         $this->renderFile('bundle/bower.json.twig', $dir.'/Resources/config/bower.json', $parameters);
     }
 }
+

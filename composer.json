@@ -26,7 +26,8 @@
         "jms/serializer-bundle": "~0.13",
         "appventus/assetic-injector-bundle": "dev-master",
         "sp/bower-bundle": "dev-master",
-        "hearsay/require-js-bundle": "2.0.*@dev"
+        "hearsay/require-js-bundle": "2.0.*@dev",
+        "friendsofsymfony/user-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

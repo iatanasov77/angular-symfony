@@ -1,38 +1,20 @@
 
-require_js_src: '/bundles/iaangularapplication/vendor/require.js'
+require_js_src: '/bundles/iaangularapplication/vendor/requirejs/require.js'
 #base_url: js
 base_dir: /
 
 paths:
     # Vendor Paths
-    'jquery/jquery':
-        location: '/bundles/iaangularapplication/vendor/jquery/jquery-1.11.1.min'
-        external: true
     'angular/angular':        
         location: '/bundles/iaangularapplication/vendor/angular/angular.min'
         external: true
     'angular/route':          
         location: '//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-route'
         external: true
-    'angular/ui/tinymce':     
-        location: '/bundles/iaangularapplication/vendor/angular/ui/tinymce'
-        external: true
-    'tinyMCE':                
-        location: '/bundles/iaangularapplication/vendor/tinymce/tinymce.min'
-        external: true
 
     # Application Paths
     'ia/application':
         location: '/bundles/iaangularapplication/application/application'
-        external: true
-    'ia/controllers/Contacts':
-        location: '/bundles/iaangularapplication/application/controllers/ContactsController'
-        external: true
-    'ia/controllers/EditContact':
-        location: '/bundles/iaangularapplication/application/controllers/EditContactController'
-        external: true
-    'ia/services/Contacts':
-        location: '/bundles/iaangularapplication/application/services/ContactsService'
         external: true
     'ia/services/Base':
         location: '/bundles/iaangularapplication/application/services/BaseService'
@@ -43,8 +25,6 @@ shim:
         deps: ['angular/angular']
     'angular/angular':
         deps: ['jquery/jquery']
-    'angular/ui/tinymce':
-        deps: [ 'angular/angular', 'tinyMCE' ]
     'ia/application': 
         deps: [ 'jquery/jquery', 'angular/angular', 'angular/route', 'angular/ui/tinymce' ]
         exports: app

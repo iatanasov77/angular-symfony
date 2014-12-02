@@ -1,11 +1,11 @@
 define(['ia/application'], function(app){
     app.controller('PagesController', 
         ['$rootScope', '$scope', '$location', 'PagesService', 
-        function($rootScope, $scope, $location, pagesService) {
+        function($rootScope, $scope, $location, service) {
 
-            $scope.messagesView = ENV.assetsPath + "/application/templates/messages.html";
-            $scope.gridControlsView = ENV.assetsPath + "/application/templates/gridControls.html";
-            $scope.paginationView = ENV.assetsPath + "/application/templates/pagination.html";
+            $scope.messagesView = "/bundles/iaangularadminpanel/js/Templates/messages.html";
+            $scope.gridControlsView = "/bundles/iaangularadminpanel/js/Templates/gridControls.html";
+            $scope.paginationView = "/bundles/iaangularadminpanel/js/Templates/pagination.html";
 
             $scope.request = {
                 orderBy: 'title',
@@ -18,7 +18,7 @@ define(['ia/application'], function(app){
 
             $scope.range;                  // Pagination range
             $scope.totalItems = 0;         // Total Count of Items
-            $scope.pages = [];
+            $scope.items = [];
 
             $scope.Math = window.Math;
 
@@ -31,7 +31,7 @@ define(['ia/application'], function(app){
              */
             $scope.getItems = function()
             {
-                var promise = pagesService.getItems($scope.request);
+                var promise = service.getItems($scope.request);
                 promise.then(function(response) {
                     $scope.totalItems = response.countTotal;
                     var range = [];
@@ -39,7 +39,7 @@ define(['ia/application'], function(app){
                         range.push(i);
                     }
                     $scope.range = range;
-                    $scope.pages = response.entities;
+                    $scope.items = response.entities;
                 }, function(response) {
                   // error
                 });
@@ -72,9 +72,9 @@ define(['ia/application'], function(app){
             /*
              * Remove a Contact
              */
-            $scope.removeContact = function( id )
+            $scope.removeItem = function( id )
             {
-                pagesService.remove(id).then(function(response) {
+                service.remove(id).then(function(response) {
                     $scope.message = {text: 'Remove Success!', type: 'info'};
 
                     $scope.getItems();
@@ -86,9 +86,9 @@ define(['ia/application'], function(app){
             /*
              * Go to add / edit contact form
              */
-            $scope.editContact = function( id )
+            $scope.editItem = function( id )
             {
-                $location.path("edit-contact/"+id);
+                $location.path("edit-page/"+id);
             }
 
             /*

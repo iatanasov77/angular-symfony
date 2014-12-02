@@ -1,3 +1,10 @@
+ia_users:
+    resource: "@IAUsersBundle/Resources/config/routing.yml"
+    prefix:   /
+ia_angular_admin_panel:
+    resource: "@IAAngularAdminPanelBundle/Resources/config/routing.yml"
+    prefix:   /
+
 ia_navigation:
     resource: "@IANavigationBundle/Resources/config/routing.yml"
     prefix:   /
@@ -13,3 +20,5 @@ ia_cms:
 IAServerBundle:
     resource: "@IAServerBundle/Resources/config/routing.yml"
     prefix:   /
+    
+

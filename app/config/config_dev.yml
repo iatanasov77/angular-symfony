@@ -29,6 +29,17 @@ swiftmailer:
 
 # SP Bower Configuration
 sp_bower:
+    install_on_warmup: false
+    keep_bowerrc: false
+    bin: /usr/bin/bower
+    offline: false 
+    allow_root: false
     bundles:
-        IAAngularApplicationBundle: ~
-        IACmsBundle: ~
+        IAAngularApplicationBundle:
+            config_dir: Resources/config
+            asset_dir: ../public/vendor
+            cache: ../public/vendor/cache
+        IAAngularAdminPanelBundle:
+            config_dir: Resources/config
+            asset_dir: ../public/vendor
+            cache: ../public/vendor/cache

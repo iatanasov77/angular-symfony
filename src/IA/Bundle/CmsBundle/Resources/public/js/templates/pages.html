@@ -22,24 +22,24 @@
                     <th class="id">
                         <a data-ng-click="setOrder('id')">Id&nbsp;
                             <span data-ng-show="request.orderBy=='id'">
-                                <span data-ng-show="request.orderDir=='DESC'" class="icon-arrow-up"></span>
-                                <span data-ng-show="request.orderDir=='ASC'" class="icon-arrow-down"></span>
+                                <span data-ng-show="request.orderDir=='DESC'" class="glyphicon glyphicon-arrow-up"></span>
+                                <span data-ng-show="request.orderDir=='ASC'" class="glyphicon glyphicon-arrow-down"></span>
                             </span>
                         </a>
                     </th>
                     <th class="firstName">
                         <a ng-click="setOrder('alias')">Alias&nbsp;
                             <span data-ng-show="request.orderBy=='alias'">
-                                <span data-ng-show="request.orderDir=='DESC'" class="icon-arrow-up"></span>
-                                <span data-ng-show="request.orderDir=='ASC'" class="icon-arrow-down"></span>
+                                <span data-ng-show="request.orderDir=='DESC'" class="glyphicon glyphicon-arrow-up"></span>
+                                <span data-ng-show="request.orderDir=='ASC'" class="glyphicon glyphicon-arrow-down"></span>
                             </span>
                         </a>
                     </th>
                     <th class="lastName">
                         <a ng-click="setOrder('title')">Title&nbsp;
                             <span data-ng-show="request.orderBy=='title'">
-                                <span data-ng-show="request.orderDir=='DESC'" class="icon-arrow-up"></span>
-                                <span data-ng-show="request.orderDir=='ASC'" class="icon-arrow-down"></span>
+                                <span data-ng-show="request.orderDir=='DESC'" class="glyphicon glyphicon-arrow-up"></span>
+                                <span data-ng-show="request.orderDir=='ASC'" class="glyphicon glyphicon-arrow-down"></span>
                             </span>
                         </a>
                     </th>
@@ -50,15 +50,13 @@
             </thead>
             
             <tbody>
-                <tr ng-repeat="item in contacts">
+                <tr ng-repeat="item in items">
                     <td>{{item.id}}</td>
-                    <td>{{item.firstName}}</td>
-                    <td>{{item.lastName}}</td>
-                    <td>{{item.email}}</td>
-                    <td>{{item.address}}</td>
-                    <td>{{item.phones[0].phoneNumber}}</td>
-                    <td><a ng-click="editContact(item.id)" class="icon-edit" href="javascript:void(0);"></a></td>
-                    <td><a ng-click="removeContact(item.id)" class="icon-remove" href="javascript:void(0);"></a></td>
+                    <td>{{item.alias}}</td>
+                    <td>{{item.title}}</td>
+                   
+                    <td><a ng-click="editItem(item.id)" class="glyphicon glyphicon-edit" href="javascript:void(0);"></a></td>
+                    <td><a ng-click="removeItem(item.id)" class="glyphicon glyphicon-remove" href="javascript:void(0);"></a></td>
                 </tr>
             </tbody>
         </table>

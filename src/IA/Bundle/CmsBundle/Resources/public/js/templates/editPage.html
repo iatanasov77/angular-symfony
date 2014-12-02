@@ -14,7 +14,7 @@
             <div class="span3">
                 Alias:
                 <br />
-                <input name="alias" data-ng-model="page.alias" type="text" required data-ng-pattern="/^[a-zA-Z\-]*$/" placeholder="Alias">
+                <input name="alias" data-ng-model="item.alias" type="text" required data-ng-pattern="/^[a-zA-Z\-]*$/" placeholder="Alias">
                 <small class="error" data-ng-show="formPage.alias.$invalid">
                     Use alpha characters and '-' only.
                 </small>
@@ -22,13 +22,19 @@
             <div class="span3">
                 Title:
                 <br />
-                <input name="title" data-ng-model="page.title" type="text" required placeholder="Title">
+                <input name="title" data-ng-model="item.title" type="text" required placeholder="Title">
             </div>
             <div class="span3">
                 Text:
                 <br />
-                <textarea class="tinyMCE" ui-tinymce="tinymceOptions" id="text" name="text" data-ng-model="page.text" required ></textarea>
+                <textarea class="tinyMCE" ui-tinymce="tinymceOptions" id="text" name="text" data-ng-model="item.text" required ></textarea>
                 
+            </div>
+            <br /><br />
+            <div class="span3">
+                <button id="submitPage" class="btn btn-primary" type="button"
+                    data-ng-disabled="!item.alias || !item.title || !item.text"
+                    data-ng-click="save()">Save</button>
             </div>
         </div>
     </form>

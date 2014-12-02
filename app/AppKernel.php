@@ -31,6 +31,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppVentus\AsseticInjectorBundle\AvAsseticInjectorBundle(),
             new Hearsay\RequireJSBundle\HearsayRequireJSBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
             
             /*
              * IA Bundles
@@ -39,6 +40,8 @@ class AppKernel extends Kernel
             new IA\Bundle\ServerBundle\IAServerBundle(),
             new IA\Bundle\CmsBundle\IACmsBundle(),
             new IA\Bundle\NavigationBundle\IANavigationBundle(),
+            new IA\Bundle\AngularAdminPanelBundle\IAAngularAdminPanelBundle(),
+            new IA\Bundle\UsersBundle\IAUsersBundle(),
         );
 
         /*

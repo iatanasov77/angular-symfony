@@ -1,0 +1,20 @@
+{
+    "directory" : "vendor",
+    "name": "ia-angularapplication",
+    
+    "dependencies": {
+        "bootstrap": "latest",
+        "components-font-awesome": "latest",
+        "metisMenu": "latest",
+        "angular-ui-tinymce": "latest"
+    },
+    "install" : {
+        "path"  : {
+            "js": "_js/",
+            "css": "_css/"
+        }
+    },
+    "scripts": {
+        "postinstall": "bower-requirejs -c web/assets/js/main.js"
+    }
+}

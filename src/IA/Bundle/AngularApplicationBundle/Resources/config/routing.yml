@@ -1,6 +1,3 @@
-ia_angularapplication_home:
-    path:     /
-    defaults: { _controller: IAAngularApplicationBundle:Default:index }
 ia_angularapplication_routes:
     path:     /routes
     defaults: { _controller: IAAngularApplicationBundle:Routes:index }

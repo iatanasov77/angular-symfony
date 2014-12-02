@@ -1,0 +1,19 @@
+
+routes:
+    contacts:
+        name: /contacts
+        controller: ContactsController
+        templateUrl: /bundles/iaangularadminpanel/js/Templates/contacts.html
+        isFree: true
+    addContact:
+        name: /add-contact
+        controller: ContactEditController
+        templateUrl: /bundles/iaangularadminpanel/js/Templates/editContact.html
+        isFree: true
+    editContact:
+        name: /edit-contact/:contactId
+        controller: ContactEditController
+        templateUrl: /bundles/iaangularadminpanel/js/Templates/editContact.html
+        isFree: true
+
+default: /contacts

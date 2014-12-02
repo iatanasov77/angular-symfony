@@ -1,0 +1,18 @@
+{
+    "directory" : "vendor",
+    "name": "ia-angularapplication",
+    
+    "dependencies": {
+        "requirejs": "latest",
+        "angular": "latest"
+    },
+    "install" : {
+        "path"  : {
+            "js": "_js/",
+            "css": "_css/"
+        }
+    },
+    "scripts": {
+        "postinstall": "bower-requirejs -c web/assets/js/main.js"
+    }
+}
