@@ -1,43 +1,45 @@
 <?php
 
-namespace IA\Bundle\AngularApplicationBundle\DependencyInjection;
+namespace {{ namespace }}\DependencyInjection;
 
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
-use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
+{% block use_statements %}
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\Config\FileLocator;
-use Symfony\Component\Yaml\Yaml;
-
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\DependencyInjection\Loader;
+{% endblock use_statements %}
 
 /**
+{% block phpdoc_class_header %}
  * This is the class that loads and manages your bundle configuration
+{% endblock phpdoc_class_header %}
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class IAAngularApplicationExtension extends Extension implements PrependExtensionInterface
+{% block class_definition %}
+class {{ bundle_basename }}Extension extends Extension
+{% endblock class_definition %}
 {
-    
+{% block class_body %}
     /**
      * {@inheritDoc}
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-        // Configuration
         $configuration = new Configuration();
-        $config = $this->processConfiguration( $configuration, $configs );
-        //echo "<pre>"; die(var_dump($config));
-        
-        $container->setParameter('ia_angular_application.routes', $config['routes']);
-        $container->setParameter('ia_angular_application.default', $config['default']);
-        
-        
-        /*
-         * Load Service and parameters
-         */
+        $config = $this->processConfiguration($configuration, $configs);
+
+        {% if format == 'yml' -%}
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
-        
+        {%- elseif format == 'xml' or format == 'annotation' -%}
+        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.xml');
+        {%- elseif format == 'php' -%}
+        $loader = new Loader\PhpFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.php');
+        {%- endif %}
+
     }
     
     /**
@@ -47,9 +49,9 @@ class IAAngularApplicationExtension extends Extension implements PrependExtensio
     {
         // get all bundles
         $bundles = $container->getParameter('kernel.bundles');
-        // determine if HearsayRequireJSBundle is registered
-        if (!isset($bundles['HearsayRequireJSBundle'])) {
-            throw new Exception('IAAngularApplicationBundle require HearsayRequireJSBundle.');
+        // determine if IAAngularApplicationBundle is registered
+        if (!isset($bundles['IAAngularApplicationBundle'])) {
+            throw new Exception('{{ bundle_basename }}Bundle require IAAngularApplicationBundle.');
         }
         
         /*
@@ -65,5 +67,5 @@ class IAAngularApplicationExtension extends Extension implements PrependExtensio
         $angularConfig = Yaml::parse(file_get_contents(__DIR__ . '/../Resources/config/routing_angular.yml'));
         $container->prependExtensionConfig( 'ia_angular_application', $angularConfig);
     }
-    
+{% endblock class_body %}
 }
