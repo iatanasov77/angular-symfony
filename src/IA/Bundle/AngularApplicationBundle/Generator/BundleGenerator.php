@@ -2,6 +2,7 @@
 
 namespace IA\Bundle\AngularApplicationBundle\Generator;
 
+use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\Filesystem\Filesystem;
 use Sensio\Bundle\GeneratorBundle\Generator\Generator;
 use Sensio\Bundle\GeneratorBundle\Generator\BundleGenerator as SensioBundleGenerator;
@@ -23,7 +24,7 @@ class BundleGenerator extends Generator
     public function generate($namespace, $bundle, $dir, $format, $structure)
     {
         $sensioGenerator = new SensioBundleGenerator($this->_filesystem);
-        $sensioGenerator->generate($namespace, $bundle, $dir, $format, $structure);
+        //$sensioGenerator->generate($namespace, $bundle, $dir, $format, $structure);
         
         /*
          *  Here is my code for generation
