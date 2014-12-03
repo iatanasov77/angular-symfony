@@ -23,7 +23,7 @@
         "doctrine/data-fixtures" : "dev-master",
         "doctrine/doctrine-migrations-bundle": "dev-master",
         "doctrine/migrations": "dev-master",
-        "jms/serializer-bundle": "~0.13",
+        "jms/serializer-bundle": "dev-master",
         "appventus/assetic-injector-bundle": "dev-master",
         "sp/bower-bundle": "dev-master",
         "hearsay/require-js-bundle": "2.0.*@dev",

@@ -44,7 +44,7 @@ class ServicePagesController extends Controller
     public function detailAction($id)
     {
         if(intval($id)) {
-            $er = $this->getDoctrine()->getRepository('IACmsBundle:Pages');
+            $er = $this->getDoctrine()->getRepository('IACmsBundle:Page');
             $page = $er->find($id);
         } else {
             $page = new Page();

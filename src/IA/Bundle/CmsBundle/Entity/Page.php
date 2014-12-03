@@ -10,7 +10,6 @@ use JMS\Serializer\Annotation as JMS;
  *
  * @ORM\Table(name="Pages"))
  * @ORM\Entity(repositoryClass="IA\Bundle\CmsBundle\Entity\Repository\PagesRepository")
- * @ORM\HasLifecycleCallbacks
  */
 class Page
 {
@@ -27,6 +26,7 @@ class Page
      * @var string
      *
      * @ORM\Column(name="alias", type="string", length=64)
+     * @JMS\Type("string")
      */
     protected $alias;
 
@@ -34,6 +34,7 @@ class Page
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @JMS\Type("string")
      */
     protected $title;
     
@@ -41,6 +42,7 @@ class Page
      * @var string
      *
      * @ORM\Column(name="text", type="text")
+     * @JMS\Type("string")
      */
     protected $text;
 

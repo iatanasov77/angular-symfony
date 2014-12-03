@@ -26,6 +26,7 @@ define(['ia/application'], function(app) {
 
             promise.then(function(data) {
                 $scope.item = data;  
+      
             }, function(data) {
               // error
             });
