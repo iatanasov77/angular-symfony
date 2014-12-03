@@ -2,6 +2,7 @@
 
 namespace IA\Bundle\AngularApplicationBundle\Command;
 
+use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 use IA\Bundle\AngularApplicationBundle\Generator\BundleGenerator;
 use Sensio\Bundle\GeneratorBundle\Command\GenerateBundleCommand as SensioGenerateBundleCommand;
 

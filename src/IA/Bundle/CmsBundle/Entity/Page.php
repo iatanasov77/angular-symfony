@@ -21,7 +21,7 @@ class Page
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $_id;
+    protected $id;
     
     /**
      * @var string

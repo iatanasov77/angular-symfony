@@ -1,18 +1,18 @@
 ia_cms_pages:
     path:     /pages
-    defaults: { _controller: IACmsBundle:Default:index }
+    defaults: { _controller: IACmsBundle:ServicePages:index }
 
 ia_cms_pages_detail:
     path:     /pages/{id}
-    defaults: { _controller: IACmsBundle:Default:detail}
+    defaults: { _controller: IACmsBundle:ServicePages:detail}
 
 ia_server_delete:
     path:     /pages/delete/{id}
-    defaults: { _controller: IACmsBundle:Default:delete }
+    defaults: { _controller: IACmsBundle:ServicePages:delete }
 
 ia_server_save:
     path:     /pages/save
-    defaults: { _controller: IACmsBundle:Default:save }
+    defaults: { _controller: IACmsBundle:ServicePages:save }
     requirements:
         _method:  POST
 

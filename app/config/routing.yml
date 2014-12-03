@@ -1,6 +1,3 @@
-ia_test:
-    resource: "@IATestBundle/Resources/config/routing.yml"
-    prefix:   /
 
 ia_users:
     resource: "@IAUsersBundle/Resources/config/routing.yml"
