@@ -42,6 +42,7 @@ class AppKernel extends Kernel
             new IA\Bundle\NavigationBundle\IANavigationBundle(),
             new IA\Bundle\AngularAdminPanelBundle\IAAngularAdminPanelBundle(),
             new IA\Bundle\UsersBundle\IAUsersBundle(),
+            new IA\Bundle\TestBundle\IATestBundle(),
         );
 
         /*

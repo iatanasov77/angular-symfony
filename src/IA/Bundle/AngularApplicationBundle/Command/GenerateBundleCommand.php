@@ -25,4 +25,12 @@ class GenerateBundleCommand extends SensioGenerateBundleCommand
     {
         return new BundleGenerator($this->getContainer()->get('filesystem'));
     }
+    
+    protected function getSkeletonDirs(BundleInterface $bundle = null)
+    {
+        $skeletonDirs = parent::getSkeletonDirs($bundle);
+        $skeletonDirs[] = __DIR__.'/../Resources/skeleton';
+        $skeletonDirs[] = __DIR__.'/../Resources';
+        return $skeletonDirs;
+    }
 }
