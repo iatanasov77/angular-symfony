@@ -7,7 +7,7 @@
         "psr-0": { "": "src/" }
     },
     "require": {
-        "php": ">=5.3.3",
+        "php": ">=5.4.0",
         "symfony/symfony": "2.3.*",
         "doctrine/orm": ">=2.2.3,<2.4-dev",
         "doctrine/doctrine-bundle": "1.2.*",
@@ -27,7 +27,8 @@
         "appventus/assetic-injector-bundle": "dev-master",
         "sp/bower-bundle": "dev-master",
         "hearsay/require-js-bundle": "2.0.*@dev",
-        "friendsofsymfony/user-bundle": "dev-master"
+        "friendsofsymfony/user-bundle": "dev-master",
+        "knplabs/doctrine-behaviors": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
@@ -57,9 +58,7 @@
 		"symfony-assets-install": "symlink",
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
-        },
-        "branch-alias": {
-            "dev-master": "2.3-dev"
         }
+       
     }
 }
