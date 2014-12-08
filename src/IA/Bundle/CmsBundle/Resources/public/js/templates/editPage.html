@@ -22,7 +22,7 @@
             <div class="span3">
                 Title:
                 <br />
-                <input name="title" data-ng-model="item.title" type="text" required placeholder="Title">
+                <input name="title" data-ng-model="item.translations['en'].title" type="text" required placeholder="Title">
             </div>
             <div class="span3">
                 Text:
@@ -30,13 +30,13 @@
                 <!--
                 <textarea class="tinyMCE" ui-tinymce="tinymceOptions" id="text" name="text" data-ng-model="item.text" required ></textarea>
                 -->
-                <textarea class="tinyMCE" id="text" name="text" data-ng-model="item.text" required ></textarea>
+                <textarea class="tinyMCE" ui-tinymce="tinymceOptions" id="text" name="text" data-ng-model="item.translations['en'].text" required ></textarea>
                 
             </div>
             <br /><br />
             <div class="span3">
                 <button id="submitPage" class="btn btn-primary" type="button"
-                    data-ng-disabled="!item.alias || !item.title || !item.text"
+                    data-ng-disabled="!item.alias || !item.translations['en'].title || !item.translations['en'].text"
                     data-ng-click="save()">Save</button>
             </div>
         </div>

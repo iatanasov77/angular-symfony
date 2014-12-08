@@ -6,7 +6,7 @@ paths:
         location: '/bundles/iaangularadminpanel/vendor/jquery/dist/jquery.min'
         external: true
     'angular/ui/tinymce':     
-        location: '/bundles/iaangularadminpanel/vendor/angular-ui-tinymce/src/tinymce'
+        location: '/bundles/iaangularadminpanel/vendor_modified/angular-ui-tinymce'
         external: true
     'tinyMCE':                
         location: '/bundles/iaangularadminpanel/vendor/tinymce/tinymce.min'

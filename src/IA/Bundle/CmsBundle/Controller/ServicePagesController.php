@@ -23,6 +23,7 @@ class ServicePagesController extends Controller
         $orderArray = isset($params->orderBy) 
                             ? array($params->orderBy=>$params->orderDir)
                             : array();
+        $orderArray = array();
         $page = isset($params->page) ? $params->page : 1;
         $ipp = isset($params->ipp) ? $params->ipp : 10;
 
@@ -59,6 +60,7 @@ class ServicePagesController extends Controller
     public function saveAction()
     {
     	$data = $this->get("request")->getContent();
+        
         
         $entityManager = $this->getDoctrine()->getManager();
         $serializer = SerializerBuilder::create()->build();
