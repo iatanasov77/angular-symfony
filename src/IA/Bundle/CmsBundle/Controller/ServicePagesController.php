@@ -65,6 +65,7 @@ class ServicePagesController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $serializer = SerializerBuilder::create()->build();
         $page = $serializer->deserialize($data, 'IA\Bundle\CmsBundle\Entity\Page', 'json');
+        $page->setLocale('bg');
         $entityManager->persist($page);
         $entityManager->flush();
         

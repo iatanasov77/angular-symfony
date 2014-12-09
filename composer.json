@@ -28,7 +28,7 @@
         "sp/bower-bundle": "dev-master",
         "hearsay/require-js-bundle": "2.0.*@dev",
         "friendsofsymfony/user-bundle": "dev-master",
-        "gedmo/doctrine-extensions": "dev-master"
+        "gedmo/doctrine-extensions": "~2.3"
     },
     "scripts": {
         "post-install-cmd": [
