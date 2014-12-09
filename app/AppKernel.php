@@ -32,6 +32,7 @@ class AppKernel extends Kernel
             new AppVentus\AsseticInjectorBundle\AvAsseticInjectorBundle(),
             new Hearsay\RequireJSBundle\HearsayRequireJSBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             
             /*
              * IA Bundles

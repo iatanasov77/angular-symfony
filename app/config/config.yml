@@ -1,22 +1,11 @@
 imports:
     - { resource: parameters.yml }
-    - { resource: security.yml }
+    - { resource: security.yml }  
 
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: IA\Bundle\UsersBundle\Entity\User
-    
-services:
-    # Doctrine Extension listeners to handle behaviors
-    gedmo.listener.translatable:
-        class: Gedmo\Translatable\TranslatableListener
-        tags:
-            - { name: doctrine.event_subscriber, connection: default }
-        calls:
-            - [ setAnnotationReader, [ @annotation_reader ] ]
-            - [ setDefaultLocale, [ en ] ]
-            - [ setTranslationFallback, [ true ] ]
             
 # Assetic Configuration
 assetic:
@@ -73,13 +62,13 @@ doctrine:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
         mappings:
-            translatable:
+            gedmo_translatable:
                 type: annotation
-                alias: Gedmo
-                prefix: GedmoTranslatableEntity
-                # make sure vendor library location is correct
+                prefix: Gedmo\Translatable\Entity
                 dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
-
+                alias: GedmoTranslatable # this one is optional and will default to the name set for the mapping
+                is_bundle: false
+                
 # Swiftmailer Configuration
 swiftmailer:
     transport: %mailer_transport%
