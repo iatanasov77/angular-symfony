@@ -1,0 +1,3 @@
+ia_multi_language_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: IAMultiLanguageBundle:Default:index }
