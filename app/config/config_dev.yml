@@ -38,8 +38,8 @@ sp_bower:
         IAAngularApplicationBundle:
             config_dir: Resources/config
             asset_dir: ../public/vendor
-            cache: ../public/vendor/cache
+            cache: "%kernel.cache_dir%/"
         IAAngularAdminPanelBundle:
             config_dir: Resources/config
             asset_dir: ../public/vendor
-            cache: ../public/vendor/cache
+            cache: "%kernel.cache_dir%/"
