@@ -1,22 +1,10 @@
-<div class="pull-left">
-
-    <select class="form-control" data-ng-model="request.ipp" data-ng-change="getContacts()">
-        <option value="5">5</option>
-        <option value="10">10</option>
-        <option value="50">50</option>    
-    </select>
-    Items Per Page
-
-</div>
-<div class="pull-right">
-    <form data-ng-submit="getContacts()">
-        <select class="form-control" data-ng-model="request.search.key">
-            <option value="firstName">First Name</option>
-            <option value="lastName">Last Name</option>
-            <option value="email">Email</option>    
+<div class="control-group pull-left">
+    <label class="control-label">Items Per Page:</label>
+    <div class="controls">
+        <select class="form-control" data-ng-model="request.ipp" data-ng-change="getContacts()">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="50">50</option>    
         </select>
-        <input type="text" data-ng-model="request.search.val" class="form-control" placeholder="Search">
-
-
-    </form>
+    </div>
 </div>
