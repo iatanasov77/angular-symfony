@@ -1,0 +1,26 @@
+{
+    "name": "instaclick/translation-editor-bundle",
+    "description": "Web editor UI to manage Symfony2 translations (Symfony2 bundle)",
+    "keywords": ["symfony2", "translate", "translation", "translations", "locale", "editor", "i18n", "multilanguage", "import", "export", "extract"],
+    "homepage": "http://github.com/instaclick/TranslationEditorBundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Guilherme Blanco",
+            "email": "guilhermeblanco@gmail.com",
+            "homepage": "http://www.instaclick.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/framework-bundle": "2.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "ServerGrove\\Bundle\\TranslationEditorBundle": ""
+        }
+    },
+    "target-dir": "ServerGrove/Bundle/TranslationEditorBundle"
+}

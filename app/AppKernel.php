@@ -37,6 +37,7 @@ class AppKernel extends Kernel
             /*
              * IA Bundles
              */
+            new ServerGrove\Bundle\TranslationEditorBundle\ServerGroveTranslationEditorBundle(),
             new IA\Bundle\AngularApplicationBundle\IAAngularApplicationBundle(),
             new IA\Bundle\ServerBundle\IAServerBundle(),
             new IA\Bundle\CmsBundle\IACmsBundle(),

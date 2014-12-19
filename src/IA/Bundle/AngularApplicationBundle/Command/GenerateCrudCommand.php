@@ -15,9 +15,9 @@ use Sensio\Bundle\GeneratorBundle\Command\Helper\DialogHelper;
 use Sensio\Bundle\GeneratorBundle\Command\GeneratorCommand;
 
 /**
- * Generates bundles.
+ * Generates IAAngular CRUD Components
  *
- * @author Fabien Potencier <fabien@symfony.com>
+ * @author Ivan I. Atanasov <iatanasov77@gmail.com>
  */
 class GenerateCrudCommand extends GeneratorCommand
 {
@@ -28,34 +28,15 @@ class GenerateCrudCommand extends GeneratorCommand
     {
         $this
             ->setDefinition(array(
-                new InputOption('namespace', '', InputOption::VALUE_REQUIRED, 'The namespace of the bundle to create'),
-                new InputOption('dir', '', InputOption::VALUE_REQUIRED, 'The directory where to create the bundle'),
-                new InputOption('bundle-name', '', InputOption::VALUE_REQUIRED, 'The optional bundle name'),
-                new InputOption('format', '', InputOption::VALUE_REQUIRED, 'Use the format for configuration files (php, xml, yml, or annotation)'),
-                new InputOption('structure', '', InputOption::VALUE_NONE, 'Whether to generate the whole directory structure'),
+                new InputOption('bundle', '', InputOption::VALUE_REQUIRED, 'The bundle where to create angular components'),
+                new InputOption('namespace', '', InputOption::VALUE_REQUIRED, 'RequireJs namespace of this module'),
             ))
-            ->setDescription('Generates a bundle')
+            ->setDescription('Generates IAAngularApplication CRUD components')
             ->setHelp(<<<EOT
-The <info>generate:bundle</info> command helps you generates new bundles.
-
-By default, the command interacts with the developer to tweak the generation.
-Any passed option will be used as a default value for the interaction
-(<comment>--namespace</comment> is the only one needed if you follow the
-conventions):
-
-<info>php app/console generate:bundle --namespace=Acme/BlogBundle</info>
-
-Note that you can use <comment>/</comment> instead of <comment>\\ </comment>for the namespace delimiter to avoid any
-problem.
-
-If you want to disable any user interaction, use <comment>--no-interaction</comment> but don't forget to pass all needed options:
-
-<info>php app/console generate:bundle --namespace=Acme/BlogBundle --dir=src [--bundle-name=...] --no-interaction</info>
-
-Note that the bundle namespace must end with "Bundle".
+The <info>ia:angular:generate-crud</info> command helps you generates angular application crud components.
 EOT
             )
-            ->setName('ia:generate:angularcrud')
+            ->setName('ia:angular:generate-crud')
         ;
     }
 

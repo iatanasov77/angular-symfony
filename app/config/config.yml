@@ -2,6 +2,11 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }  
 
+server_grove_translation_editor:
+  storage:
+    type: server_grove_translation_editor.storage.orm
+    manager: doctrine.orm.entity_manager
+    
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main

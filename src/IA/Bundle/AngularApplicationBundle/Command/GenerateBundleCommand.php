@@ -19,7 +19,7 @@ class GenerateBundleCommand extends SensioGenerateBundleCommand
     protected function configure()
     {
         parent::configure();
-        $this->setName('ia:generate:angularbundle');
+        $this->setName('ia:angular:generate-bundle');
     }
 
     protected function createGenerator()
