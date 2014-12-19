@@ -1,45 +1,42 @@
 <div class="container view">
-    <header>
-        <h3>Edit Page</h3>
-    </header>
-    
-    <div>
-        <a class="nav-pills active" href="#/pages">Back</a>
-    </div>
-    <br /><br />
-
-    <div style="margin-left: 10px;">
-    <form name="formPage">
-        <div class="row add-page">
-            <div class="span3">
-                Alias:
-                <br />
-                <input name="alias" data-ng-model="item.alias" type="text" required data-ng-pattern="/^[a-zA-Z\-]*$/" placeholder="Alias">
-                <small class="error" data-ng-show="formPage.alias.$invalid">
-                    Use alpha characters and '-' only.
-                </small>
-            </div>
-            <div class="span3">
-                Title:
-                <br />
-                <input name="title" data-ng-model="item.title" type="text" required placeholder="Title">
-            </div>
-            <div class="span3">
-                Text:
-                <br />
-                <!--
-                <textarea class="tinyMCE" ui-tinymce="tinymceOptions" id="text" name="text" data-ng-model="item.text" required ></textarea>
-                -->
-                <textarea class="tinyMCE" ui-tinymce="tinymceOptions" id="text" name="text" data-ng-model="item.text" required ></textarea>
-                
-            </div>
-            <br /><br />
-            <div class="span3">
-                <button id="submitPage" class="btn btn-primary" type="button"
-                    data-ng-disabled="!item.alias || !item.title || !item.text"
-                    data-ng-click="save()">Save</button>
-            </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Pages</h1>
         </div>
-    </form>
-</div>
+    </div>
+    
+    <div style="margin-left: 10px;">
+        <form name="formPage">
+            <div class="row add-page">
+                <div class="span3">
+                    Alias:
+                    <br />
+                    <input name="alias" data-ng-model="item.alias" type="text" required data-ng-pattern="/^[a-zA-Z\-]*$/" placeholder="Alias">
+                    <small class="error" data-ng-show="formPage.alias.$invalid">
+                        Use alpha characters and '-' only.
+                    </small>
+                </div>
+                <div class="span3">
+                    Title:
+                    <br />
+                    <input name="title" data-ng-model="item.title" type="text" required placeholder="Title">
+                </div>
+                <div class="span3">
+                    Text:
+                    <br />
+                    <!--
+                    <textarea class="tinyMCE" ui-tinymce="tinymceOptions" id="text" name="text" data-ng-model="item.text" required ></textarea>
+                    -->
+                    <textarea class="tinyMCE" ui-tinymce="tinymceOptions" id="text" name="text" data-ng-model="item.text" required ></textarea>
+
+                </div>
+                <br /><br />
+                <div class="span3">
+                    <button id="submitPage" class="btn btn-primary" type="button"
+                        data-ng-disabled="!item.alias || !item.title || !item.text"
+                        data-ng-click="save()">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
