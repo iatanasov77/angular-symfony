@@ -1,0 +1,3 @@
+ia_web_content_thief_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: IAWebContentThiefBundle:Default:index }

@@ -1,3 +1,7 @@
+ia_web_content_thief:
+    resource: "@IAWebContentThiefBundle/Resources/config/routing.yml"
+    prefix:   /ia/wct
+
 SGTranslationEditorBundle:
     resource: "@ServerGroveTranslationEditorBundle/Resources/config/routing.yml"
     prefix:   /translations
