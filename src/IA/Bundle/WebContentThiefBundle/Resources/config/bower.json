@@ -1,0 +1,19 @@
+{
+    "directory" : "vendor",
+    "name": "ia-web-content-thief",
+    
+    "dependencies": {
+        "requirejs": "latest",
+        "jquery": "latest",
+        "jquery.tinymce ": "latest"
+    },
+    "install" : {
+        "path"  : {
+            "js": "_js/",
+            "css": "_css/"
+        }
+    },
+    "scripts": {
+        "postinstall": "bower-requirejs -c web/bundles/iawebcontentthief/js/main.js"
+    }
+}
