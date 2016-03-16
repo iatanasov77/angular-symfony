@@ -1,5 +1,6 @@
 /web/bundles/
 /app/bootstrap.php.cache
+/app/SymfonyRequirements.php
 /app/cache/*
 /app/config/parameters.yml
 /app/logs/*
@@ -10,6 +11,7 @@
 /vendor/*
 /bin/
 /composer.phar
+/composer.lock
 /nbproject/
 */Resources/public/vendor/*
 /node_modules/
