@@ -3,288 +3,79 @@
 namespace IA\Bundle\ServerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
-use JMS\Serializer\Annotation as JMS;
 
 /**
  * Contact
  *
- * @ORM\Table(name="Contacts"))
+ * @ORM\Table(name="Contacts")
  * @ORM\Entity(repositoryClass="IA\Bundle\ServerBundle\Entity\Repository\ContactsRepository")
- * @ORM\HasLifecycleCallbacks
  */
 class Contact
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @JMS\Type("integer")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="firstName", type="string", length=32)
-     * @JMS\Type("string")
-     * @JMS\SerializedName("firstName")
+     * @ORM\Column(name="firstName", type="string", length=32, precision=0, scale=0, nullable=false, unique=false)
      */
-    protected $firstName;
+    private $firstName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lastName", type="string", length=32)
-     * @JMS\Type("string")
-     * @JMS\SerializedName("lastName")
+     * @ORM\Column(name="lastName", type="string", length=32, precision=0, scale=0, nullable=false, unique=false)
      */
-    protected $lastName;
+    private $lastName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="address", type="string", length=255)
-     * @JMS\Type("string")
+     * @ORM\Column(name="address", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
      */
-    protected $address;
+    private $address;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=32)
-     * @JMS\Type("string")
+     * @ORM\Column(name="email", type="string", length=32, precision=0, scale=0, nullable=false, unique=false)
      */
-    protected $email;
-
-    /**
-     * @ORM\OneToMany(targetEntity="ContactPhone", mappedBy="contact", cascade={"persist", "remove" })
-     * @JMS\Type("array<IA\Bundle\ServerBundle\Entity\ContactPhone>")
-     */
-    protected $phones;
+    private $email;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created", type="datetime")
-     * @JMS\Type("DateTime")
+     * @ORM\Column(name="created", type="datetime", precision=0, scale=0, nullable=false, unique=false)
      */
-    protected $created;
+    private $created;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="modified", type="datetime")
-     * @JMS\Type("DateTime")
+     * @ORM\Column(name="modified", type="datetime", precision=0, scale=0, nullable=false, unique=false)
      */
-    protected $modified;
+    private $modified;
 
     /**
-     * Defaault Constructor is called when create new entity only
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="IA\Bundle\ServerBundle\Entity\ContactPhone", mappedBy="contact", cascade={"persist","remove"})
+     */
+    private $phones;
+
+    /**
+     * Constructor
      */
     public function __construct()
     {
-        $this->setCreated(new \DateTime());
-        $this->setModified(new \DateTime());
-
-        $phone = new ContactPhone();
-        $phone->setPhoneNumber('');
-        $phone->setDescription('');
-
-        $this->phones = array($phone);
+        $this->phones = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set firstName
-     *
-     * @param string $firstName
-     * @return Contact
-     */
-    public function setFirstName($firstName)
-    {
-        $this->firstName = $firstName;
-    
-        return $this;
-    }
-
-    /**
-     * Get firstName
-     *
-     * @return string 
-     */
-    public function getFirstName()
-    {
-        return $this->firstName;
-    }
-
-    /**
-     * Set lastName
-     *
-     * @param string $lastName
-     * @return Contact
-     */
-    public function setLastName($lastName)
-    {
-        $this->lastName = $lastName;
-    
-        return $this;
-    }
-
-    /**
-     * Get lastName
-     *
-     * @return string 
-     */
-    public function getLastName()
-    {
-        return $this->lastName;
-    }
-
-    /**
-     * Set address
-     *
-     * @param string $address
-     * @return Contact
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-    
-        return $this;
-    }
-
-    /**
-     * Get address
-     *
-     * @return string 
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return Contact
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    
-
-    /**
-     * Add phones
-     * 
-     * @param \IA\Bundle\ServerBundle\Entity\ContactPhone $phone
-     */
-    public function addPhone(ContactPhone $phone)
-    {
-        $this->phones[] = $phone;
-    }
-
-    /**
-     * Set phones
-     * 
-     * @param array
-     */
-    public function setPhones($phones)
-    {
-        return $this->phones = $phones;
-    }
-    
-    /**
-     * Get phones
-     * 
-     * @return array
-     */
-    public function getPhones()
-    {
-        return $this->phones;
-    }
-
-    /**
-     * Set created
-     *
-     * @param \DateTime $created
-     * @return Contact
-     */
-    public function setCreated($created)
-    {
-        $this->created = $created;
-    
-        return $this;
-    }
-
-    /**
-     * Get created
-     *
-     * @return \DateTime 
-     */
-    public function getCreated()
-    {
-        return $this->created;
-    }
-
-    /**
-     * Set modified
-     *
-     * @param \DateTime $modified
-     * @return Contact
-     */
-    public function setModified($modified)
-    {
-        $this->modified = $modified;
-    
-        return $this;
-    }
-
-    /**
-     * Get modified
-     *
-     * @return \DateTime 
-     */
-    public function getModified()
-    {
-        return $this->modified;
-    }
-
-    /**
-     * Remove phone
-     *
-     * @param \IA\Bundle\ServerBundle\Entity\ContactPhone $phone
-     */
-    public function removePhone(\IA\Bundle\ServerBundle\Entity\ContactPhone $phone)
-    {
-        $this->phones->removeElement($phone);
-    }
-
 
 }

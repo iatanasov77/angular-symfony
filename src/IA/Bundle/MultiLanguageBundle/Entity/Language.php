@@ -3,53 +3,37 @@
 namespace IA\Bundle\MultiLanguageBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use JMS\Serializer\Annotation as JMS;
-use Gedmo\Mapping\Annotation as Gedmo;
-use Gedmo\Translatable\Translatable;
-
-
 
 /**
- * Page
+ * Language
  *
- * @ORM\Table(name="Languages"))
+ * @ORM\Table(name="Languages")
  * @ORM\Entity(repositoryClass="IA\Bundle\MultiLanguageBundle\Entity\Repository\LanguagesRepository")
  */
-class Language implements Translatable
+class Language
 {
-       
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    protected $id;
-    
+    private $id;
+
     /**
      * @var string
      *
-     * @ORM\Column(name="alias", type="string", length=64)
-     * @JMS\Type("string")
+     * @ORM\Column(name="alias", type="string", length=64, precision=0, scale=0, nullable=false, unique=false)
      */
-    protected $code;
-    
+    private $code;
+
     /**
      * @var string
      *
-     * @Gedmo\Translatable
-     * @ORM\Column(name="title", type="string", length=255)
-     * @JMS\Type("string")
+     * @ORM\Column(name="title", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
      */
-    protected $title;
-    
-    /**
-     * @Gedmo\Locale
-     * Used locale to override Translation listener`s locale
-     * this is not a mapped field of entity metadata, just a simple property
-     */
-    private $locale;
-    
-    
+    private $title;
+
+
 }
