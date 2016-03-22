@@ -1,3 +1,18 @@
-ia_web_content_thief_homepage:
+ia_web_content_thief_list_projects:
     path:     /
-    defaults: { _controller: IAWebContentThiefBundle:Default:index }
+    defaults: { _controller: IAWebContentThiefBundle:Default:listProjects }
+ia_web_content_thief_edit_project:
+    path:     /edit
+    defaults: { _controller: IAWebContentThiefBundle:Default:editProject }
+ia_web_content_thief_delete_project:
+    path:     /delete
+    defaults: { _controller: IAWebContentThiefBundle:Default:deleteProject }
+ia_web_content_thief_preview_project:
+    path:     /preview
+    defaults: { _controller: IAWebContentThiefBundle:Default:previewProject }
+ia_web_content_thief_run_project:
+    path:     /run
+    defaults: { _controller: IAWebContentThiefBundle:Default:runProject }
+ia_web_content_thief_copy_project:
+    path:     /copy
+    defaults: { _controller: IAWebContentThiefBundle:Default:copyProject }
