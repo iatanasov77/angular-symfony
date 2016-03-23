@@ -5,6 +5,8 @@ namespace IA\Bundle\WebContentThiefBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use IA\Bundle\WebContentThiefBundle\Entity\Project;
 
+use IA\Bundle\WebContentThiefBundle\Form\ProjectType;
+
 class DefaultController extends Controller
 {
 
@@ -27,7 +29,6 @@ class DefaultController extends Controller
         $url = '';
         $adsUrl = 0;
 
-
         /*
          * List with Charset Encodings
          */
@@ -42,12 +43,19 @@ class DefaultController extends Controller
             $oProject = new Project();
         }
         
+        $form = $this->createForm(new ProjectType(), $oProject);
+        $form->add('submit', 'submit', array('label' => 'Save'));
+        
         $request = $this->get('request');
+        $form->handleRequest($request);
+        //if($form->isSubmitted() && $form->isValid()) {
         if($request->isMethod('POST')) {
+            $formData =     $form->getData();
+            
+            echo "<pre>"; var_dump($formData); die;
+            //$this->_initProject($oProject, $formData);
 
-            $this->_initProject($oProject, $request->getContent());
-
-            $formAction = $this->_getParam("formAction");
+            $formAction = $formData["formAction"];
 
             /*
              * Save Project
