@@ -3,46 +3,49 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>{% block title %}.:: Web Content Thief ::.{% endblock %}</title>
-        
-    {% block head_meta %}
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    {% endblock %}
-    
-    {% block head_styles %}
-        <link rel="stylesheet" type="text/css" href="{{ assetsPath }}/css/style.css" > 
-    {% endblock %}
-        
-    {% block head_scripts %}
-        <script type="text/javascript" src="{{ assetsPath }}/js/main.js" ></script>
-        
-        <!-- PHP JS -->
-        <script type="text/javascript" src="{{ assetsPath }}/phpjs/var_dump.js" ></script>
-        <script type="text/javascript" src="{{ assetsPath }}/phpjs/echo.js" ></script>
-        <script type="text/javascript" src="{{ assetsPath }}/phpjs/trim.js" ></script>
-        <!-- <script type="text/javascript" src="{{ assetsPath }}/php.js/rtrim.js"></script> -->
-        <script type="text/javascript" src="{{ assetsPath }}/phpjs/serialize.js"></script>
-        <script type="text/javascript" src="{{ assetsPath }}/phpjs/explode.js"></script>
-        
-    {% endblock %}
-		
+
+        {% block head_meta %}
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        {% endblock %}
+
+        {% block head_styles %}
+            <link rel="stylesheet" type="text/css" href="{{ assetsPath }}/css/style.css" > 
+            {% endblock %}
+
+            {% block head_scripts %}
+                <script type="text/javascript" src="{{ assetsPath }}/js/main.js" ></script>
+
+                <!-- PHP JS -->
+                <script type="text/javascript" src="{{ assetsPath }}/phpjs/var_dump.js" ></script>
+                <script type="text/javascript" src="{{ assetsPath }}/phpjs/echo.js" ></script>
+                <script type="text/javascript" src="{{ assetsPath }}/phpjs/trim.js" ></script>
+                <!-- <script type="text/javascript" src="{{ assetsPath }}/php.js/rtrim.js"></script> -->
+                <script type="text/javascript" src="{{ assetsPath }}/phpjs/serialize.js"></script>
+                <script type="text/javascript" src="{{ assetsPath }}/phpjs/explode.js"></script>
+
+            {% endblock %}
+
     </head>
     <body>
-	    <div id="headContainer">
-			<div id="rightHead">
-				<a href="/login/logout">Logout</a>&nbsp;&nbsp;&nbsp;	
-			<?php if($this->actionName == 'list'): ?>
-				<a href="/index/edit">Create Project</a>
-			<?php else:?>
-				<a href="/index/list">List Projects</a>
-			<?php endif;?>
-			</div>
-		</div>
-    
-    
-    
-    	<div id="mainContainer">
-			{% block content %}{% endblock %}
+        <div id="headContainer">
+            <div id="rightHead">
+                <a href="/login/logout">Logout</a>&nbsp;&nbsp;&nbsp;	
+                <?php if($this->actionName == 'list'): ?>
+                <a href="/index/edit">Create Project</a>
+                <?php else:?>
+                <a href="/index/list">List Projects</a>
+                <?php endif;?>
+            </div>
+        </div>
+
+
+
+        <div id="mainContainer">
+            {% block content %}{% endblock %}
             <br class="clear" />
         </div><!-- end of mainContainer -->
+        <div id="footer">
+            {% block footer %}{% endblock %}
+        </div>
     </body>
 </html>

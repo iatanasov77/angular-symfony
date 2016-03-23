@@ -2,6 +2,15 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }  
 
+stfalcon_tinymce:
+        include_jquery: true
+        tinymce_jquery: true
+        selector: ".tinymce"
+        language: %locale%
+        theme:
+            simple:
+                theme: "modern"
+
 server_grove_translation_editor:
   storage:
     type: server_grove_translation_editor.storage.orm
@@ -27,6 +36,13 @@ assetic:
 
 
 framework:
+    assets:
+        version: 'v5'
+        version_format: '%%s?version=%%s'
+        packages:
+            backend:
+                base_path: /
+                #version_format: '%2$s/%1$s'
     #esi:             ~
     #translator:      { fallback: %locale% }
     secret:          %secret%

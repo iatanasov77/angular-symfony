@@ -3,6 +3,7 @@
 namespace IA\Bundle\WebContentThiefBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use IA\Bundle\WebContentThiefBundle\Entity\Project;
 
 class DefaultController extends Controller
 {
@@ -17,38 +18,34 @@ class DefaultController extends Controller
             'projects' => $er->findAll(),
             'countProjects' => $er->countTotal()
         );
-        return $this->render('IAWebContentThiefBundle:Default:index.html.twig', $tplVars);
+        return $this->render('IAWebContentThiefBundle:Default:list-projects.html.twig', $tplVars);
     }
 
-    public function editProjectAction()
+    public function editProjectAction($id)
     {
         $html = '';
         $url = '';
         $adsUrl = 0;
 
-        /*
-         * Е тва логва всички заявки в /tmp/doctrine_debug
-         */
-        $conn = Doctrine_Manager::connection();
-        $conn->addListener(new VS_Doctrine_QueryDebugListener());
 
         /*
          * List with Charset Encodings
          */
         $charsetEncodings = array('UTF-8', 'CP1251');
-        $this->view->assign('charsetEncodings', $charsetEncodings);
 
-        $projectId = $this->_getParam("project");
-        if ($projectId) {
-            $oProject = Doctrine_Core::getTable('Model_ParserProject')->findOneBy('id', $projectId);
+        
+        $pr = $this->getDoctrine()->getRepository('IAWebContentThiefBundle:Project');
+        if ($id) {
+            $oProject = $pr->findOneBy('id', $id);
             $url = $oProject->url;
         } else {
-            $oProject = new Model_ParserProject();
+            $oProject = new Project();
         }
+        
+        $request = $this->get('request');
+        if($request->isMethod('POST')) {
 
-        if ($this->_request->isPost()) {
-
-            $success = $this->_initProject($oProject, $this->_getAllParams());
+            $this->_initProject($oProject, $request->getContent());
 
             $formAction = $this->_getParam("formAction");
 
@@ -94,38 +91,21 @@ class DefaultController extends Controller
             }
         }
 
-        $this->view->assign('adsUrl', $adsUrl);
+//        $catSql = Doctrine_Query::create()
+//                ->from('Model_Category c')
+//                ->leftJoin('c.Translation t')
+//                ->leftJoin('c.Fieldset f')
+//                ->leftJoin('c.Children ch')
+//                ->where('t.lang_id = ?');
+//        //->andWhere('c.parent_id=0');
+//        //->orderBy('c.parent_id')
+//
+//
+//        $categories = $catSql->execute(array('eng'));
+//        //$categories = $catSql->execute(array('bulgarian'));
+//        
+//        $fieldsets = Doctrine_Core::getTable('Model_Fieldset')->findAll();
 
-        $this->view->assign('oProject', $oProject);
-        //$this->_helper->layout->enableLayout();
-
-        if (!empty($url)) {
-            $html = $oProject->getUrlContent($url);
-        }
-        $this->view->assign('currentUrl', $url);
-
-        $oEditor = new VS_TinyMce('tmceEdit');
-        $oEditor->setStylesheet('/css/browser.css');
-        $oEditor->setValue($html);
-
-        $this->view->assign('oEditor', $oEditor);
-
-        $catSql = Doctrine_Query::create()
-                ->from('Model_Category c')
-                ->leftJoin('c.Translation t')
-                ->leftJoin('c.Fieldset f')
-                ->leftJoin('c.Children ch')
-                ->where('t.lang_id = ?');
-        //->andWhere('c.parent_id=0');
-        //->orderBy('c.parent_id')
-
-
-        $categories = $catSql->execute(array('eng'));
-        //$categories = $catSql->execute(array('bulgarian'));
-        $this->view->assign('categories', $categories);
-
-        $fieldsets = Doctrine_Core::getTable('Model_Fieldset')->findAll();
-        $this->view->assign('fieldsets', $fieldsets);
 
         /*
          * Init General Fields
@@ -134,14 +114,13 @@ class DefaultController extends Controller
             array('caption' => 'add_link', 'Translation' => array(array('name' => 'Add Link'))),
             array('caption' => 'page_link', 'Translation' => array(array('name' => 'Page Link')))
         );
-        $this->view->assign('fields', $fields);
+
 
         /*
          * Init Ads Fields
          */
-        $fields = array();
-        if ($oProject->category_id) {
-            $this->view->assign('categoryId', $oProject->category_id);
+        if ($oProject->getCategoryid()) {
+
 
             $fieldSql = Doctrine_Query::create()
                     ->from('Model_Field f')
@@ -163,8 +142,6 @@ class DefaultController extends Controller
         );
 
         $fieldsAds = empty($fieldsAds) ? $commonFieldsAds : array_merge($commonFieldsAds, $fieldsAds);
-        $this->view->assign('fieldsAds', $fieldsAds);
-
 
         /*
          * Init Picture Fields
@@ -172,12 +149,35 @@ class DefaultController extends Controller
         $fieldsAdsPictures = array(
             array('caption' => 'pictures_1', 'Translation' => array(array('name' => 'Picture 1'))),
         );
-        $this->view->assign('fieldsAdsPictures', $fieldsAdsPictures);
 
-        $this->view->assign('internalUrls', $oProject->getInternalUrls());
+        
+        if (!empty($url)) {
+            $html = $oProject->getUrlContent($url);
+        }
+//        $oEditor = new VS_TinyMce('tmceEdit');
+//        $oEditor->setStylesheet('/css/browser.css');
+//        $oEditor->setValue($html);
+        
+        $tplVars = array(
+            'categoryId'        => $oProject->getCategoryid(),
+            //'categories'        => $categories,
+            'adsUrl'            => $adsUrl,
+            'oProject'          => $oProject,
+            'currentUrl'        => $url,
+            //'oEditor'           => $oEditor,
+            'html'              => $html,
+            //'fieldsets'         => $fieldsets,
+            'fields'            => $fields,
+            'fieldsAds'         => $fieldsAds,
+            'charsetEncodings'  => $charsetEncodings,
+            'fieldsAdsPictures' => $fieldsAdsPictures,
+            //'internalUrls'      => $oProject->getInternalUrls(),
+            'internalUrls'      => array()
+        );
+        return $this->render('IAWebContentThiefBundle:Default:edit-project.html.twig', $tplVars);
     }
 
-    public function deleteProjectAction()
+    public function deleteProjectAction($id)
     {
         $projectId = $this->_getParam("project");
         if ($oProject = Doctrine_Core::getTable('Model_ParserProject')->findOneBy('id', $projectId)) {
@@ -186,7 +186,7 @@ class DefaultController extends Controller
         $this->_helper->redirector('list', 'index');
     }
 
-    public function previewProjectAction()
+    public function previewProjectAction($id)
     {
         $previewFields = array();
         $projectId = $this->_getParam("projectId");
@@ -198,7 +198,7 @@ class DefaultController extends Controller
         $this->view->assign('allAds', $allAds[$projectId]);
     }
 
-    public function runProjectAction()
+    public function runProjectAction($id)
     {
         $projectId = $this->_getParam("project");
         $previewFields = array();
@@ -214,7 +214,7 @@ class DefaultController extends Controller
         $this->_helper->redirector('list', 'index');
     }
 
-    public function copyProjectAction()
+    public function copyProjectAction($id)
     {
         $projectId = $this->_getParam("project");
         $oProject = Doctrine_Core::getTable('Model_ParserProject')->findOneBy('id', $projectId);

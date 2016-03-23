@@ -8,7 +8,7 @@
     },
     "require": {
         "php": ">=5.4.0",
-        "symfony/symfony": "2.3.*",
+        "symfony/symfony": "2.7.*",
         "doctrine/orm": "~2.4",
         "doctrine/doctrine-bundle": "1.2.*",
         "twig/extensions": "1.0.*",
@@ -28,7 +28,8 @@
         "sp/bower-bundle": "dev-master",
         "hearsay/require-js-bundle": "2.0.*@dev",
         "friendsofsymfony/user-bundle": "dev-master",
-        "stof/doctrine-extensions-bundle": "~1.1@dev"
+        "stof/doctrine-extensions-bundle": "~1.1@dev",
+        "stfalcon/tinymce-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
