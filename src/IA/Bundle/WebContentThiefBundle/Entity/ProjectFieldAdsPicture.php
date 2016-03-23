@@ -12,6 +12,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ProjectFieldAdsPicture
 {
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Project", inversedBy="fieldsAdsPicture")
+     */
+    public $project;
+    
     /**
      * @var integer
      *

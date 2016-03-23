@@ -159,10 +159,12 @@ class DefaultController extends Controller
 //        $oEditor->setValue($html);
         
         $tplVars = array(
-            'categoryId'        => $oProject->getCategoryid(),
+            'ProjectRepository' => $pr,
+            'oProject'          => $oProject,
+            //'categoryId'        => $oProject->getCategoryid(),
             //'categories'        => $categories,
             'adsUrl'            => $adsUrl,
-            'oProject'          => $oProject,
+            
             'currentUrl'        => $url,
             //'oEditor'           => $oEditor,
             'html'              => $html,
@@ -172,7 +174,8 @@ class DefaultController extends Controller
             'charsetEncodings'  => $charsetEncodings,
             'fieldsAdsPictures' => $fieldsAdsPictures,
             //'internalUrls'      => $oProject->getInternalUrls(),
-            'internalUrls'      => array()
+            'internalUrls'      => array(),
+            'jsStatusRegistry'  => null
         );
         return $this->render('IAWebContentThiefBundle:Default:edit-project.html.twig', $tplVars);
     }

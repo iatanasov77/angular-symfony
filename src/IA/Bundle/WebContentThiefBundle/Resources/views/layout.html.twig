@@ -4,26 +4,18 @@
     <head>
         <title>{% block title %}.:: Web Content Thief ::.{% endblock %}</title>
 
-        {% block head_meta %}
-            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        {% endblock %}
+    {% block head_meta %}
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    {% endblock %}
 
-        {% block head_styles %}
-            <link rel="stylesheet" type="text/css" href="{{ assetsPath }}/css/style.css" > 
-            {% endblock %}
+    {% block head_styles %}
+        <link rel="stylesheet" type="text/css" href="{{ assetsPath }}/css/style.css" > 
+    {% endblock %}
 
-            {% block head_scripts %}
-                <script type="text/javascript" src="{{ assetsPath }}/js/main.js" ></script>
+    {% block head_scripts %}
+        
 
-                <!-- PHP JS -->
-                <script type="text/javascript" src="{{ assetsPath }}/phpjs/var_dump.js" ></script>
-                <script type="text/javascript" src="{{ assetsPath }}/phpjs/echo.js" ></script>
-                <script type="text/javascript" src="{{ assetsPath }}/phpjs/trim.js" ></script>
-                <!-- <script type="text/javascript" src="{{ assetsPath }}/php.js/rtrim.js"></script> -->
-                <script type="text/javascript" src="{{ assetsPath }}/phpjs/serialize.js"></script>
-                <script type="text/javascript" src="{{ assetsPath }}/phpjs/explode.js"></script>
-
-            {% endblock %}
+    {% endblock %}
 
     </head>
     <body>
@@ -47,5 +39,22 @@
         <div id="footer">
             {% block footer %}{% endblock %}
         </div>
+    {% block endDocumentScripts %}
+        <!-- Vendor Libraries  -->
+        <script type="text/javascript" src="{{ assetsPath }}/vendor/jquery/dist/jquery.min.js" ></script>
+        <script type="text/javascript" src="{{ assetsPath }}/vendor/jquery.tinymce/jscripts/tiny_mce/jquery.tinymce.js" ></script>
+        <script type="text/javascript" src="{{ assetsPath }}/vendor/cloneya/dist/jquery-cloneya.min.js" ></script>
+        
+        <!-- PHP JS -->
+        <script type="text/javascript" src="{{ assetsPath }}/phpjs/var_dump.js" ></script>
+        <script type="text/javascript" src="{{ assetsPath }}/phpjs/echo.js" ></script>
+        <script type="text/javascript" src="{{ assetsPath }}/phpjs/trim.js" ></script>
+        <!-- <script type="text/javascript" src="{{ assetsPath }}/php.js/rtrim.js"></script> -->
+        <script type="text/javascript" src="{{ assetsPath }}/phpjs/serialize.js"></script>
+        <script type="text/javascript" src="{{ assetsPath }}/phpjs/explode.js"></script>
+
+        <!-- Application Scripts -->
+        <script type="text/javascript" src="{{ assetsPath }}/js/parser.js" ></script>
+    {% endblock %}
     </body>
 </html>

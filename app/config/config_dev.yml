@@ -43,3 +43,7 @@ sp_bower:
             config_dir: Resources/config
             asset_dir: ../public/vendor
             cache: "%kernel.cache_dir%/"
+        IAWebContentThiefBundle:
+            config_dir: Resources/config
+            asset_dir: ../public/vendor
+            cache: "%kernel.cache_dir%/"

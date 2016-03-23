@@ -5,7 +5,8 @@
     "dependencies": {
         "requirejs": "latest",
         "jquery": "latest",
-        "jquery.tinymce ": "latest"
+        "jquery.tinymce ": "latest",
+        "cloneya": "latest"
     },
     "install" : {
         "path"  : {

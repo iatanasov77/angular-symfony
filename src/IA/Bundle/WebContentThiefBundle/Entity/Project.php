@@ -2,6 +2,7 @@
 namespace IA\Bundle\WebContentThiefBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Project
@@ -11,6 +12,23 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Project
 {
+    
+    /**
+     * @ORM\OneToMany(targetEntity="ProjectField", mappedBy="project")
+     */
+    public $fields;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="ProjectFieldAds", mappedBy="project")
+     */
+    public $fieldsAds;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="ProjectFieldAdsPicture", mappedBy="project")
+     */
+    public $fieldsAdsPictures;
+    
+    
     /**
      * @var integer
      *
@@ -91,6 +109,15 @@ class Project
     private $active;
 
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->fields = new ArrayCollection();
+        $this->fieldsAds = new ArrayCollection();
+        $this->fieldsAdsPictures = new ArrayCollection();
+    }
 
     /**
      * Get id
