@@ -173,37 +173,15 @@ class ProjectsRepository extends EntityRepository
     /**
      * Browse URL and return its html content
      * 
+     * @deprecated since version 1.0 Moved to Utils\RemoteContent::browseUrl(url)
+     * 
      * @param string $url
      * @return string
      */
     function getUrlContent($url)
     {
-        $ch = curl_init();
-
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-        $html = curl_exec($ch);
-        curl_close($ch);
-
-        /*
-         * Reencode html text to UTF-8
-         */
-        $regexCharset = "/(?:<meta[^>]*http-equiv[^>])*charset=(.*?)\"/i";
-        if (preg_match($regexCharset, $html, $matches)) {
-            $charset = $matches[1];
-            if ($charset && ($charset != 'utf-8')) {
-                $html = iconv($charset, 'UTF-8', $html);
-                $html = preg_replace($regexCharset, 'charset=utf-8"', $html);
-            }
-        }
-
-        if (!$html) {
-            throw new Exception(sprintf("Cannot browse this url: '%s'.", $url));
-        }
-
-        return $html;
+        $remoteContent = new IA\Bundle\WebContentThiefBundle\Utils\RemoteContent();
+        
+        return $remoteContent->browseUrl($url);
     }
-
 }

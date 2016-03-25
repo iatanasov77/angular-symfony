@@ -11,11 +11,11 @@
     <form id="formProject" name="formProject" action="{{ app.request.uri }}" method="post" >
         <div id="editorFrame">
             <div id="mceUrl">
-                <input type="text" size="100" name="currentUrl" value="{{ currentUrl }}" />
-                <input type="button" value="Browse" />
+                <input id="currentUrl" type="text" size="100" name="currentUrl" value="{{ currentUrl }}" />
+                <input id="btnBrowse" type="button" value="Browse" />
             </div>
             <div id="mceEditor">
-                <textarea name="tmceEdit" class="tinymce">{{ html }}</textarea>
+                <textarea id="tmceEdit" name="tmceEdit" class="tinymce">{{ html }}</textarea>
             </div>
             <div style="margin-top: 20px;"><div style="margin-right: 10px; float: left;">Current Field: </div><div id="currentField" style="float: left;"></div></div>
         </div>
@@ -189,6 +189,20 @@
     {{ parent() }}
     <script type="text/javascript">
         $(function () {
+            $('#btnBrowse').on('click', function() {
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ path('ia_web_content_thief_browse') }}',
+                    data: { url: $('#currentUrl').val() },
+                    dataType: "html",
+                    
+                }).done(function(html) {
+                    $('#tmceEdit').html(html);
+                }).fail(function(jqXHR, textStatus) {
+                    alert( "Request failed: " + textStatus );
+                });
+            });
+            
             $('textarea.tinymce').tinymce({
                 // Location of TinyMCE script
                 script_url: '{{ assetsPath }}/vendor/jquery.tinymce/jscripts/tiny_mce/tiny_mce.js',

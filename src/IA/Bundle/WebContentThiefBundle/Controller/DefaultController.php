@@ -3,9 +3,12 @@
 namespace IA\Bundle\WebContentThiefBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 use IA\Bundle\WebContentThiefBundle\Entity\Project;
 
 use IA\Bundle\WebContentThiefBundle\Form\ProjectType;
+
+use IA\Bundle\WebContentThiefBundle\Utils\RemoteContent;
 
 class DefaultController extends Controller
 {
@@ -263,6 +266,17 @@ class DefaultController extends Controller
         $this->_helper->redirector('list', 'index');
     }
 
+    public function browseAction()
+    {
+        $request = $this->get('request');
+        $url = $request->get('url');
+        
+        $remoteContent = new RemoteContent();
+        $html = $remoteContent->browseUrl($url);
+        
+        return new Response($html);
+    }
+    
     /**
      * Initialize Project Model
      * 

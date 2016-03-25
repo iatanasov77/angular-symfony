@@ -16,3 +16,6 @@ ia_web_content_thief_run_project:
 ia_web_content_thief_copy_project:
     path:     /copy/{id}
     defaults: { _controller: IAWebContentThiefBundle:Default:copyProject }
+ia_web_content_thief_browse:
+    path:     /browse
+    defaults: { _controller: IAWebContentThiefBundle:Default:browse }

@@ -115,13 +115,6 @@ $(function () {
         $('#formProject').submit();
     });
 
-    /**
-     * OnClick Event Handler of Browse Button
-     */
-    $('#btnBrowse').click(function () {
-        $('input[name="formAction"]').val("browse");
-        $('#formProject').submit();
-    });
 
     /**
      * OnChange Event Handler of Category Select Box
