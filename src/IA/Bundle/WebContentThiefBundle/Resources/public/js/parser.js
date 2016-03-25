@@ -127,13 +127,11 @@ $(function () {
 });
 
 
-
-
 /**
  *
  * TinyMCE onclick callback method
  */
-function browserClicked(ed) {
+var browserClicked = function (ed, e) {
     if (!currentKey)
         return;
 
@@ -178,7 +176,7 @@ function browserClicked(ed) {
     path = trim(path, '., ');
     $('input[name="' + currentKey + '"]').val(path);
 
-}
+};
 
 function _siblingIndex(curNode) {
     var siblingIndex = 1;
