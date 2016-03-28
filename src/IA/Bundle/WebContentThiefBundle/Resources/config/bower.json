@@ -3,14 +3,7 @@
     "name": "ia-web-content-thief",
     
     "dependencies": {
-        "requirejs": "latest",
-        "bootstrap": "latest",
-        "elegant-icons": "latest",
-        "components-font-awesome": "latest",
-        "jquery": "latest",
-        "jquery-ui": "latest",
-        "jquery.nicescroll": "latest",
-        "jquery.scrollTo": "latest"
+        
     },
     "install" : {
         "path"  : {
