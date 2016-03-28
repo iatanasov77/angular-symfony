@@ -47,6 +47,7 @@ class AppKernel extends Kernel
             new IA\Bundle\UsersBundle\IAUsersBundle(),
             new IA\Bundle\MultiLanguageBundle\IAMultiLanguageBundle(),
             new IA\Bundle\WebContentThiefBundle\IAWebContentThiefBundle(),
+            new IA\Bundle\ApplicationBundle\IAApplicationBundle(),
         );
 
         /*

@@ -4,49 +4,117 @@
     <head>
         <title>{% block title %}.:: Web Content Thief ::.{% endblock %}</title>
 
-    {% block head_meta %}
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    {% endblock %}
+        {% block head_meta %}
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        {% endblock %}
 
-    {% block head_styles %}
-        <link rel="stylesheet" type="text/css" href="{{ assetsPath }}/css/style.css" > 
-    {% endblock %}
+        {% block head_styles %}
+            {# Bootstrap styles #}
+            <link rel="stylesheet" type="text/css" href="{{ assetsPath }}/vendor/bootstrap/dist/css/bootstrap.min.css" /> 
+            <link rel="stylesheet" type="text/css" href="{{ assetsPath }}/vendor/bootstrap/dist/css/bootstrap-theme.min.css" /> 
 
-    {% block head_scripts %}
-        
 
-    {% endblock %}
+            <link rel="stylesheet" type="text/css" href="{{ assetsPath }}/vendor/elegant-icons/css/style.css" /> 
+            {# Other vendor styles
+            <link rel="stylesheet" type="text/css" href="{{ assetsPath }}/vendor/components-font-awesome/css/font-awesome.min.css" /> 
+            #}
 
+            {#<link rel="stylesheet" type="text/css" href="{{ assetsPath }}/css/widget.css" />#}
+            <link rel="stylesheet" type="text/css" href="{{ assetsPath }}/css/style.css" />
+            <link rel="stylesheet" type="text/css" href="{{ assetsPath }}/css/style-responsive.css" />
+            <link rel="stylesheet" type="text/css" href="{{ assetsPath }}/css/line-icons.css" />
+        {% endblock %}
+
+        {% block head_scripts %}
+            <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+            <script>
+                WebFontConfig = {
+                    google: {
+                        families: ['Lato:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic']
+                    }
+                };
+
+                (function (d) {
+                    var wf = d.createElement('script'), s = d.scripts[0];
+                    wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js';
+                    s.parentNode.insertBefore(wf, s);
+                })(document);
+            </script>
+        {% endblock %}
     </head>
     <body>
-        <div id="headContainer">
-            <div id="rightHead">
-                <a href="/login/logout">Logout</a>&nbsp;&nbsp;&nbsp;	
-                <?php if($this->actionName == 'list'): ?>
-                <a href="/index/edit">Create Project</a>
-                <?php else:?>
-                <a href="/index/list">List Projects</a>
-                <?php endif;?>
-            </div>
-        </div>
+        <section id="container" class="">
+            <header class="header dark-bg">
+                Web Content Thief
+            </header>
 
+            <!--sidebar start-->
+            <aside>
+                <div id="sidebar"  class="nav-collapse ">
+                    <!-- sidebar menu start-->
+                    <ul class="sidebar-menu">
+                        <li class="sub-menu">
+                            <a class="" href="javascript:;">
+                                <i class="icon_genius"></i>
+                                <span>Projects</span>
+                                <span class="menu-arrow arrow_carrot-right"></span>
+                            </a>
+                            <ul class="sub">
+                                <li><a class="" href="{{ path('ia_web_content_thief_list_projects') }}">List Projects</a></li>
+                                <li><a class="" href="{{ path('ia_web_content_thief_edit_project', {'id':0}) }}">Create New Project</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">                     
+                            <a class="" href="javascript:;">
+                                <i class="icon_piechart"></i>
+                                <span>Fieldsets</span>
+                                <span class="menu-arrow arrow_carrot-right"></span>
+                            </a>
+                            <ul class="sub">
+                                <li><a class="" href="{{ path('ia_web_content_thief_fieldsets_list') }}">List Fieldsets</a></li>
+                                <li><a class="" href="{{ path('ia_web_content_thief_fieldsets_edit', {'id':0}) }}">Create New Fieldset</a></li>
+                            </ul>
+                        </li> 
+                        
+                        
+                    </ul>
+                    <!-- sidebar menu end-->
+                </div>
+            </aside>
+            <!--sidebar end-->
 
+            <section id="main-content">
+                <section class="wrapper">
+                    <div class="row">
+                        <div class="col-lg-12">
+                                <h3 class="page-header"><i class="icon_genius"></i> Widgets</h3>
+                                <ol class="breadcrumb">
+                                    <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
+                                    <li><i class="icon_genius"></i>Widgets</li>
+                                </ol>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% block content %}{% endblock %}
+                    </div>
+                </section>
+            </section>  
+            <footer class="container-fluid">
+                {% block footer %}<p>Footer Text</p>{% endblock %}
+            </footer>
+        </section>
 
-        <div id="mainContainer">
-            {% block content %}{% endblock %}
-            <br class="clear" />
-        </div><!-- end of mainContainer -->
-        <div id="footer">
-            {% block footer %}{% endblock %}
-        </div>
-        
-        <div id="popup"></div>
     {% block endDocumentScripts %}
+        <div id="popup"></div>
+
         <!-- Vendor Libraries  -->
         <script type="text/javascript" src="{{ assetsPath }}/vendor/jquery/dist/jquery.min.js" ></script>
-        <script type="text/javascript" src="{{ assetsPath }}/vendor/jquery-ui   /jquery-ui.min.js" ></script>
+        <script type="text/javascript" src="{{ assetsPath }}/vendor/bootstrap/dist/js/bootstrap.min.js" ></script>
+        <script type="text/javascript" src="{{ assetsPath }}/vendor/jquery-ui/jquery-ui.min.js" ></script>
+        <script type="text/javascript" src="{{ assetsPath }}/vendor/jquery.nicescroll/dist/jquery.nicescroll.min.js" ></script>
 
         <!-- Application Scripts -->
+        <script type="text/javascript" src="{{ assetsPath }}/js/scripts.js" ></script>
         <script type="text/javascript" src="{{ assetsPath }}/js/parser.js" ></script>
     {% endblock %}
     </body>

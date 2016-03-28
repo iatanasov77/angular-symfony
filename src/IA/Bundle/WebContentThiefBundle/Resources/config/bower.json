@@ -4,9 +4,13 @@
     
     "dependencies": {
         "requirejs": "latest",
+        "bootstrap": "latest",
+        "elegant-icons": "latest",
+        "components-font-awesome": "latest",
         "jquery": "latest",
         "jquery-ui": "latest",
-        "cloneya": "latest"
+        "jquery.nicescroll": "latest",
+        "jquery.scrollTo": "latest"
     },
     "install" : {
         "path"  : {
