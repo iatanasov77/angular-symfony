@@ -9,22 +9,22 @@ ia_web_content_thief_fieldsets_edit:
     defaults: { _controller: IAWebContentThiefBundle:Fieldsets:edit }
 ia_web_content_thief_list_projects:
     path:     /
-    defaults: { _controller: IAWebContentThiefBundle:Default:listProjects }
+    defaults: { _controller: IAWebContentThiefBundle:Projects:listProjects }
 ia_web_content_thief_edit_project:
     path:     /edit/{id}
-    defaults: { _controller: IAWebContentThiefBundle:Default:editProject }
+    defaults: { _controller: IAWebContentThiefBundle:Projects:editProject }
 ia_web_content_thief_delete_project:
     path:     /delete/{id}
-    defaults: { _controller: IAWebContentThiefBundle:Default:deleteProject }
+    defaults: { _controller: IAWebContentThiefBundle:Projects:deleteProject }
 ia_web_content_thief_preview_project:
     path:     /preview/{id}
-    defaults: { _controller: IAWebContentThiefBundle:Default:previewProject }
+    defaults: { _controller: IAWebContentThiefBundle:Projects:previewProject }
 ia_web_content_thief_run_project:
     path:     /run/{id}
-    defaults: { _controller: IAWebContentThiefBundle:Default:runProject }
+    defaults: { _controller: IAWebContentThiefBundle:Projects:runProject }
 ia_web_content_thief_copy_project:
     path:     /copy/{id}
-    defaults: { _controller: IAWebContentThiefBundle:Default:copyProject }
+    defaults: { _controller: IAWebContentThiefBundle:Projects:copyProject }
 ia_web_content_thief_browse:
     path:     /browse/
-    defaults: { _controller: IAWebContentThiefBundle:Default:browse }
+    defaults: { _controller: IAWebContentThiefBundle:Projects:browse }

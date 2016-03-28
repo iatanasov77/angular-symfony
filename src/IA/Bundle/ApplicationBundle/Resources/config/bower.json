@@ -1,0 +1,24 @@
+{
+    "directory" : "vendor",
+    "name": "ia-application",
+    
+    "dependencies": {
+        "requirejs": "latest",
+        "bootstrap": "latest",
+        "elegant-icons": "latest",
+        "components-font-awesome": "latest",
+        "jquery": "latest",
+        "jquery-ui": "latest",
+        "jquery.nicescroll": "latest",
+        "jquery.scrollTo": "latest"
+    },
+    "install" : {
+        "path"  : {
+            "js": "_js/",
+            "css": "_css/"
+        }
+    },
+    "scripts": {
+        "postinstall": "bower-requirejs -c web/bundles/iaapplication/js/main.js"
+    }
+}

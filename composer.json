@@ -8,27 +8,34 @@
     },
     "require": {
         "php": ">=5.4.0",
+        
         "symfony/symfony": "2.7.*",
-        "doctrine/orm": "~2.4",
-        "doctrine/doctrine-bundle": "1.2.*",
-        "twig/extensions": "1.0.*",
         "symfony/assetic-bundle": "2.3.*",
         "symfony/swiftmailer-bundle": "2.3.*",
         "symfony/monolog-bundle": "2.3.*",
+        
         "sensio/distribution-bundle": "2.3.*",
         "sensio/framework-extra-bundle": "2.3.*",
         "sensio/generator-bundle": "2.3.*",
-        "incenteev/composer-parameter-handler": "~2.0",
+        "twig/extensions": "1.0.*",
+        
+        "doctrine/orm": "~2.4",
+        "doctrine/doctrine-bundle": "1.2.*",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "doctrine/data-fixtures" : "dev-master",
         "doctrine/doctrine-migrations-bundle": "dev-master",
         "doctrine/migrations": "dev-master",
+        "stof/doctrine-extensions-bundle": "~1.1@dev",
+        
+        "incenteev/composer-parameter-handler": "~2.0",
         "jms/serializer-bundle": "dev-master",
         "appventus/assetic-injector-bundle": "dev-master",
         "sp/bower-bundle": "dev-master",
         "hearsay/require-js-bundle": "2.0.*@dev",
+        
         "friendsofsymfony/user-bundle": "dev-master",
-        "stof/doctrine-extensions-bundle": "~1.1@dev"
+        "knplabs/knp-menu-bundle": "~1.1",
+        "knplabs/knp-paginator-bundle": "~2.3"
     },
     "scripts": {
         "post-install-cmd": [
@@ -57,7 +64,7 @@
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
-		"symfony-assets-install": "symlink",
+	"symfony-assets-install": "symlink",
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
         }
