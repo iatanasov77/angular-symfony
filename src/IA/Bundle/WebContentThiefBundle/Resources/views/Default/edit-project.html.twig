@@ -12,15 +12,9 @@
         <div id="editorFrame">
             <div id="mceUrl">
                 <input id="currentUrl" type="text" size="100" name="currentUrl" value="{{ currentUrl }}" />
-                <input id="btnBrowse" type="button" value="Browse" />
-            </div>
-                
-            <iframe id="remoteBrowser" width="900" height="500"></iframe>
-            <div id="remoteBrowser2"  width="900" height="500"></div>
-            <div id="mceEditor">
-                <textarea id="tmceEdit" name="tmceEdit" class="tinymce">{{ html }}</textarea>
-            </div>
-            <div style="margin-top: 20px;"><div style="margin-right: 10px; float: left;">Current Field: </div><div id="currentField" style="float: left;"></div></div>
+                <input id="btnBrowse" type="button" value="Browse" data-browserUrl="{{ path('ia_web_content_thief_browse') }}" />
+            </div>    
+            <iframe id="remoteBrowser" width="900" height="500" data-browserCss="{{ assetsPath }}/css/browser.css"></iframe>
         </div>
 
         <br class="clear" />
@@ -188,62 +182,3 @@
 
 {% endblock %}
 
-{% block endDocumentScripts %}
-    {{ parent() }}
-    <script type="text/javascript">
-        $(function () {
-            $('#btnBrowse').on('click', function () {
-                //$('#remoteBrowser').attr('src', $('#currentUrl').val());
-                
-                $.ajax({
-                    type: 'POST',
-                    url: '{{ path('ia_web_content_thief_browse') }}',
-                    data: {url: $('#currentUrl').val()},
-                    dataType: "html",
-                }).done(function (html) {
-                    //$('#tmceEdit').html(html);
-                    $('#remoteBrowser2').html(html);
-                }).fail(function (jqXHR, textStatus) {
-                    alert("Request failed: " + textStatus);
-                });
-            });
-
-            {#$('textarea.tinymce').tinymce({
-                // Location of TinyMCE script
-                script_url: '{{ assetsPath }}/vendor/jquery.tinymce/jscripts/tiny_mce/tiny_mce.js',
-                // General options
-                theme: "advanced",
-                theme_advanced_resizing: true,
-                content_css: "{{ assetsPath }}/css/browser.css",
-                setup: function (ed) {
-                    ed.onClick.add(browserClicked);
-                }
-            });#}
-            
-            
-            
-           {# $('#remoteBrowser').iframeTracker({
-                blurCallback: function(){
-                    // Do something when the iframe is clicked (like firing an XHR request)
-                    var xpath = getXPath(this);
-                    alert(xpath);
-                    alert("EHO");
-                }
-            });#}
-                    
-                    
-            {#$('#remoteBrowser').on('load', function () {
-                //set a default-input to avoid errors
-                //var selectedtextbox=$('input[name="myinput"]:eq(0)');
-                //$('input[name="myinput"]').focus(function(){selectedtextbox=$(this);});
-                //Note the 2nd argument here, 
-                //it sets the contextof $() to the document inside the iframe
-                $('div, p, li, a, href', this.contentWindow.document).click(function () { 
-                    var xpath = getXPath(this);
-                    alert(xpath);
-                    //selectedtextbox.val(xpath)
-                });
-            });#}
-        });
-    </script>
-{% endblock %}

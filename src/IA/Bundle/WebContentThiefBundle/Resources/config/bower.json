@@ -5,8 +5,7 @@
     "dependencies": {
         "requirejs": "latest",
         "jquery": "latest",
-        "jquery.tinymce ": "latest",
-        "jquery.iframetracker": "latest",
+        "jquery-ui": "latest",
         "cloneya": "latest"
     },
     "install" : {

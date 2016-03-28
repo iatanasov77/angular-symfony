@@ -1,5 +1,6 @@
 @CHARSET "UTF-8";
 
 .parserMarker {
-	background-color: yellow;
+	display:block;
+        border: 1px solid red;
 }

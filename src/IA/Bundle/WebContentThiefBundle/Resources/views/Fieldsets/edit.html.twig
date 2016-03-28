@@ -1,0 +1,25 @@
+{% extends "IAWebContentThiefBundle::layout.html.twig" %}
+{% block title %}{{ parent() }} :: Edit Fieldset{% endblock %}
+
+{% block content %}
+    {{ form_start(form) }}
+
+    
+    <a href="#" id="btnAddField">Add Field</a>
+
+    {{ form_end(form) }}
+
+{% endblock content %}
+
+{% block endDocumentScripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        jQuery(function () {
+            jQuery("#btnAddField").on('click', function (e) {
+                jQuery("#popup").dialog({modal: true}).dialog('open').load("{{ path('ia_web_content_thief_fieldsets_add_field') }}");
+            });
+        });
+
+    
+    </script>
+{% endblock endDocumentScripts %}

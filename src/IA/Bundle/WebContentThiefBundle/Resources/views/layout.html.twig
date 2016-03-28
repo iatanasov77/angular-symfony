@@ -39,20 +39,12 @@
         <div id="footer">
             {% block footer %}{% endblock %}
         </div>
+        
+        <div id="popup"></div>
     {% block endDocumentScripts %}
         <!-- Vendor Libraries  -->
         <script type="text/javascript" src="{{ assetsPath }}/vendor/jquery/dist/jquery.min.js" ></script>
-        <script type="text/javascript" src="{{ assetsPath }}/vendor/jquery.tinymce/jscripts/tiny_mce/jquery.tinymce.js" ></script>
-        <script type="text/javascript" src="{{ assetsPath }}/vendor/jquery.iframetracker/jquery.iframetracker.js" ></script>
-        <script type="text/javascript" src="{{ assetsPath }}/vendor/cloneya/dist/jquery-cloneya.min.js" ></script>
-        
-        <!-- PHP JS -->
-        <script type="text/javascript" src="{{ assetsPath }}/phpjs/var_dump.js" ></script>
-        <script type="text/javascript" src="{{ assetsPath }}/phpjs/echo.js" ></script>
-        <script type="text/javascript" src="{{ assetsPath }}/phpjs/trim.js" ></script>
-        <!-- <script type="text/javascript" src="{{ assetsPath }}/php.js/rtrim.js"></script> -->
-        <script type="text/javascript" src="{{ assetsPath }}/phpjs/serialize.js"></script>
-        <script type="text/javascript" src="{{ assetsPath }}/phpjs/explode.js"></script>
+        <script type="text/javascript" src="{{ assetsPath }}/vendor/jquery-ui   /jquery-ui.min.js" ></script>
 
         <!-- Application Scripts -->
         <script type="text/javascript" src="{{ assetsPath }}/js/parser.js" ></script>

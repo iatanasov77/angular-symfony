@@ -1,3 +1,12 @@
+ia_web_content_thief_fieldsets_add_field:
+    path:     /fieldsets/add-field
+    defaults: { _controller: IAWebContentThiefBundle:Fieldsets:addField}
+ia_web_content_thief_fieldsets_list:
+    path:     /fieldsets
+    defaults: { _controller: IAWebContentThiefBundle:Fieldsets:list }
+ia_web_content_thief_fieldsets_edit:
+    path:     /fieldsets/edit/{id}
+    defaults: { _controller: IAWebContentThiefBundle:Fieldsets:edit }
 ia_web_content_thief_list_projects:
     path:     /
     defaults: { _controller: IAWebContentThiefBundle:Default:listProjects }
@@ -17,5 +26,5 @@ ia_web_content_thief_copy_project:
     path:     /copy/{id}
     defaults: { _controller: IAWebContentThiefBundle:Default:copyProject }
 ia_web_content_thief_browse:
-    path:     /browse
+    path:     /browse/
     defaults: { _controller: IAWebContentThiefBundle:Default:browse }
