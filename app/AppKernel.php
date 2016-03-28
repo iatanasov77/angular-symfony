@@ -33,6 +33,7 @@ class AppKernel extends Kernel
             new Hearsay\RequireJSBundle\HearsayRequireJSBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             
             
             /*

@@ -183,5 +183,10 @@
 {% endblock %}
 
 {% block endDocumentScripts %}
-    <script type="text/javascript" src="{{ assetsPath }}/js/parser.js" ></script>
+    {{ parent() }}
+    
+    {% javascripts 'bundles/iawebcontentthief/js/parser.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
 {% endblock %}

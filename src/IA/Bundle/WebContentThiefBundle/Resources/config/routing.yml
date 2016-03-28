@@ -28,3 +28,4 @@ ia_web_content_thief_copy_project:
 ia_web_content_thief_browse:
     path:     /browse/
     defaults: { _controller: IAWebContentThiefBundle:Projects:browse }
+    

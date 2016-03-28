@@ -33,4 +33,3 @@ IAServerBundle:
     resource: "@IAServerBundle/Resources/config/routing.yml"
     prefix:   /
     
-
