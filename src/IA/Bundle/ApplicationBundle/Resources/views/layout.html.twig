@@ -15,7 +15,7 @@
                 'bundles/iaapplication/vendor/components-font-awesome/css/font-awesome.min.css'
                 'bundles/iaapplication/css/*'
             %}
-                <link rel="stylesheet" href="{{ asset_url }}" />
+            <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
         {% endblock %}
 
@@ -45,64 +45,33 @@
             <!--sidebar start-->
             <aside>
                 <div id="sidebar"  class="nav-collapse ">
-                    <!-- sidebar menu start-->
-                    {{ knp_menu_render('IAApplicationBundle:Builder:mainMenu', {'template': 'menu.html.twig'}) }}
-                    
-                    {#<ul class="sidebar-menu">
-                        <li class="sub-menu">
-                            <a class="" href="javascript:;">
-                                <i class="icon_genius"></i>
-                                <span>Projects</span>
-                                <span class="menu-arrow arrow_carrot-right"></span>
-                            </a>
-                            <ul class="sub">
-                                <li><a class="" href="{{ path('ia_web_content_thief_list_projects') }}">List Projects</a></li>
-                                <li><a class="" href="{{ path('ia_web_content_thief_edit_project', {'id':0}) }}">Create New Project</a></li>
-                            </ul>
-                        </li>
-                        <li class="sub-menu">                     
-                            <a class="" href="javascript:;">
-                                <i class="icon_piechart"></i>
-                                <span>Fieldsets</span>
-                                <span class="menu-arrow arrow_carrot-right"></span>
-                            </a>
-                            <ul class="sub">
-                                <li><a class="" href="{{ path('ia_web_content_thief_fieldsets_list') }}">List Fieldsets</a></li>
-                                <li><a class="" href="{{ path('ia_web_content_thief_fieldsets_edit', {'id':0}) }}">Create New Fieldset</a></li>
-                            </ul>
-                        </li> 
-                        
-                        
-                    </ul>#}
-                    <!-- sidebar menu end-->
+                    {{ knp_menu_render('IAApplicationBundle:Builder:mainMenu', {'template': 'IAApplicationBundle:Menu:menu.html.twig'}) }}
                 </div>
             </aside>
             <!--sidebar end-->
-
             <section id="main-content">
                 <section class="wrapper">
                     <div class="row">
                         <div class="col-lg-12">
-                                <h3 class="page-header"><i class="icon_genius"></i> Widgets</h3>
-                                <ol class="breadcrumb">
-                                    <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
-                                    <li><i class="icon_genius"></i>Widgets</li>
-                                </ol>
+                            <h3 class="page-header">{% block pageTitle %}{% endblock %}</h3>
+                            {% block breadcrumbs %}
+                                {{ knp_menu_render('IAApplicationBundle:Builder:breadcrumbsMenu', {currentClass: 'active','template': 'IAApplicationBundle:Menu:breadcrumb.html.twig'}) }}
+                            {% endblock %}
                         </div>
                     </div>
                     <div class="row">
-                        {% block content %}{% endblock %}
-                    </div>
-                </section>
-            </section>  
-            <footer class="container-fluid">
-                {% block footer %}<p>Footer Text</p>{% endblock %}
-            </footer>
-        </section>
+                    {% block content %}{% endblock %}
+                </div>
+            </section>
+        </section>  
+        <footer class="container-fluid">
+            {% block footer %}<p>Footer Text</p>{% endblock %}
+        </footer>
+    </section>
 
     {% block endDocumentScripts %}
         <div id="popup"></div>
-        
+
         {% javascripts filter="?uglifyjs2" output="assets/build/layout.js"
             '@IAApplicationBundle/Resources/public/vendor/jquery/dist/jquery.min.js'
             '@IAApplicationBundle/Resources/public/vendor/bootstrap/dist/js/bootstrap.min.js'
@@ -110,8 +79,8 @@
             '@IAApplicationBundle/Resources/public/vendor/jquery.nicescroll/jquery.nicescroll.min.js'
             '@IAApplicationBundle/Resources/public/js/*' 
         %}
-            <script src="{{ asset_url }}"></script>
+        <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
     {% endblock %}
-    </body>
+</body>
 </html>

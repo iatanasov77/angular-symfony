@@ -6,8 +6,11 @@ use Knp\Menu\FactoryInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
+use Knp\Menu\Matcher\Voter\RouteVoter;
+
 class Builder implements ContainerAwareInterface
 {
+
     use ContainerAwareTrait;
 
     public function mainMenu(FactoryInterface $factory, array $options)
@@ -15,7 +18,7 @@ class Builder implements ContainerAwareInterface
         $menu = $factory->createItem('root');
         //$menu->addChild('Home', array('route' => 'homepage'));
 
-        
+
 
         $menu->addChild('Projects', array('uri' => 'javascript:;'));
         $menu['Projects']->addChild('List Projects', array('route' => 'ia_web_content_thief_list_projects'));
@@ -24,7 +27,7 @@ class Builder implements ContainerAwareInterface
             'routeParameters' => array('id' => 0)
         ));
 
-        
+
         $menu->addChild('Fieldsets', array('uri' => 'javascript:;'));
         $menu['Fieldsets']->addChild('List Fieldsets', array('route' => 'ia_web_content_thief_fieldsets_list'));
         $menu['Fieldsets']->addChild('Create New Fieldset', array(
@@ -36,4 +39,28 @@ class Builder implements ContainerAwareInterface
 
         return $menu;
     }
+
+    public function breadcrumbsMenu(FactoryInterface $factory, array $options)
+    {
+        $bcmenu = $this->mainMenu($factory, $options);
+        return $this->getCurrentMenuItem($bcmenu);
+    }
+
+    public function getCurrentMenuItem($menu)
+    {
+        $voter = new RouteVoter($this->container->get('request'));
+
+        foreach ($menu as $item) {
+            if ($voter->matchItem($item)) {
+                return $item;
+            }
+
+            if ($item->getChildren() && $currentChild = $this->getCurrentMenuItem($item)) {
+                return $currentChild;
+            }
+        }
+
+        return null;
+    }
+
 }
