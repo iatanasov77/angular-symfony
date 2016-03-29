@@ -1,4 +1,3 @@
-{% set assetsPath = "/bundles/iaapplication" %}
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -9,20 +8,15 @@
         {% endblock %}
 
         {% block head_styles %}
-            {# Bootstrap styles #}
-            <link rel="stylesheet" type="text/css" href="{{ assetsPath }}/vendor/bootstrap/dist/css/bootstrap.min.css" /> 
-            <link rel="stylesheet" type="text/css" href="{{ assetsPath }}/vendor/bootstrap/dist/css/bootstrap-theme.min.css" /> 
-
-
-            <link rel="stylesheet" type="text/css" href="{{ assetsPath }}/vendor/elegant-icons/css/style.css" /> 
-            {# Other vendor styles
-            <link rel="stylesheet" type="text/css" href="{{ assetsPath }}/vendor/components-font-awesome/css/font-awesome.min.css" /> 
-            #}
-
-            {#<link rel="stylesheet" type="text/css" href="{{ assetsPath }}/css/widget.css" />#}
-            <link rel="stylesheet" type="text/css" href="{{ assetsPath }}/css/style.css" />
-            <link rel="stylesheet" type="text/css" href="{{ assetsPath }}/css/style-responsive.css" />
-            <link rel="stylesheet" type="text/css" href="{{ assetsPath }}/css/line-icons.css" />
+            {% stylesheets filter='uglifycss, cssrewrite' output="assets/build/layout.css"
+                'bundles/iaapplication/vendor/bootstrap/dist/css/bootstrap.min.css'
+                'bundles/iaapplication/vendor/bootstrap/dist/css/bootstrap-theme.min.css'
+                'bundles/iaapplication/vendor/elegant-icons/css/style.css'
+                'bundles/iaapplication/vendor/components-font-awesome/css/font-awesome.min.css'
+                'bundles/iaapplication/css/*'
+            %}
+                <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
         {% endblock %}
 
         {% block head_scripts %}
@@ -52,7 +46,9 @@
             <aside>
                 <div id="sidebar"  class="nav-collapse ">
                     <!-- sidebar menu start-->
-                    <ul class="sidebar-menu">
+                    {{ knp_menu_render('IAApplicationBundle:Builder:mainMenu', {'template': 'menu.html.twig'}) }}
+                    
+                    {#<ul class="sidebar-menu">
                         <li class="sub-menu">
                             <a class="" href="javascript:;">
                                 <i class="icon_genius"></i>
@@ -77,7 +73,7 @@
                         </li> 
                         
                         
-                    </ul>
+                    </ul>#}
                     <!-- sidebar menu end-->
                 </div>
             </aside>
@@ -106,15 +102,16 @@
 
     {% block endDocumentScripts %}
         <div id="popup"></div>
-
-        <!-- Vendor Libraries  -->
-        <script type="text/javascript" src="{{ assetsPath }}/vendor/jquery/dist/jquery.min.js" ></script>
-        <script type="text/javascript" src="{{ assetsPath }}/vendor/bootstrap/dist/js/bootstrap.min.js" ></script>
-        <script type="text/javascript" src="{{ assetsPath }}/vendor/jquery-ui/jquery-ui.min.js" ></script>
-        <script type="text/javascript" src="{{ assetsPath }}/vendor/jquery.nicescroll/dist/jquery.nicescroll.min.js" ></script>
-
-        <!-- Application Scripts -->
-        <script type="text/javascript" src="{{ assetsPath }}/js/scripts.js" ></script>
+        
+        {% javascripts filter="?uglifyjs2" output="assets/build/layout.js"
+            '@IAApplicationBundle/Resources/public/vendor/jquery/dist/jquery.min.js'
+            '@IAApplicationBundle/Resources/public/vendor/bootstrap/dist/js/bootstrap.min.js'
+            '@IAApplicationBundle/Resources/public/vendor/jquery-ui/jquery-ui.min.js'
+            '@IAApplicationBundle/Resources/public/vendor/jquery.nicescroll/jquery.nicescroll.min.js'
+            '@IAApplicationBundle/Resources/public/js/*' 
+        %}
+            <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
     {% endblock %}
     </body>
 </html>

@@ -35,7 +35,10 @@ class IAUsersExtension extends Extension implements PrependExtensionInterface
     {
         // get all bundles
         $bundles = $container->getParameter('kernel.bundles');
-        // determine if AcmeGoodbyeBundle is registered
+        if(!isset($bundles['HearsayRequireJSBundle'])) {
+            return;
+        }
+        
         if (!isset($bundles['IAAngularApplicationBundle'])) {
             throw new Exception('IAAngularAdminPanelBundle require IAAngularApplicationBundle');
         }

@@ -14,7 +14,7 @@
                 <input id="currentUrl" type="text" size="100" name="currentUrl" value="{{ currentUrl }}" />
                 <input id="btnBrowse" type="button" value="Browse" data-browserUrl="{{ path('ia_web_content_thief_browse') }}" />
             </div>    
-            <iframe id="remoteBrowser" width="900" height="500" data-browserCss="{{ assetsPath }}/css/browser.css"></iframe>
+            <iframe id="remoteBrowser" width="900" height="500" data-browserCss="{{ asset('css/browser.css') }}"></iframe>
         </div>
 
         <br class="clear" />
@@ -185,7 +185,9 @@
 {% block endDocumentScripts %}
     {{ parent() }}
     
-    {% javascripts 'bundles/iawebcontentthief/js/parser.js' %}
+    {% javascripts filter="?uglifyjs2" output="assets/build/webcontentthief.js" 
+        '@IAWebContentThiefBundle/Resources/public/js/*' 
+    %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 

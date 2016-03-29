@@ -1,0 +1,24 @@
+<ul class="sidebar-menu">
+    <li class="sub-menu">
+        <a class="" href="javascript:;">
+            <i class="icon_genius"></i>
+            <span>Projects</span>
+            <span class="menu-arrow arrow_carrot-right"></span>
+        </a>
+        <ul class="sub">
+            <li><a class="" href="{{ path('ia_web_content_thief_list_projects') }}">List Projects</a></li>
+            <li><a class="" href="{{ path('ia_web_content_thief_edit_project', {'id':0}) }}">Create New Project</a></li>
+        </ul>
+    </li>
+    <li class="sub-menu">                     
+        <a class="" href="javascript:;">
+            <i class="icon_piechart"></i>
+            <span>Fieldsets</span>
+            <span class="menu-arrow arrow_carrot-right"></span>
+        </a>
+        <ul class="sub">
+            <li><a class="" href="{{ path('ia_web_content_thief_fieldsets_list') }}">List Fieldsets</a></li>
+            <li><a class="" href="{{ path('ia_web_content_thief_fieldsets_edit', {'id':0}) }}">Create New Fieldset</a></li>
+        </ul>
+    </li> 
+</ul>

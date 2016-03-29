@@ -14,7 +14,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
-            new Symfony\Bundle\MonologBundle\MonologBundle(),
+            //new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             
@@ -30,7 +30,7 @@ class AppKernel extends Kernel
              */
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppVentus\AsseticInjectorBundle\AvAsseticInjectorBundle(),
-            new Hearsay\RequireJSBundle\HearsayRequireJSBundle(),
+            //new Hearsay\RequireJSBundle\HearsayRequireJSBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
@@ -39,14 +39,14 @@ class AppKernel extends Kernel
             /*
              * IA Bundles
              */
-            new ServerGrove\Bundle\TranslationEditorBundle\ServerGroveTranslationEditorBundle(),
-            new IA\Bundle\AngularApplicationBundle\IAAngularApplicationBundle(),
-            new IA\Bundle\ServerBundle\IAServerBundle(),
-            new IA\Bundle\CmsBundle\IACmsBundle(),
-            new IA\Bundle\NavigationBundle\IANavigationBundle(),
-            new IA\Bundle\AngularAdminPanelBundle\IAAngularAdminPanelBundle(),
+            //new ServerGrove\Bundle\TranslationEditorBundle\ServerGroveTranslationEditorBundle(),
+            //new IA\Bundle\AngularApplicationBundle\IAAngularApplicationBundle(),
+            //new IA\Bundle\ServerBundle\IAServerBundle(),
+            //new IA\Bundle\CmsBundle\IACmsBundle(),
+            //new IA\Bundle\NavigationBundle\IANavigationBundle(),
+            //new IA\Bundle\AngularAdminPanelBundle\IAAngularAdminPanelBundle(),
             new IA\Bundle\UsersBundle\IAUsersBundle(),
-            new IA\Bundle\MultiLanguageBundle\IAMultiLanguageBundle(),
+            //new IA\Bundle\MultiLanguageBundle\IAMultiLanguageBundle(),
             new IA\Bundle\WebContentThiefBundle\IAWebContentThiefBundle(),
             new IA\Bundle\ApplicationBundle\IAApplicationBundle(),
         );
