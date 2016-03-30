@@ -3,6 +3,7 @@
 namespace IA\Bundle\WebContentThiefBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * WctFieldsets
@@ -35,7 +36,18 @@ class Fieldset
      */
     private $active;
 
-
+    /**
+     * @ORM\OneToMany(targetEntity="FieldsetField", mappedBy="fieldset")
+     */
+    public $fields;
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->fields = new ArrayCollection();
+    }
 
     /**
      * Get id

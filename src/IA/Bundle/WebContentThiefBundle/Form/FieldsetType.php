@@ -15,23 +15,26 @@ class FieldsetType extends AbstractType
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    {        
         $builder
             ->add('title', 'text')
-            ->add('fields', 'entity', array(
-                'mapped' => false,
-                'multiple' => true,
-                'by_reference' => false,
-               'class' => 'IAWebContentThiefBundle:FieldsetField'
+            ->add('fields', 'collection', array(
+                'type'      => new FieldsetFieldType(),
+                'allow_add' => true,
+                //'prototype' => true,
+                // Post update
+                'by_reference' => false
             ))
+            ->add('btnSave', 'submit', array('label' => 'Save'))
+            ->add('btnCancel', 'button', array('label' => 'Cancel'))
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'IA\Bundle\WebContentThiefBundle\Entity\Fieldset'
-        ));
+//        $resolver->setDefaults(array(
+//            'data_class' => 'IA\Bundle\WebContentThiefBundle\Entity\Fieldset'
+//        ));
     }
 
 }

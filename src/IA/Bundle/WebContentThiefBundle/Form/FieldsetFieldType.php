@@ -18,7 +18,9 @@ class FieldsetFieldType extends AbstractType
     {
         $builder
             ->add('title', 'text')
-            
+            ->add('type', 'entity', array(
+                'class' => 'IA\Bundle\WebContentThiefBundle\Entity\FieldsetFieldType'
+            ))
         ;
     }
 

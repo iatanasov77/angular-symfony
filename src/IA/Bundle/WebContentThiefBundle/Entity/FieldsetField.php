@@ -24,6 +24,13 @@ class FieldsetField
     /**
      * @var integer
      *
+     * @ORM\Column(name="typeId", type="integer", nullable=false)
+     */
+    private $typeid;
+    
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="fieldsetId", type="integer", nullable=false)
      */
     private $fieldsetid;
@@ -47,6 +54,29 @@ class FieldsetField
         return $this->id;
     }
 
+    /**
+     * Set typeid
+     *
+     * @param integer $typeid
+     * @return WctFieldsetsFields
+     */
+    public function setTypeid($typeid)
+    {
+        $this->typeid = $typeid;
+
+        return $this;
+    }
+
+    /**
+     * Get typeid
+     *
+     * @return integer 
+     */
+    public function getTypeid()
+    {
+        return $this->typeid;
+    }
+    
     /**
      * Set fieldsetid
      *

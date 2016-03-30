@@ -28,8 +28,6 @@ class FieldsetsController extends Controller
         $oFieldset = $id ? $er->findOneBy('id', $id) : new Fieldset();
         
         $form = $this->createForm(new FieldsetType(), $oFieldset);
-        $form->add('submit', 'submit', array('label' => 'Save'));
-        
         $request = $this->get('request');
         $form->handleRequest($request);
         //if($form->isSubmitted() && $form->isValid()) {
@@ -55,7 +53,7 @@ class FieldsetsController extends Controller
         $form->handleRequest($request);
         //if($form->isSubmitted() && $form->isValid()) {
         if($request->isMethod('POST')) {
-            $formData =     $form->getData();
+            $formData = $form->getData();
         }
         
         $tplVars = array(
