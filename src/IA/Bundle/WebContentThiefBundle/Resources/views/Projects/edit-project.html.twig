@@ -177,7 +177,6 @@
                     </td>
                 </tr>		
                 <tr><td colspan="2">&nbsp;</td></tr>
-
             </table>
         </div>
     </form>
@@ -188,7 +187,7 @@
     {{ parent() }}
     
     {% javascripts filter="?uglifyjs2" output="assets/build/webcontentthief.js" 
-        '@IAWebContentThiefBundle/Resources/public/js/*' 
+        '@IAWebContentThiefBundle/Resources/public/js/projects-edit.js' 
     %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}

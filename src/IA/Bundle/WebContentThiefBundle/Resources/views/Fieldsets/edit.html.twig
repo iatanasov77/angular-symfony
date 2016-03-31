@@ -18,46 +18,51 @@
                             {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
                         </div>
                     </div>
-                    <div class="form-group">
-                        <ul id="fields-list" data-prototype="{{ form_widget(form.fields.vars.prototype)|e }}">
-                            {% for field in form.fields %}
-                                <li>
-                                    {{ form_widget(field) }}
-                                </li>
-                            {% endfor %}
-                        </ul>
-                        <a href="#" id="add-another-field">Add</a>
+                      
+                    <fieldset>
+                        <legend>Fields</legend>
                         
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label required" for="FormFieldset_fields">Fields</label>
-                        <div class="col-sm-10">
-                            <div class="col-lg-4">
-                                <input type="text" class="form-control" />
+                        {% for field in form.fields %}
+                            <div class="fieldsRow">
+                                <div class="col-sm-10">
+                                    <div class="col-lg-4">
+                                        {{ form_widget(field.title, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                    <div class="col-lg-2">
+                                        {{ form_widget(field.type, {'attr': {'class': 'form-control m-bot15'}}) }}
+                                    </div>
+
+                                    <a href="javascript:;" class="btn btn-success btnAddField"><i class="icon_plus_alt2"></i></a>
+                                    <a href="javascript:;" class="btn btn-danger btnRemoveField"><i class="icon_close_alt2"></i></a>
+                                </div>
                             </div>
-                            <div class="col-lg-2">
-                                <select class="form-control m-bot15">
-                                    <option>Choose Type</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                </select>
+                        {% endfor %}
+                        <div class="fieldsRow">
+                            <div class="col-sm-10">
+                                <div class="col-lg-4">
+                                    {{ form_widget(form.fields.vars.prototype.title, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="col-lg-2">
+                                    {{ form_widget(form.fields.vars.prototype.type, {'attr': {'class': 'form-control m-bot15'}}) }}
+                                </div>
+
+                                <a href="javascript:;" class="btn btn-success btnAddField"><i class="icon_plus_alt2"></i></a>
+                                <a href="javascript:;" class="btn btn-danger btnRemoveField"><i class="icon_close_alt2"></i></a>
                             </div>
                         </div>
-                    </div>
+                    </fieldset>    
+                        
                     {{ form_widget(form.btnSave, {'attr': {'class': 'btn btn-primary', 'id':'btnSave'}}) }}
                     {{ form_widget(form.btnCancel, {'attr': {'class': 'btn btn-default', 'id':'btnCancel'}}) }}
                 {{ form_end(form) }}
             </div>
         </section>
-        <a href="#" id="btnAddField">Add Field</a>
-        
     </div>
 {% endblock content %}
 
 {% block endDocumentScripts %}
     {{ parent() }}
-    <script type="text/javascript">
+    {#<script type="text/javascript">
         jQuery(function () {
             jQuery("#btnAddField").on('click', function (e) {
                 jQuery("#popup").dialog({modal: true}).dialog('open').load("{{ path('ia_web_content_thief_fieldsets_add_field') }}");
@@ -65,31 +70,13 @@
         });
 
     
-    </script>
+    </script>#}
     
-    
-    <script type="text/javascript">
-    // keep track of how many email fields have been rendered
-    var fieldsCount = '{{ form.fields | length }}';
+    {% javascripts filter="?uglifyjs2" output="assets/build/layout.js"
+            '@IAWebContentThiefBundle/Resources/public/js/jquery.duplicateFields.js'
+            '@IAWebContentThiefBundle/Resources/public/js/fieldsets-edit.js' 
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 
-    jQuery(document).ready(function() {
-        jQuery('#add-another-field').click(function(e) {
-            e.preventDefault();
-
-            var fieldsList = jQuery('#fields-list');
-
-            // grab the prototype template
-            var newWidget = fieldsList.attr('data-prototype');
-            // replace the "__name__" used in the id and name of the prototype
-            // with a number that's unique to your emails
-            // end name attribute looks like name="contact[emails][2]"
-            newWidget = newWidget.replace(/__name__/g, fieldsCount);
-            fieldsCount++;
-
-            // create a new list element and add it to the list
-            var newLi = jQuery('<li></li>').html(newWidget);
-            newLi.appendTo(fieldsList);
-        });
-    })
-</script>
 {% endblock endDocumentScripts %}

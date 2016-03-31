@@ -21,7 +21,7 @@ class FieldsetType extends AbstractType
             ->add('fields', 'collection', array(
                 'type'      => new FieldsetFieldType(),
                 'allow_add' => true,
-                //'prototype' => true,
+                'prototype' => true,
                 // Post update
                 'by_reference' => false
             ))
