@@ -24,16 +24,18 @@ class FieldsetField
     /**
      * @var integer
      *
-     * @ORM\Column(name="typeId", type="integer", nullable=false)
+     * @ORM\OneToOne(targetEntity="FieldsetFieldType")
+     * @ORM\JoinColumn(name="typeId", referencedColumnName="id")
      */
-    private $typeid;
+    private $type;
     
     /**
      * @var integer
-     *
+     * 
+     * @ORM\ManyToOne(targetEntity="Fieldset", inversedBy="fields")
      * @ORM\Column(name="fieldsetId", type="integer", nullable=false)
      */
-    private $fieldsetid;
+    private $fieldset;
 
     /**
      * @var string
@@ -57,47 +59,47 @@ class FieldsetField
     /**
      * Set typeid
      *
-     * @param integer $typeid
+     * @param integer $type
      * @return WctFieldsetsFields
      */
-    public function setTypeid($typeid)
+    public function setType($type)
     {
-        $this->typeid = $typeid;
+        $this->type = $type;
 
         return $this;
     }
 
     /**
-     * Get typeid
+     * Get type
      *
-     * @return integer 
+     * @return FieldsetFieldType
      */
-    public function getTypeid()
+    public function getType()
     {
-        return $this->typeid;
+        return $this->type;
     }
     
     /**
      * Set fieldsetid
      *
-     * @param integer $fieldsetid
+     * @param integer $fieldset
      * @return WctFieldsetsFields
      */
-    public function setFieldsetid($fieldsetid)
+    public function setFieldset($fieldset)
     {
-        $this->fieldsetid = $fieldsetid;
+        $this->fieldset = $fieldset;
 
         return $this;
     }
 
     /**
-     * Get fieldsetid
+     * Get fieldset
      *
-     * @return integer 
+     * @return FieldsetFieldType
      */
-    public function getFieldsetid()
+    public function getFieldset()
     {
-        return $this->fieldsetid;
+        return $this->fieldset;
     }
 
     /**

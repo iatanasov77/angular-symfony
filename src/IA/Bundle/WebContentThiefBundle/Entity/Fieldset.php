@@ -37,7 +37,7 @@ class Fieldset
     private $active;
 
     /**
-     * @ORM\OneToMany(targetEntity="FieldsetField", mappedBy="fieldset")
+     * @ORM\OneToMany(targetEntity="FieldsetField", mappedBy="fieldset" ,cascade={"persist"})
      */
     public $fields;
     
@@ -103,5 +103,35 @@ class Fieldset
     public function getActive()
     {
         return $this->active;
+    }
+    
+    
+    function getFields() 
+    {
+        return $this->fields;
+    }
+    
+    function setFields($fields) 
+    {
+        foreach($fields as $field){
+            $this->addField($field);
+        }
+        
+        return $this;
+    }
+
+
+    
+    public function addField(FieldsetField $field)
+    {
+        $field->setFieldset($this);
+        $this->fields[] = $field;
+        
+        return $this;
+    }
+    
+    public function removeField(FieldsetField $field)
+    {
+        $this->fields->removeElement($field);
     }
 }

@@ -1,6 +1,7 @@
+
  $(function () {
-    $('.fieldsRow').duplicateElement({
-        "class_remove": ".btnRemoveField",
-        "class_create": ".btnAddField"
+    $('.fieldsContainer').duplicateFields({
+        btnRemoveSelector: ".btnRemoveField",
+        btnAddSelector:    ".btnAddField"
     });
 });
