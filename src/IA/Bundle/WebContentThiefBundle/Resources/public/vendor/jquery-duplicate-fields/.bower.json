@@ -1,0 +1,17 @@
+{
+  "name": "jquery-duplicate-fields",
+  "version": "0.0.2",
+  "dependencies": {
+    "jquery": ">=1.10.2"
+  },
+  "homepage": "https://github.com/iatanasov77/jquery-duplicate-fields",
+  "_release": "0.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.2",
+    "commit": "20823f4853208ff2aeb92cdea6d907c7036fba74"
+  },
+  "_source": "git://github.com/iatanasov77/jquery-duplicate-fields.git",
+  "_target": "*",
+  "_originalSource": "jquery-duplicate-fields"
+}

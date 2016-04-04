@@ -3,7 +3,7 @@
     "name": "ia-web-content-thief",
     
     "dependencies": {
-        
+        "jquery-duplicate-fields": "latest"
     },
     "install" : {
         "path"  : {
