@@ -5,7 +5,7 @@ namespace IA\Bundle\WebContentThiefBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * WctFieldsetsFields
+ * FieldsetsField
  *
  * @ORM\Table(name="WCT_Fieldsets_Fields")
  * @ORM\Entity
@@ -22,7 +22,6 @@ class FieldsetField
     private $id;
 
     /**
-     * @var integer
      *
      * @ORM\OneToOne(targetEntity="FieldsetFieldType")
      * @ORM\JoinColumn(name="typeId", referencedColumnName="id")
@@ -30,10 +29,9 @@ class FieldsetField
     private $type;
     
     /**
-     * @var integer
      * 
      * @ORM\ManyToOne(targetEntity="Fieldset", inversedBy="fields")
-     * @ORM\Column(name="fieldsetId", type="integer", nullable=false)
+     * @ORM\JoinColumn(name="fieldsetId", referencedColumnName="id")
      */
     private $fieldset;
 
@@ -43,7 +41,6 @@ class FieldsetField
      * @ORM\Column(name="title", type="string", length=64, nullable=false)
      */
     private $title;
-
 
 
     /**
@@ -57,12 +54,12 @@ class FieldsetField
     }
 
     /**
-     * Set typeid
+     * Set type
      *
-     * @param integer $type
-     * @return WctFieldsetsFields
+     * @param FieldsetFieldType $type
+     * @return FieldsetsField
      */
-    public function setType($type)
+    public function setType(FieldsetFieldType $type)
     {
         $this->type = $type;
 
@@ -80,12 +77,12 @@ class FieldsetField
     }
     
     /**
-     * Set fieldsetid
+     * Set fieldset
      *
-     * @param integer $fieldset
+     * @param Fieldset $fieldset
      * @return WctFieldsetsFields
      */
-    public function setFieldset($fieldset)
+    public function setFieldset(Fieldset $fieldset)
     {
         $this->fieldset = $fieldset;
 
@@ -95,7 +92,7 @@ class FieldsetField
     /**
      * Get fieldset
      *
-     * @return FieldsetFieldType
+     * @return Fieldset
      */
     public function getFieldset()
     {
@@ -106,7 +103,7 @@ class FieldsetField
      * Set title
      *
      * @param string $title
-     * @return WctFieldsetsFields
+     * @return FieldsetsField
      */
     public function setTitle($title)
     {

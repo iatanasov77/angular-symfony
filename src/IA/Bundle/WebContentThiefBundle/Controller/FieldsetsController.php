@@ -33,7 +33,7 @@ class FieldsetsController extends Controller
             if($form->isValid()) {
                 // Валидацията гърми
             }
-
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($form->getData());
             $em->flush();

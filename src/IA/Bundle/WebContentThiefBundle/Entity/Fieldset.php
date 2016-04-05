@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * WctFieldsets
+ * Fieldset
  *
  * @ORM\Table(name="WCT_Fieldsets")
  * @ORM\Entity
@@ -108,30 +108,25 @@ class Fieldset
     
     function getFields() 
     {
-        return $this->fields;
+        return $this->fields->toArray();
     }
-    
-    function setFields($fields) 
-    {
-        foreach($fields as $field){
-            $this->addField($field);
-        }
-        
-        return $this;
-    }
-
-
     
     public function addField(FieldsetField $field)
     {
-        $field->setFieldset($this);
-        $this->fields[] = $field;
+        if(!$this->fields->contains($field)) {
+            $field->setFieldset($this);
+            $this->fields->add($field);
+        }
         
         return $this;
     }
     
     public function removeField(FieldsetField $field)
     {
-        $this->fields->removeElement($field);
+        if ($this->fields->contains($field)) {
+            $this->fields->removeElement($field);
+        }
+        
+        return $this;
     }
 }
