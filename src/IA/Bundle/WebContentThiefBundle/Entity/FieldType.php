@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * WctFieldsetsFields
  *
- * @ORM\Table(name="WCT_Fieldsets_Fields_Types")
+ * @ORM\Table(name="WCT_Field_Types")
  * @ORM\Entity
  */
-class FieldsetFieldType
+class FieldType
 {
     /**
      * @var integer

@@ -38,7 +38,7 @@ class Builder implements ContainerAwareInterface
     public function breadcrumbsMenu(FactoryInterface $factory, array $options)
     {
         $bcmenu = $this->mainMenu($factory, $options);
-        return $this->getCurrentMenuItem($bcmenu);
+        return $this->getCurrentMenuItem($bcmenu) ?: $factory->createItem('Edit');
     }
 
     public function getCurrentMenuItem($menu)

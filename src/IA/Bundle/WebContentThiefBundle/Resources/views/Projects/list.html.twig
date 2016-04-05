@@ -12,11 +12,11 @@
                     <th>Title</th>
                     <th width="150">Action</th>
                 </tr>
-                {% for item in projects %}
+                {% for item in items %}
                     <tr>
                         <td>
                             <input type="checkbox" name="active[{{ item.getId() }}]" />
-                            {{ prj.getId() }}
+                            {{ item.getId() }}
                         </td>
                         <td><a href="{{ path('ia_web_content_thief_edit_project', {'id': item.getId()}) }}">{{ item.getTitle() }}</a></td>
                         

@@ -113,7 +113,8 @@ class Fieldset
     
     public function addField(FieldsetField $field)
     {
-        if(!$this->fields->contains($field)) {
+        if($field->getTitle() 
+                && !$this->fields->contains($field)) {
             $field->setFieldset($this);
             $this->fields->add($field);
         }

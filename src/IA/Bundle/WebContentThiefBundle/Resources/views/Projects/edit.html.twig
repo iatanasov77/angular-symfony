@@ -1,4 +1,5 @@
 {% extends "IAApplicationBundle::layout.html.twig" %}
+
 {% block head_styles %}
     {{ parent() }}
     {% stylesheets filter='uglifycss, cssrewrite' output="assets/build/wct.css"
@@ -7,25 +8,20 @@
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
 {% endblock %}
+
 {% block title %}{{ parent() }} :: Edit Project{% endblock %}
 
 {% block pageTitle %}<i class="icon_genius"></i> Edit Project{% endblock %}
 
 {% block content %}
-
-    <script type="text/javascript">
-        var bAdsInside = 0;
-        var StatusRegistry = '{{ jsStatusRegistry }}';
-    </script>
-
     <div class="col-lg-12">
-        <section class="panel">
-            <header class="panel-heading"> Edit Project </header>
-            <div class="panel-body">
-                {{ form_start(form, { 'attr': {'class': 'form-horizontal '} }) }}
+        {{ form_start(form, { 'attr': {'class': 'form-horizontal '} }) }}
+            <section class="panel">
+                <header class="panel-heading"> Edit Project </header>
+                <div class="panel-body">
                     <div class="form-group">    
                         {{ form_label(form.active, null, {
-                            'label_attr': {'class': 'control-label col-lg-2'}
+                            'label_attr': {'class': 'control-label col-lg-1'}
                             }) 
                         }}
                         <div class="col-lg-10">
@@ -36,7 +32,7 @@
                     </div>
                     <div class="form-group">
                         {{ form_label(form.title, null, {
-                            'label_attr': {'class': 'col-sm-2 control-label'}
+                            'label_attr': {'class': 'col-sm-1 control-label'}
                             }) 
                         }}
                         <div class="col-sm-10">
@@ -46,19 +42,49 @@
                     
                     <div class="form-group">
                         {{ form_label(form.url, null, {
-                            'label_attr': {'class': 'col-sm-2 control-label'}
+                            'label_attr': {'class': 'col-sm-1 control-label'}
                             }) 
                         }}
                         <div class="col-sm-10">
                             {{ form_widget(form.url, {'attr': {'class': 'form-control'}}) }}
-                            <input id="btnBrowse" type="button" value="Browse" data-browserUrl="{{ path('ia_web_content_thief_browse') }}" />
+                            
                         </div>
-                        <iframe id="remoteBrowser" width="900" height="500" data-browserCss="{{ asset('css/browser.css') }}"></iframe>
+                        <input class="btn" id="btnBrowse" type="button" value="Browse" data-browserUrl="{{ path('ia_web_content_thief_browse') }}" />
+                        
+                        <div class="col-sm-1">&nbsp;</div>
+                        
+                        <div class="col-sm-12" style="margin: 20px 0 20px 0;">
+                            <iframe id="remoteBrowser" style="display:block; width:100%; height:500px;" data-browserCss="{{ asset('css/browser.css') }}"></iframe>
+                        </div>
+                        
+                        
+                            
+                        {{ form_label(form.xquery, null, {
+                            'label_attr': {'class': 'col-sm-1 control-label'}
+                            }) 
+                        }}
+                        <div class="col-sm-6">
+                            {{ form_widget(form.xquery, {'attr': {'class': 'form-control'}}) }}
+
+                        </div>
+                        {{ form_label(form.xqueryField, null, {
+                            'label_attr': {'class': 'col-sm-1 control-label'}
+                            }) 
+                        }}
+                        <div class="col-sm-2">
+                            {{ form_widget(form.xqueryField, {'attr': {'class': 'form-control xquery-field-select'}}) }}
+
+                        </div> 
+                        <div class="col-sm-1">
+                            <input class="btn" id="btnSetXquery" type="button" value="Set Xquery" />
+                        </div>
+                            
+                        
                     </div>
                     
                     <div class="form-group">
                         {{ form_label(form.detailsLink, null, {
-                            'label_attr': {'class': 'col-sm-2 control-label'}
+                            'label_attr': {'class': 'col-sm-1 control-label'}
                             }) 
                         }}
                         <div class="col-sm-10">
@@ -68,7 +94,7 @@
                         
                     <div class="form-group">
                         {{ form_label(form.pagerLink, null, {
-                            'label_attr': {'class': 'col-sm-2 control-label'}
+                            'label_attr': {'class': 'col-sm-1 control-label'}
                             }) 
                         }}
                         <div class="col-sm-10">
@@ -76,24 +102,48 @@
                         </div>
                     </div>
                         
-                    <div class="form-group">
-                        {{ form_label(form.fieldset, null, {
-                            'label_attr': {'class': 'col-sm-2 control-label'}
-                            }) 
-                        }}
-                        <div class="col-sm-10">
-                            {{ form_widget(form.fieldset, {'attr': {'class': 'form-control'}}) }}
+                   
+                            
+                    <fieldset>
+                        <legend>Custom Fields</legend>
+                         <div class="form-group">
+                            {{ form_label(form.fieldset, null, {
+                                'label_attr': {'class': 'col-sm-1 control-label'}
+                                }) 
+                            }}
+                            <div class="col-sm-4">
+                                {{ form_widget(form.fieldset, {'attr': {'class': 'form-control'}}) }}
+
+                            </div>
+                            <div class="col-sm-1">
+                                <input class="btn" id="btnAddFields" type="button" value="Add Fields" data-projectId="{{ item.getId() }}" data-addFieldsUrl="{{ path('ia_web_content_projects_add_fields') }}" />
+                            </div>
                         </div>
-                    </div>
+                        <div class="fieldsContainer" data-prototype="{% filter escape %}{% include 'IAWebContentThiefBundle:Projects:add-field-prototype.html.twig' with {'form': form.fields.vars.prototype} %}{% endfilter %}">
+                        {% for field in form.fields %}
+                            <div class="fieldsRow">
+                                <div class="col-sm-10">
+                                    <div class="col-lg-4">
+                                        {{ form_widget(field.title, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                    <div class="col-lg-2">
+                                        {{ form_widget(field.type, {'attr': {'class': 'form-control m-bot15'}}) }}
+                                    </div>
+
+                                    <a href="javascript:;" class="btn btn-success btnAddField"><i class="icon_plus_alt2"></i></a>
+                                    <a href="javascript:;" class="btn btn-danger btnRemoveField"><i class="icon_close_alt2"></i></a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </div>
+                        
+                    </fieldset> 
+                </div>
+            </section>
                     
-                    
-                    {{ form_widget(form.btnSave, {'attr': {'class': 'btn btn-primary', 'id':'btnSave'}}) }}
-                    {{ form_widget(form.btnCancel, {'attr': {'class': 'btn btn-default', 'id':'btnCancel'}}) }}
-                {{ form_end(form, {'render_rest': false}) }}
-                
-                
-            </div>
-        </section>
+            {{ form_widget(form.btnSave, {'attr': {'class': 'btn btn-primary', 'id':'btnSave'}}) }}
+            {{ form_widget(form.btnCancel, {'attr': {'class': 'btn btn-default', 'id':'btnCancel'}}) }}
+        {{ form_end(form, {'render_rest': false}) }}
     </div>
 {% endblock %}
 
@@ -101,6 +151,7 @@
     {{ parent() }}
     
     {% javascripts filter="?uglifyjs2" output="assets/build/webcontentthief.js" 
+        '@IAWebContentThiefBundle/Resources/public/vendor/jquery-duplicate-fields/jquery.duplicateFields.js'
         '@IAWebContentThiefBundle/Resources/public/js/projects-edit.js' 
     %}
         <script src="{{ asset_url }}"></script>

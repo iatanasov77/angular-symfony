@@ -5,6 +5,7 @@ namespace IA\Bundle\WebContentThiefBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use IA\Bundle\WebContentThiefBundle\Entity\Project;
+use IA\Bundle\WebContentThiefBundle\Entity\ProjectField;
 
 use IA\Bundle\WebContentThiefBundle\Form\ProjectType;
 
@@ -20,7 +21,7 @@ class ProjectsController extends Controller
 
 
         $tplVars = array(
-            'projects' => $er->findAll(),
+            'items' => $er->findAll(),
             'countProjects' => $er->countTotal()
         );
         return $this->render('IAWebContentThiefBundle:Projects:list.html.twig', $tplVars);
@@ -28,174 +29,29 @@ class ProjectsController extends Controller
 
     public function editProjectAction($id)
     {
-        $html = '';
-        $url = '';
-        $adsUrl = 0;
-
-        /*
-         * List with Charset Encodings
-         */
-        $charsetEncodings = array('UTF-8', 'CP1251');
-
-        
-        $pr = $this->getDoctrine()->getRepository('IAWebContentThiefBundle:Project');
-        if ($id) {
-            $oProject = $pr->findOneBy('id', $id);
-            $url = $oProject->url;
-        } else {
-            $oProject = new Project();
-        }
-        
-        $form = $this->createForm(new ProjectType(), $oProject);
-       
- 
-        
-        
-        
-        
-        
-        
-        
+        $er = $this->getDoctrine()->getRepository('IAWebContentThiefBundle:Project');
+        $oProject = $id ? $er->findOneBy(array('id' => $id)) : new Project();
         
         $request = $this->get('request');
-        $form->handleRequest($request);
-        //if($form->isSubmitted() && $form->isValid()) {
-        if($request->isMethod('POST')) {
-            $formData =     $form->getData();
-            
-            echo "<pre>"; var_dump($formData); die;
-            //$this->_initProject($oProject, $formData);
-
-            $formAction = $formData["formAction"];
-
-            /*
-             * Save Project
-             */
-            if ($formAction == 'save') {
-                try {
-                    $oProject->save();
-                } catch (DontCatchException $e) {
-                    echo '<pre>';
-                    die(var_dump($e));
-                }
-                /*
-                  catch(Exception $e) {
-                  //echo "<pre>"; die(var_dump($e));
-                  }
-                 */
-            }
-
-            /*
-             * Address Bar URL is changed
-             */ else if ($formAction == 'browse') {
-                $url = $this->_getParam("addressBar");
-                if (!empty($url)) {
-                    if (stripos($url, 'http') === FALSE) {
-                        $url = 'http://' . $url;
-                    }
-
-                    $pr = Doctrine_Core::getTable('Model_ParserProject')->findOneBy('url', $url);
-                    if (is_object($pr)) {
-                        $oProject = $pr;
-                    } else {
-                        $oProject->url = $url;
-                    }
-                }
-            } else if ($formAction == 'ads_url_changed') {
-                $adsUrl = $this->_getParam("ads_url");
-
-                if ($adsUrl != '0') {
-                    $url = $adsUrl;
-                }
-            }
-        }
-
-//        $catSql = Doctrine_Query::create()
-//                ->from('Model_Category c')
-//                ->leftJoin('c.Translation t')
-//                ->leftJoin('c.Fieldset f')
-//                ->leftJoin('c.Children ch')
-//                ->where('t.lang_id = ?');
-//        //->andWhere('c.parent_id=0');
-//        //->orderBy('c.parent_id')
-//
-//
-//        $categories = $catSql->execute(array('eng'));
-//        //$categories = $catSql->execute(array('bulgarian'));
-//        
-//        $fieldsets = Doctrine_Core::getTable('Model_Fieldset')->findAll();
-
-
-        /*
-         * Init General Fields
-         */
-        $fields = array(
-            array('caption' => 'add_link', 'Translation' => array(array('name' => 'Add Link'))),
-            array('caption' => 'page_link', 'Translation' => array(array('name' => 'Page Link')))
-        );
-
-
-        /*
-         * Init Ads Fields
-         */
-        if ($oProject->getCategoryid()) {
-
-
-            $fieldSql = Doctrine_Query::create()
-                    ->from('Model_Field f')
-                    ->leftJoin('f.Translation t')
-                    ->where("FIND_IN_SET({$oProject->getFieldsetId()} , f.fieldset)")
-                    ->andWhere('t.lang_id = ?');
-//die($fieldSql->getSqlQuery());
-            $fieldsAds = $fieldSql->execute(array('eng'))
-                    ->toArray();
-        }
-
-        $commonFieldsAds = array(
-            array('caption' => 'title', 'Translation' => array(array('name' => 'Title'))),
-            array('caption' => 'description', 'Translation' => array(array('name' => 'Description'))),
-            array('caption' => 'price', 'Translation' => array(array('name' => 'Price'))),
-            array('caption' => 'region', 'Translation' => array(array('name' => 'Region'))),
-            array('caption' => 'city', 'Translation' => array(array('name' => 'City'))),
-            array('caption' => 'zip', 'Translation' => array(array('name' => 'ZIP')))
-        );
-
-        $fieldsAds = empty($fieldsAds) ? $commonFieldsAds : array_merge($commonFieldsAds, $fieldsAds);
-
-        /*
-         * Init Picture Fields
-         */
-        $fieldsAdsPictures = array(
-            array('caption' => 'pictures_1', 'Translation' => array(array('name' => 'Picture 1'))),
-        );
-
+        $form = $this->createForm(new ProjectType(), $oProject);
         
-        if (!empty($url)) {
-            $html = $oProject->getUrlContent($url);
+        //if($form->isSubmitted()) {
+        if($request->isMethod('POST')) {
+            $form->handleRequest($request);
+            if($form->isValid()) {
+                // Валидацията гърми
+            }
+            
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($form->getData());
+            $em->flush();
+            
+            return $this->redirect($this->generateUrl('ia_web_content_thief_list_projects'));
         }
-//        $oEditor = new VS_TinyMce('tmceEdit');
-//        $oEditor->setStylesheet('/css/browser.css');
-//        $oEditor->setValue($html);
         
         $tplVars = array(
             'form'              => $form->createView(),
-            'ProjectRepository' => $pr,
-            'oProject'          => $oProject,
-            //'categoryId'        => $oProject->getCategoryid(),
-            //'categories'        => $categories,
-            'adsUrl'            => $adsUrl,
-            
-            'currentUrl'        => $url,
-            //'oEditor'           => $oEditor,
-            'html'              => $html,
-            //'fieldsets'         => $fieldsets,
-            'fields'            => $fields,
-            'fieldsAds'         => $fieldsAds,
-            'charsetEncodings'  => $charsetEncodings,
-            'fieldsAdsPictures' => $fieldsAdsPictures,
-            //'internalUrls'      => $oProject->getInternalUrls(),
-            'internalUrls'      => array(),
-            'jsStatusRegistry'  => null
+            'item'          => $oProject,
         );
         return $this->render('IAWebContentThiefBundle:Projects:edit.html.twig', $tplVars);
         //return $this->render('IAWebContentThiefBundle:Projects:edit-project.html.twig', $tplVars);
@@ -287,65 +143,36 @@ class ProjectsController extends Controller
         return new Response($html);
     }
     
-    /**
-     * Initialize Project Model
-     * 
-     * @param ParserProject $pr
-     * @param array $params
-     */
-    protected function _initProject(&$pr, $params)
+    function addFieldsAction()
     {
-        $pr->project_title = $params['projectName'];
-        $pr->url = $params['addressBar'];
-
-        //$pr->user = Doctrine_Core::getTable('Model_User')->findOneBy('id', Zend_Auth::getInstance()->getIdentity());
-        //$pr->category = Doctrine_Core::getTable('Model_Category')->findOneBy('id', $params['category']);
-        $pr->link('user', array(Zend_Auth::getInstance()->getIdentity()));
-        $pr->link('category', array($params['category']));
-
-        $pr->nopic = $params['nopic'];
-
-        /*
-         * Crop Picture Settings
-         */
-        $pr->picture_crop_top = $params['picture_crop_top'];
-        $pr->picture_crop_right = $params['picture_crop_right'];
-        $pr->picture_crop_bottom = $params['picture_crop_bottom'];
-        $pr->picture_crop_left = $params['picture_crop_left'];
-
-        $i = 0;
-        foreach ($params['projectFields'] as $pKey => $pVal) {
-            //$field = new Model_ParserProjectField();
-            //$field->fields_caption = $pKey;
-            //$field->xquery = $pVal;
-            //$pr->fields[$i] = $field;
-            $pr->fields[$i]['fields_caption'] = $pKey;
-            $pr->fields[$i]['xquery'] = $pVal;
-
-            $i++;
+        $request = $this->get('request');
+        $projectId = $request->request->get('projectId');
+        $fieldsetId = $request->request->get('fieldsetId');
+        
+        $fr = $this->getDoctrine()->getRepository('IAWebContentThiefBundle:Fieldset');
+        $oFieldset = $fieldsetId ? $fr->findOneBy(array('id' => $fieldsetId)) : null;
+        if(!$oFieldset) {
+            throw new \Exception('Fieldset not found!');
         }
-
-        $i = 0;
-        foreach ($params['projectFieldsAds'] as $pKey => $pVal) {
-            $pr->fieldsAds[$i]['fields_caption'] = $pKey;
-            $pr->fieldsAds[$i]['xquery'] = $pVal;
-
-            $i++;
+        
+        $pr = $this->getDoctrine()->getRepository('IAWebContentThiefBundle:Project');
+        $oProject = $projectId ? $pr->findOneBy(array('id' => $projectId)) : null;
+        if(!$oProject) {
+            throw new \Exception('Project not found!');
         }
-
-        $i = 0;
-
-        foreach ($params['projectFieldsAdsPictures'] as $pKey => $pVal) {
-            if (empty($pVal['xquery']))
-                continue;
-
-            $pr->fieldsAdsPictures[$i]['xquery'] = $pVal['xquery'];
-
-            $pr->fieldsAdsPictures[$i]['regex'] = get_magic_quotes_gpc() ? stripslashes($pVal['regex']) : $pVal['regex'];
-            $pr->fieldsAdsPictures[$i]['replace'] = get_magic_quotes_gpc() ? stripslashes($pVal['replace']) : $pVal['replace'];
-
-            $i++;
+        
+        foreach($oFieldset->getFields() as $field) {
+            $projectField = new ProjectField();
+            $projectField->setTitle($field->getTitle());
+            $projectField->setType($field->getType());
+            $projectField->setXquery('');
+            $oProject->addField($projectField);
         }
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($oProject);
+        $em->flush();
+
+        return new Response();
     }
 
 }

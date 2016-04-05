@@ -28,4 +28,7 @@ ia_web_content_thief_copy_project:
 ia_web_content_thief_browse:
     path:     /browse/
     defaults: { _controller: IAWebContentThiefBundle:Projects:browse }
+ia_web_content_projects_add_fields:
+    path:     /projects/add-fields
+    defaults: { _controller: IAWebContentThiefBundle:Projects:addFields}
     

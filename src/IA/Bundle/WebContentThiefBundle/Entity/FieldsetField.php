@@ -23,7 +23,7 @@ class FieldsetField
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="FieldsetFieldType")
+     * @ORM\OneToOne(targetEntity="FieldType")
      * @ORM\JoinColumn(name="typeId", referencedColumnName="id")
      */
     private $type;
@@ -56,10 +56,10 @@ class FieldsetField
     /**
      * Set type
      *
-     * @param FieldsetFieldType $type
+     * @param FieldType $type
      * @return FieldsetsField
      */
-    public function setType(FieldsetFieldType $type)
+    public function setType(FieldType $type)
     {
         $this->type = $type;
 
@@ -69,7 +69,7 @@ class FieldsetField
     /**
      * Get type
      *
-     * @return FieldsetFieldType
+     * @return FieldType
      */
     public function getType()
     {

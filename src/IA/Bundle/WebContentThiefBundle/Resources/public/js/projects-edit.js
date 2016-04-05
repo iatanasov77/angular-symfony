@@ -1,7 +1,7 @@
 
 $(function () {
     $('#btnBrowse').on('click', function () {
-        var browseUrl = $(this).attr('data-browserUrl') + '?url=' + encodeURIComponent($('#FormProject_url').val())
+        var browseUrl = $(this).attr('data-browserUrl') + '?url=' + encodeURIComponent($('#FormProject_url').val());
         $('#remoteBrowser').attr('src', browseUrl);
     });
 
@@ -18,11 +18,42 @@ $(function () {
             $(this).addClass('parserMarker');
 
             var xpath = getXPath(this);
-            alert(xpath);
-            //selectedtextbox.val(xpath)
+            $("#FormProject_xquery", parent.document).val(xpath);
         });
     });
-
+    
+    $('.fieldsContainer').duplicateFields({
+        btnRemoveSelector: ".btnRemoveField",
+        btnAddSelector:    ".btnAddField"
+    });
+    
+    $('#btnSetXquery').on('click', function() {
+        var xquery = $('#FormProject_xquery').val();
+        if(!xquery.length)
+            return;
+        
+        var fieldId = $('#FormProject_xqueryField').val();
+        $('#'+fieldId).val(xquery);
+    });
+    
+    $('#btnAddFields').on('click', function() {
+        var projectId = $(this).attr('data-projectId');
+        var fieldsetId = $('#FormProject_fieldset').val();
+        var url = $(this).attr('data-addFieldsUrl');
+        
+        $.ajax({
+            type: 'post',
+            dataType: 'json',
+            url: url,
+            data: {
+                projectId: projectId,
+                fieldsetId: fieldsetId
+            },
+            success: function(data) {
+                document.location = document.location;
+            }
+        });
+    });
 });
 
 

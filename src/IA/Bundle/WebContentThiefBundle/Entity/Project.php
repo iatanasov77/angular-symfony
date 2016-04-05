@@ -384,4 +384,29 @@ class Project
     {
         return $this->active;
     }
+    
+    function getFields() 
+    {
+        return $this->fields->toArray();
+    }
+    
+    public function addField(ProjectField $field)
+    {
+        if($field->getTitle() 
+                && !$this->fields->contains($field)) {
+            $field->setProject($this);
+            $this->fields->add($field);
+        }
+        
+        return $this;
+    }
+    
+    public function removeField(ProjectField $field)
+    {
+        if ($this->fields->contains($field)) {
+            $this->fields->removeElement($field);
+        }
+        
+        return $this;
+    }
 }

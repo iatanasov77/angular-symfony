@@ -24,7 +24,7 @@ class FieldsetsController extends Controller
     public function editAction($id)
     {
         $er = $this->getDoctrine()->getRepository('IAWebContentThiefBundle:Fieldset');
-        $oFieldset = $id ? $er->findOneBy('id', $id) : new Fieldset();
+        $oFieldset = $id ? $er->findOneBy(array('id' => $id)) : new Fieldset();
 
         $request = $this->get('request');
         $form = $this->createForm(new FieldsetType(), $oFieldset);

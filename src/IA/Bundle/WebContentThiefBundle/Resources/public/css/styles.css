@@ -1,3 +1,5 @@
-.fieldsRowPrototype {
-    display: none;
+#remoteBrowser:hover {
+    cursor:grab;
 }
+
+

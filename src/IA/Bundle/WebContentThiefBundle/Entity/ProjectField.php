@@ -19,6 +19,13 @@ class ProjectField
      */
     public $project;
     
+     /**
+     *
+     * @ORM\OneToOne(targetEntity="FieldType")
+     * @ORM\JoinColumn(name="typeId", referencedColumnName="id")
+     */
+    private $type;
+    
     /**
      * @var integer
      *
@@ -65,7 +72,7 @@ class ProjectField
      */
     public function setTitle($title)
     {
-        $this->itle = $title;
+        $this->title = $title;
 
         return $this;
     }
@@ -124,5 +131,28 @@ class ProjectField
     public function getProject()
     {
         return $this->project;
+    }
+    
+    /**
+     * Set type
+     *
+     * @param FieldType $type
+     * @return ProjectField
+     */
+    public function setType(FieldType $type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return FieldType
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }
