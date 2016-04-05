@@ -17,8 +17,8 @@ class FieldsetType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {        
         $builder
-            ->add('active', 'checkbox')
-            ->add('title', 'text')
+            ->add('active', 'checkbox', array('label' => 'Active'))
+            ->add('title', 'text', array('label' => 'Title'))
             ->add('fields', 'collection', array(
                 'type'         => new FieldsetFieldType(),
                 'allow_add'    => true,

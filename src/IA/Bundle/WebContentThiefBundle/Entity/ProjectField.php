@@ -15,6 +15,7 @@ class ProjectField
     
     /**
      * @ORM\ManyToOne(targetEntity="Project", inversedBy="fields")
+     * @ORM\JoinColumn(name="projectId", referencedColumnName="id")
      */
     public $project;
     
@@ -27,19 +28,14 @@ class ProjectField
      */
     private $id;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="projectId", type="integer", nullable=false)
-     */
-    private $projectid;
+    
 
     /**
      * @var string
      *
-     * @ORM\Column(name="fieldTitle", type="string", length=256, nullable=false)
+     * @ORM\Column(name="title", type="string", length=256, nullable=false)
      */
-    private $fieldtitle;
+    private $title;
 
     /**
      * @var string
@@ -60,50 +56,28 @@ class ProjectField
         return $this->id;
     }
 
+
     /**
-     * Set projectid
+     * Set title
      *
-     * @param integer $projectid
+     * @param string $title
      * @return WctProjectfields
      */
-    public function setProjectid($projectid)
+    public function setTitle($title)
     {
-        $this->projectid = $projectid;
+        $this->itle = $title;
 
         return $this;
     }
 
     /**
-     * Get projectid
-     *
-     * @return integer 
-     */
-    public function getProjectid()
-    {
-        return $this->projectid;
-    }
-
-    /**
-     * Set fieldtitle
-     *
-     * @param string $fieldtitle
-     * @return WctProjectfields
-     */
-    public function setFieldtitle($fieldtitle)
-    {
-        $this->fieldtitle = $fieldtitle;
-
-        return $this;
-    }
-
-    /**
-     * Get fieldtitle
+     * Get title
      *
      * @return string 
      */
-    public function getFieldtitle()
+    public function getTitle()
     {
-        return $this->fieldtitle;
+        return $this->title;
     }
 
     /**
@@ -127,5 +101,28 @@ class ProjectField
     public function getXquery()
     {
         return $this->xquery;
+    }
+    
+    /**
+     * Set project
+     *
+     * @param Project $project
+     * @return ProjectField
+     */
+    public function setProject(Project $project)
+    {
+        $this->project = $project;
+
+        return $this;
+    }
+
+    /**
+     * Get project
+     *
+     * @return Project
+     */
+    public function getProject()
+    {
+        return $this->project;
     }
 }

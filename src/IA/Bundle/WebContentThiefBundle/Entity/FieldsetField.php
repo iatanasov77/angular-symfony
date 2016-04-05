@@ -80,7 +80,7 @@ class FieldsetField
      * Set fieldset
      *
      * @param Fieldset $fieldset
-     * @return WctFieldsetsFields
+     * @return FieldsetField
      */
     public function setFieldset(Fieldset $fieldset)
     {

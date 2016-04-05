@@ -37,7 +37,7 @@ class Fieldset
     private $active;
 
     /**
-     * @ORM\OneToMany(targetEntity="FieldsetField", mappedBy="fieldset" ,cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="FieldsetField", mappedBy="fieldset", cascade={"persist"})
      */
     public $fields;
     

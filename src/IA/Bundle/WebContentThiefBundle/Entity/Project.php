@@ -14,20 +14,9 @@ class Project
 {
     
     /**
-     * @ORM\OneToMany(targetEntity="ProjectField", mappedBy="project")
+     * @ORM\OneToMany(targetEntity="ProjectField", mappedBy="project", cascade={"persist"})
      */
     public $fields;
-    
-    /**
-     * @ORM\OneToMany(targetEntity="ProjectFieldAds", mappedBy="project")
-     */
-    public $fieldsAds;
-    
-    /**
-     * @ORM\OneToMany(targetEntity="ProjectFieldAdsPicture", mappedBy="project")
-     */
-    public $fieldsAdsPictures;
-    
     
     /**
      * @var integer
@@ -62,10 +51,24 @@ class Project
     /**
      * @var string
      *
-     * @ORM\Column(name="projectTitle", type="string", length=128, nullable=true)
+     * @ORM\Column(name="title", type="string", length=128, nullable=true)
      */
-    private $projecttitle;
+    private $title;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="detailsLink", type="string", length=128, nullable=true)
+     */
+    private $detailsLink;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pagerLink", type="string", length=128, nullable=true)
+     */
+    private $pagerLink;
+    
     /**
      * @var string
      *
@@ -115,8 +118,6 @@ class Project
     public function __construct()
     {
         $this->fields = new ArrayCollection();
-        $this->fieldsAds = new ArrayCollection();
-        $this->fieldsAdsPictures = new ArrayCollection();
     }
 
     /**
@@ -199,28 +200,53 @@ class Project
     }
 
     /**
-     * Set projecttitle
+     * Set title
      *
-     * @param string $projecttitle
-     * @return WctProjects
+     * @param string $title
+     * @return Project
      */
-    public function setProjecttitle($projecttitle)
+    public function setTitle($title)
     {
-        $this->projecttitle = $projecttitle;
+        $this->title = $title;
 
         return $this;
     }
 
     /**
-     * Get projecttitle
+     * Get title
      *
      * @return string 
      */
-    public function getProjecttitle()
+    public function getTitle()
     {
-        return $this->projecttitle;
+        return $this->title;
     }
 
+    function getDetailsLink()
+    {
+        return $this->detailsLink;
+    }
+
+    function setDetailsLink($detailsLink)
+    {
+        $this->detailsLink = $detailsLink;
+        return $this;
+    }
+    function getPagerLink()
+    {
+        return $this->pagerLink;
+    }
+
+    
+
+    function setPagerLink($pagerLink)
+    {
+        $this->pagerLink = $pagerLink;
+        return $this;
+    }
+
+        
+    
     /**
      * Set nopic
      *

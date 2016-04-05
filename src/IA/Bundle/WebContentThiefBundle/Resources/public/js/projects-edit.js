@@ -1,7 +1,7 @@
 
 $(function () {
     $('#btnBrowse').on('click', function () {
-        var browseUrl = $(this).attr('data-browserUrl') + '?url=' + encodeURIComponent($('#currentUrl').val())
+        var browseUrl = $(this).attr('data-browserUrl') + '?url=' + encodeURIComponent($('#FormProject_url').val())
         $('#remoteBrowser').attr('src', browseUrl);
     });
 

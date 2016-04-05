@@ -47,7 +47,15 @@ class ProjectsController extends Controller
         }
         
         $form = $this->createForm(new ProjectType(), $oProject);
-        $form->add('submit', 'submit', array('label' => 'Save'));
+       
+ 
+        
+        
+        
+        
+        
+        
+        
         
         $request = $this->get('request');
         $form->handleRequest($request);
@@ -170,6 +178,7 @@ class ProjectsController extends Controller
 //        $oEditor->setValue($html);
         
         $tplVars = array(
+            'form'              => $form->createView(),
             'ProjectRepository' => $pr,
             'oProject'          => $oProject,
             //'categoryId'        => $oProject->getCategoryid(),
@@ -188,7 +197,8 @@ class ProjectsController extends Controller
             'internalUrls'      => array(),
             'jsStatusRegistry'  => null
         );
-        return $this->render('IAWebContentThiefBundle:Projects:edit-project.html.twig', $tplVars);
+        return $this->render('IAWebContentThiefBundle:Projects:edit.html.twig', $tplVars);
+        //return $this->render('IAWebContentThiefBundle:Projects:edit-project.html.twig', $tplVars);
     }
 
     public function deleteProjectAction($id)
