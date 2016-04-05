@@ -15,7 +15,6 @@ class ProjectsController extends Controller
 
     public function listProjectsAction()
     {
-
         $er = $this->getDoctrine()->getRepository('IAWebContentThiefBundle:Project');
 
 

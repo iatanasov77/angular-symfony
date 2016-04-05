@@ -2,6 +2,9 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }  
 
+
+
+
 #server_grove_translation_editor:
 #  storage:
 #    type: server_grove_translation_editor.storage.orm
@@ -54,17 +57,23 @@ twig:
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver:   %database_driver%
-        host:     %database_host%
-        port:     %database_port%
-        dbname:   %database_name%
-        user:     %database_user%
-        password: %database_password%
-        charset:  UTF8
-        # if using pdo_sqlite as your database driver, add the path in parameters.yml
-        # e.g. database_path: %kernel.root_dir%/data/data.db3
-        # path:     %database_path%
-
+        default_connection: default
+        connections:
+            default:
+                driver:   %database_driver%
+                host:     %database_host%
+                port:     %database_port%
+                dbname:   %database_name%
+                user:     %database_user%
+                password: %database_password%
+                charset:  UTF8
+            dynamic:
+                driver:   %database_driver%
+                host:     %database_host%
+                port:     %database_port%
+                dbname:   'empty_database'
+                charset:  UTF8
+                wrapper_class: 'IA\Bundle\DoctrineBundle\Connection\ConnectionWrapper'
     orm:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
