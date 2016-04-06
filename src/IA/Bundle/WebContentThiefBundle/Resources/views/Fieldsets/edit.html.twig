@@ -45,19 +45,7 @@
 
                         <div class="fieldsContainer" data-prototype="{% filter escape %}{% include 'IAWebContentThiefBundle:Fieldsets:add-field-prototype.html.twig' with {'form': form.fields.vars.prototype} %}{% endfilter %}">
                         {% for field in form.fields %}
-                            <div class="fieldsRow">
-                                <div class="col-sm-10">
-                                    <div class="col-lg-4">
-                                        {{ form_widget(field.title, {'attr': {'class': 'form-control'}}) }}
-                                    </div>
-                                    <div class="col-lg-2">
-                                        {{ form_widget(field.type, {'attr': {'class': 'form-control m-bot15'}}) }}
-                                    </div>
-
-                                    <a href="javascript:;" class="btn btn-success btnAddField"><i class="icon_plus_alt2"></i></a>
-                                    <a href="javascript:;" class="btn btn-danger btnRemoveField"><i class="icon_close_alt2"></i></a>
-                                </div>
-                            </div>
+                            {% include 'IAWebContentThiefBundle:Fieldsets:add-field-prototype.html.twig' with {'form': field} %}
                         {% endfor %}
                         </div>
 

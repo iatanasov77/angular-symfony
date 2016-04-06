@@ -5,8 +5,11 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use IA\Bundle\WebContentThiefBundle\Entity\Project;
+
 class ProjectType extends AbstractType
 {
+    
     public function getName()
     {
         return 'FormProject';
@@ -19,26 +22,26 @@ class ProjectType extends AbstractType
             ->add('title', 'text', array('label' => 'Title'))
             
             ->add('url', 'text', array('label' => 'Url')) // , array("mapped" => false)
-            ->add('xquery', 'text', array('label' => 'XQuery', "mapped" => false))
+            
+            ->add('xquery', 'text', array('label' => 'XQuery', "mapped" => false, 'required' => false))
             ->add('xqueryField', 'choice', array(
                 'label' => 'Set to field:',
+                'required' => false,
                 'mapped' => false,
-                'choices' => array(
-                    'FormProject_detailsLink' => 'Details Link',
-                    'FormProject_pagerLink' => 'Pager Link',
-                )
+                'choices' => $this->getXqueryFieldChoices($options['data'])
             ))    
-                
-                
-            // General XPath Fields
-            ->add('detailsLink', 'text', array('label' => 'Details Link'))
-            ->add('pagerLink', 'text', array('label' => 'Pager Link'))
+            
+            ->add('detailsPage', 'text', array('label'=> 'Details Page', "mapped" => false, 'required' => false))
+            ->add('detailsLink', 'text', array('label'=> 'Details Link'))
+            ->add('pagerLink', 'text', array('label'=> 'Pager Link'))
                 
             ->add('fieldset', 'entity', array(
                 'class' => 'IA\Bundle\WebContentThiefBundle\Entity\Fieldset',
                 'choice_label' => 'title',
-                "mapped" => false
+                "mapped" => false,
+                'required' => false
             ))
+            
                 
             ->add('fields', 'collection', array(
                 'type'         => new ProjectFieldType(),
@@ -47,10 +50,22 @@ class ProjectType extends AbstractType
                 'prototype'    => true,
                 'by_reference' => false
             ))
+             
                 
             ->add('btnSave', 'submit', array('label' => 'Save'))
             ->add('btnCancel', 'button', array('label' => 'Cancel'))
+                
+                
+            ->add('links', 'collection', array(
+                'type' => new ProjectLinkType(),
+                'data' => $options["data"]->getLinks(),
+                'mapped'=> false,
+                'required' => false
+            ))
         ;
+        
+        
+        
     }
     
     public function configureOptions(OptionsResolver $resolver)
@@ -58,5 +73,20 @@ class ProjectType extends AbstractType
         $resolver->setDefaults(array(
             'data_class' => 'IA\Bundle\WebContentThiefBundle\Entity\Project'
         ));
+    }
+    
+    protected function getXqueryFieldChoices(Project $project)
+    {
+        $choices = array(
+            'FormProject_detailsLink' => 'Details Link',
+            'FormProject_pagerLink'   => 'Pager Link'
+        );
+        $i = 0;
+        foreach($project->getFields() as $field) {
+            $choices['FormProject_fields_'.$i++.'_xquery'] = $field->getTitle();
+        }
+        
+        
+        return $choices;
     }
 }

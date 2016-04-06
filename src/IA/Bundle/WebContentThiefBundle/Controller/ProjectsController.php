@@ -10,6 +10,7 @@ use IA\Bundle\WebContentThiefBundle\Entity\ProjectField;
 use IA\Bundle\WebContentThiefBundle\Form\ProjectType;
 
 use IA\Bundle\WebContentThiefBundle\Utils\RemoteContent;
+use Symfony\Component\DomCrawler\Crawler;
 
 class ProjectsController extends Controller
 {
@@ -33,6 +34,20 @@ class ProjectsController extends Controller
         
         $request = $this->get('request');
         $form = $this->createForm(new ProjectType(), $oProject);
+        if($oProject->getId()) {
+            
+            /*
+             *  Fetch and populate First Details Page Link 
+             */
+            $remoteContent = new RemoteContent();
+            $html = $remoteContent->browseUrl($oProject->getUrl());
+            $crawler = new Crawler($html);
+            $detailsLink = $crawler->filterXPath($oProject->getDetailsLink())->attr('href');
+            $form->get('detailsPage')->setData($detailsLink);
+        } else {
+            $detailsLink = '';
+        }
+        
         
         //if($form->isSubmitted()) {
         if($request->isMethod('POST')) {
@@ -49,11 +64,11 @@ class ProjectsController extends Controller
         }
         
         $tplVars = array(
-            'form'              => $form->createView(),
+            'form'          => $form->createView(),
             'item'          => $oProject,
+            'detailsPageUrl'=> $detailsLink
         );
         return $this->render('IAWebContentThiefBundle:Projects:edit.html.twig', $tplVars);
-        //return $this->render('IAWebContentThiefBundle:Projects:edit-project.html.twig', $tplVars);
     }
 
     public function deleteProjectAction($id)
@@ -131,13 +146,10 @@ class ProjectsController extends Controller
         $this->_helper->redirector('list', 'index');
     }
 
-    public function browseAction()
+    public function browseAction($url)
     {
-        $request = $this->get('request');
-        $url = $request->get('url');
-        
         $remoteContent = new RemoteContent();
-        $html = $remoteContent->browseUrl($url);
+        $html = $remoteContent->browseUrl(urldecode($url));
         
         return new Response($html);
     }

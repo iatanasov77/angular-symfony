@@ -1,4 +1,5 @@
 <?php
+
 namespace IA\Bundle\WebContentThiefBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -12,12 +13,12 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Project
 {
-    
+
     /**
      * @ORM\OneToMany(targetEntity="ProjectField", mappedBy="project", cascade={"persist"})
      */
     public $fields;
-    
+
     /**
      * @var integer
      *
@@ -51,24 +52,24 @@ class Project
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=128, nullable=true)
+     * @ORM\Column(name="title", type="string", length=128, nullable=false)
      */
     private $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="detailsLink", type="string", length=128, nullable=true)
+     * @ORM\Column(name="detailsLink", type="string", length=256, nullable=false)
      */
     private $detailsLink;
-    
+
     /**
      * @var string
      *
-     * @ORM\Column(name="pagerLink", type="string", length=128, nullable=true)
+     * @ORM\Column(name="pagerLink", type="string", length=256, nullable=false)
      */
     private $pagerLink;
-    
+
     /**
      * @var string
      *
@@ -110,7 +111,6 @@ class Project
      * @ORM\Column(name="active", type="boolean", nullable=false)
      */
     private $active;
-
 
     /**
      * Constructor
@@ -232,6 +232,7 @@ class Project
         $this->detailsLink = $detailsLink;
         return $this;
     }
+    
     function getPagerLink()
     {
         return $this->pagerLink;
@@ -245,8 +246,6 @@ class Project
         return $this;
     }
 
-        
-    
     /**
      * Set nopic
      *
@@ -384,29 +383,48 @@ class Project
     {
         return $this->active;
     }
-    
-    function getFields() 
+
+    function getFields()
     {
         return $this->fields->toArray();
     }
-    
+
     public function addField(ProjectField $field)
     {
-        if($field->getTitle() 
-                && !$this->fields->contains($field)) {
+        if($field->getTitle() && !$this->fields->contains($field)) {
             $field->setProject($this);
             $this->fields->add($field);
         }
-        
+
         return $this;
     }
-    
+
     public function removeField(ProjectField $field)
     {
-        if ($this->fields->contains($field)) {
+        if($this->fields->contains($field)) {
             $this->fields->removeElement($field);
         }
-        
+
         return $this;
     }
+
+    /*
+     * Get array of link fields
+     * 
+     * @return array
+     */
+
+    public function getLinks()
+    {
+        $links = array();
+
+        foreach($this->fields as $field) {
+            if($field->getType()->getTitle() == 'Link') {
+                $links[] = $field;
+            }
+        }
+
+        return $links;
+    }
+
 }

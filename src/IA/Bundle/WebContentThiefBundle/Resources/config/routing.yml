@@ -1,3 +1,5 @@
+
+# Fieldsets Controller
 ia_web_content_thief_fieldsets_add_field:
     path:     /fieldsets/add-field
     defaults: { _controller: IAWebContentThiefBundle:Fieldsets:addField}
@@ -7,6 +9,8 @@ ia_web_content_thief_fieldsets_list:
 ia_web_content_thief_fieldsets_edit:
     path:     /fieldsets/edit/{id}
     defaults: { _controller: IAWebContentThiefBundle:Fieldsets:edit }
+    
+# Projects Controller
 ia_web_content_thief_list_projects:
     path:     /
     defaults: { _controller: IAWebContentThiefBundle:Projects:listProjects }
@@ -26,9 +30,25 @@ ia_web_content_thief_copy_project:
     path:     /copy/{id}
     defaults: { _controller: IAWebContentThiefBundle:Projects:copyProject }
 ia_web_content_thief_browse:
-    path:     /browse/
+    path:     /browse/{url}
     defaults: { _controller: IAWebContentThiefBundle:Projects:browse }
 ia_web_content_projects_add_fields:
     path:     /projects/add-fields
-    defaults: { _controller: IAWebContentThiefBundle:Projects:addFields}
+    defaults: { _controller: IAWebContentThiefBundle:Projects:addFields }
+
+# Mappers Controller
+ia_web_content_thief_mappers_list:
+    path:     /mappers
+    defaults: { _controller: IAWebContentThiefBundle:Mappers:list }
+ia_web_content_thief_mappers_edit:
+    path:     /mappers/edit/{id}
+    defaults: { _controller: IAWebContentThiefBundle:Mappers:edit }
+
+# Connections Controller
+ia_web_content_thief_connections_list:
+    path:     /connections
+    defaults: { _controller: IAWebContentThiefBundle:Connections:list }
+ia_web_content_thief_connections_edit:
+    path:     /connections/edit/{id}
+    defaults: { _controller: IAWebContentThiefBundle:Connections:edit }
     

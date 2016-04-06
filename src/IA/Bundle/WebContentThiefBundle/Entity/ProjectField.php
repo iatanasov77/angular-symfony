@@ -47,7 +47,7 @@ class ProjectField
     /**
      * @var string
      *
-     * @ORM\Column(name="xquery", type="string", length=256, nullable=false)
+     * @ORM\Column(name="xquery", type="string", length=256, nullable=true)
      */
     private $xquery;
 

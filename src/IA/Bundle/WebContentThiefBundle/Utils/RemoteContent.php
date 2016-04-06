@@ -22,7 +22,7 @@ class RemoteContent
         curl_close($ch);
 
         if (!$html) {
-            throw new Exception(sprintf("Cannot browse this url: '%s'.", $url));
+            throw new \Exception(sprintf("Cannot browse this url: '%s'.", $url));
         }
         
         /*

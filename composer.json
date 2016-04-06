@@ -35,7 +35,8 @@
         
         "friendsofsymfony/user-bundle": "dev-master",
         "knplabs/knp-menu-bundle": "dev-master",
-        "knplabs/knp-paginator-bundle": "~2.3"
+        "knplabs/knp-paginator-bundle": "~2.3",
+        "symfony/dom-crawler": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
