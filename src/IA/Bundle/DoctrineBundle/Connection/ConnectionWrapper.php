@@ -4,22 +4,55 @@
  * $this->get('doctrine.dbal.dynamic_connection')->forceSwitch('WtsMara', 'root', 'ophthalamia');
  * 
  * @TODO Трябва да преместя конфигурацията от глобалния config.yml в този бъндъл.
- *      И съшто не можах да конфигорирам втория ентити менажер който да използва този конекшън
-        
-        doctrine:
-           orm:
-               default_entity_manager: default
-               entity_managers:
-                   default:
-                       connection: default
-                       mappings:
-                           AppBundle:  ~
-                           AcmeStoreBundle: ~
-                   customer:
-                       connection: customer
-                       mappings:
-                           AcmeCustomerBundle: ~
+ *      
  */
+
+
+/**
+ *    EXAMPLES
+ */
+//        $connection = $this->get('doctrine.dbal.dynamic_connection')->forceSwitch('WtsMara', 'root', 'ophthalamia');
+//        $connection->connect();
+//        $sm = $connection->getSchemaManager();
+        
+        // Documentation is here
+        //http://jwage.com/post/31080076112/doctrine-dbal-php-database-abstraction-layer
+        
+//        $sql = "SELECT * FROM Users";
+//        $stmt = $connection->query($sql);
+//        while ($row = $stmt->fetch()) {
+//            echo $row['email'];
+//        }
+//        die;
+        
+//        $countAffectedRows = $connection->executeUpdate('UPDATE user SET username = ? WHERE id = ?', array('jwage', 1));
+//        
+//        $connection->insert('user', array('username' => 'jwage'));
+//        // INSERT INTO user (username) VALUES (?) (jwage)
+//
+//        $connection->update('user', array('username' => 'jwage'), array('id' => 1));
+//        // UPDATE user (username) VALUES (?) WHERE id = ? (jwage, 1)
+        
+//        foreach ($sm->listTables() as $table) {
+//            echo $table->getName() . " columns:<br>";
+//            if($sm->tryMethod('listTableColumns', $table->getName(), 'WtsMara')) {
+//                foreach ($sm->listTableColumns($table->getName(), 'WtsMara') as $column) {
+//                    echo ' - ' . $column->getName() . "<br><br>";
+//                }
+//            } else {
+//                echo "Columns for this table cannot be listed. <br><br>";
+//            }
+//        }
+//        die;
+        
+        
+        
+//        var_dump($sm->listTableDetails('Users')); die;
+//        var_dump($sm->listTableColumns('EmailTemplates')); die;
+
+
+
+
 namespace IA\Bundle\DoctrineBundle\Connection;
 
 use Doctrine\DBAL\Connection;
@@ -56,7 +89,7 @@ class ConnectionWrapper extends Connection
         if ($this->session->has(self::SESSION_ACTIVE_DYNAMIC_CONN)) {
             $current = $this->session->get(self::SESSION_ACTIVE_DYNAMIC_CONN);
             if ($current[0] === $dbName) {
-                return true;
+                return $this;
             }
         }
 
@@ -70,7 +103,7 @@ class ConnectionWrapper extends Connection
             $this->close();
         }
         
-        return true;
+        return $this;
     }
 
     /**
