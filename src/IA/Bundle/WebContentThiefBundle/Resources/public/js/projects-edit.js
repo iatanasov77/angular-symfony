@@ -1,5 +1,11 @@
 
 $(function () {
+    $('#FormProject_url').on('change', function() {
+        var url = encodeURIComponent($(this).val());
+        var browseUrl = $('#btnBrowseProject').attr('data-url');
+        alert(browseUrl);
+    });
+    
     $('.btnBrowse').on('click', function () {
         $('#remoteBrowser').attr('src', $(this).attr('data-url'));
     });
