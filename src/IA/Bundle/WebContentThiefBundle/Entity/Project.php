@@ -15,9 +15,14 @@ class Project
 {
 
     /**
-     * @ORM\OneToMany(targetEntity="ProjectField", mappedBy="project", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="ProjectListingField", mappedBy="project", cascade={"persist"})
      */
-    public $fields;
+    public $listingFields;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="ProjectDetailsField", mappedBy="project", cascade={"persist"})
+     */
+    public $detailsFields;
 
     /**
      * @var integer
@@ -27,6 +32,13 @@ class Project
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="parseCountMax", type="integer", length=8, nullable=false, options={"default" = 100})
+     */
+    private $parseCountMax;
 
     /**
      * @var string
@@ -130,6 +142,17 @@ class Project
         return $this->id;
     }
 
+    function getParseCountMax() {
+        return $this->parseCountMax;
+    }
+    
+    function setParseCountMax($parseCountMax) {
+        $this->parseCountMax = $parseCountMax;
+        return $this;
+    }
+
+
+    
     /**
      * Set url
      *
@@ -384,47 +407,52 @@ class Project
         return $this->active;
     }
 
-    function getFields()
+    function getListingFields()
     {
-        return $this->fields->toArray();
+        return $this->listingFields->toArray();
     }
 
-    public function addField(ProjectField $field)
+    public function addListingField(ProjectListingField $field)
     {
-        if($field->getTitle() && !$this->fields->contains($field)) {
+        if($field->getTitle() && !$this->listingFields->contains($field)) {
             $field->setProject($this);
-            $this->fields->add($field);
+            $this->listingFields->add($field);
         }
 
         return $this;
     }
 
-    public function removeField(ProjectField $field)
+    public function removeListingField(ProjectField $field)
     {
-        if($this->fields->contains($field)) {
-            $this->fields->removeElement($field);
+        if($this->listingFields->contains($field)) {
+            $this->listingFields->removeElement($field);
+        }
+
+        return $this;
+    }
+    
+    function getDetailsFields()
+    {
+        return $this->detailsFields->toArray();
+    }
+
+    public function addDetailsField(ProjectDetailsField $field)
+    {
+        if($field->getTitle() && !$this->detailsFields->contains($field)) {
+            $field->setProject($this);
+            $this->detailsFields->add($field);
         }
 
         return $this;
     }
 
-    /*
-     * Get array of link fields
-     * 
-     * @return array
-     */
-
-    public function getLinks()
+    public function removeDetailsField(ProjectDetailsField $field)
     {
-        $links = array();
-
-        foreach($this->fields as $field) {
-            if($field->getType()->getTitle() == 'Link') {
-                $links[] = $field;
-            }
+        if($this->detailsFields->contains($field)) {
+            $this->detailsFields->removeElement($field);
         }
 
-        return $links;
+        return $this;
     }
 
 }

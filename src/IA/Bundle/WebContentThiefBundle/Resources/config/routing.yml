@@ -30,7 +30,7 @@ ia_web_content_thief_copy_project:
     path:     /copy/{id}
     defaults: { _controller: IAWebContentThiefBundle:Projects:copyProject }
 ia_web_content_thief_browse:
-    path:     /browse/{url}
+    path:     /browse
     defaults: { _controller: IAWebContentThiefBundle:Projects:browse }
 ia_web_content_projects_add_fields:
     path:     /projects/add-fields
@@ -51,4 +51,10 @@ ia_web_content_thief_connections_list:
 ia_web_content_thief_connections_edit:
     path:     /connections/edit/{id}
     defaults: { _controller: IAWebContentThiefBundle:Connections:edit }
+    
+# Parser Controller
+ia_web_content_thief_parser_run:
+    path:     /parser/run/{projectId}
+    defaults: { _controller: IAWebContentThiefBundle:Parser:run }
+
     

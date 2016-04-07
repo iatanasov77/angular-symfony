@@ -1,13 +1,11 @@
 
-$(function () {
-    $('#FormProject_url').on('change', function() {
-        var url = encodeURIComponent($(this).val());
-        var browseUrl = $('#btnBrowseProject').attr('data-url');
-        alert(browseUrl);
-    });
-    
+$(function () {    
     $('.btnBrowse').on('click', function () {
-        $('#remoteBrowser').attr('src', $(this).attr('data-url'));
+        var browserUrl = $(this).attr('data-browserUrl');
+        var url = $($(this).attr('data-urlInput')).val();
+        if(url.length) {
+            $('#remoteBrowser').attr('src', browserUrl + '?url=' + encodeURIComponent(url));
+        }
     });
 
     $('#remoteBrowser').on('load', function () {

@@ -19,7 +19,6 @@ class ProjectsController extends Controller
     {
         $er = $this->getDoctrine()->getRepository('IAWebContentThiefBundle:Project');
 
-
         $tplVars = array(
             'items' => $er->findAll(),
             'countProjects' => $er->countTotal()
@@ -146,8 +145,10 @@ class ProjectsController extends Controller
         $this->_helper->redirector('list', 'index');
     }
 
-    public function browseAction($url)
+    public function browseAction()
     {
+        $request = $this->get('request');
+        $url = $request->query->get('url');
         $remoteContent = new RemoteContent();
         $html = $remoteContent->browseUrl(urldecode($url));
         

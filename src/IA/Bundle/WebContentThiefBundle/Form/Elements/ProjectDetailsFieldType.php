@@ -1,12 +1,12 @@
 <?php
 
-namespace IA\Bundle\WebContentThiefBundle\Form;
+namespace IA\Bundle\WebContentThiefBundle\Form\Elements;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ProjectFieldType extends AbstractType
+class ProjectDetailsFieldType extends AbstractType
 {
 
     public function getName()
@@ -29,7 +29,7 @@ class ProjectFieldType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'IA\Bundle\WebContentThiefBundle\Entity\ProjectField'
+            'data_class' => 'IA\Bundle\WebContentThiefBundle\Entity\ProjectDetailsField'
         ));
     }
 

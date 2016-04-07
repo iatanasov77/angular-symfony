@@ -39,6 +39,17 @@
                             {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
                         </div>
                     </div>
+                        
+                        
+                    <div class="form-group">
+                        {{ form_label(form.parseCountMax, null, {
+                            'label_attr': {'class': 'col-sm-1 control-label'}
+                            }) 
+                        }}
+                        <div class="col-sm-2">
+                            {{ form_widget(form.parseCountMax, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
                     
                     <div class="form-group">
                         {{ form_label(form.url, null, {
@@ -55,7 +66,7 @@
                         {% if(url is empty) %}
                             {% set url='#' %}
                         {% endif %}
-                        <input id="btnBrowseProject" class="btn btnBrowse" type="button" value="Browse" data-url="{{ path('ia_web_content_thief_browse', {'url': url|url_encode}) }}" />
+                        <input class="btn btnBrowse" type="button" value="Browse" data-urlInput="#FormProject_url" data-browserUrl="{{ url('ia_web_content_thief_browse') }}" />
                       
                         <div class="col-sm-1">&nbsp;</div>
                         
@@ -95,7 +106,7 @@
                         <div class="col-sm-8">
                             {{ form_widget(form.detailsPage, {'attr': {'class': 'form-control'}}) }}
                         </div>
-                        <input class="btn btnBrowse" type="button" value="Browse" data-url="{{ path('ia_web_content_thief_browse', {'url': detailsPageUrl|url_encode}) }}" />
+                        <input class="btn btnBrowse" type="button" value="Browse" data-urlInput="#FormProject_detailsPage" data-browserUrl="{{ url('ia_web_content_thief_browse') }}" />
                     </div>
                     {% endif %}
                         
@@ -120,16 +131,8 @@
                     </div>
                             
                     <fieldset>
-                        <legend>Links</legend>
-                        {% for link in form.links %}
-                            {% include 'IAWebContentThiefBundle:Projects:project-link.html.twig' with {'form': link} %}
-                        {% endfor %}
-                    </fieldset>
-                            
-                            
-                    <fieldset>
-                        <legend>Fields</legend>
-                         <div class="form-group">
+                        <legend> Listing Page Fields</legend>
+                        <div class="form-group">
                             {{ form_label(form.fieldset, null, {
                                 'label_attr': {'class': 'col-sm-1 control-label'}
                                 }) 
@@ -142,8 +145,31 @@
                                 <input class="btn" id="btnAddFields" type="button" value="Add Fields" data-projectId="{{ item.getId() }}" data-addFieldsUrl="{{ path('ia_web_content_projects_add_fields') }}" />
                             </div>
                         </div>
-                        <div class="fieldsContainer" data-prototype="{% filter escape %}{% include 'IAWebContentThiefBundle:Projects:add-field-prototype.html.twig' with {'form': form.fields.vars.prototype} %}{% endfilter %}">
-                        {% for field in form.fields %}
+                        <div class="fieldsContainer" data-prototype="{% filter escape %}{% include 'IAWebContentThiefBundle:Projects:add-field-prototype.html.twig' with {'form': form.listingFields.vars.prototype} %}{% endfilter %}">
+                        {% for field in form.listingFields %}
+                            {% include 'IAWebContentThiefBundle:Projects:add-field-prototype.html.twig' with {'form': field} %}
+                        {% endfor %}
+                        </div>
+                    </fieldset>
+                            
+                            
+                    <fieldset>
+                        <legend> Details Page Fields</legend>
+                        <div class="form-group">
+                            {{ form_label(form.fieldset, null, {
+                                'label_attr': {'class': 'col-sm-1 control-label'}
+                                }) 
+                            }}
+                            <div class="col-sm-4">
+                                {{ form_widget(form.fieldset, {'attr': {'class': 'form-control'}}) }}
+
+                            </div>
+                            <div class="col-sm-1">
+                                <input class="btn" id="btnAddFields" type="button" value="Add Fields" data-projectId="{{ item.getId() }}" data-addFieldsUrl="{{ path('ia_web_content_projects_add_fields') }}" />
+                            </div>
+                        </div>
+                        <div class="fieldsContainer" data-prototype="{% filter escape %}{% include 'IAWebContentThiefBundle:Projects:add-field-prototype.html.twig' with {'form': form.detailsFields.vars.prototype} %}{% endfilter %}">
+                        {% for field in form.detailsFields %}
                             {% include 'IAWebContentThiefBundle:Projects:add-field-prototype.html.twig' with {'form': field} %}
                         {% endfor %}
                         </div>

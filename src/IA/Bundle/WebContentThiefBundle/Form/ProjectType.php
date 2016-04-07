@@ -5,6 +5,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use IA\Bundle\WebContentThiefBundle\Form\Elements\ProjectListingFieldType;
+use IA\Bundle\WebContentThiefBundle\Form\Elements\ProjectDetailsFieldType;
+//use IA\Bundle\WebContentThiefBundle\Form\Elements\ProjectLinkType;
+
 use IA\Bundle\WebContentThiefBundle\Entity\Project;
 
 class ProjectType extends AbstractType
@@ -20,6 +24,7 @@ class ProjectType extends AbstractType
         $builder
             ->add('active', 'checkbox', array('label' => 'Active'))
             ->add('title', 'text', array('label' => 'Title'))
+            ->add('parseCountMax', 'text', array('label' => 'Max Count Parsing Objects'))
             
             ->add('url', 'text', array('label' => 'Url')) // , array("mapped" => false)
             
@@ -43,8 +48,16 @@ class ProjectType extends AbstractType
             ))
             
                 
-            ->add('fields', 'collection', array(
-                'type'         => new ProjectFieldType(),
+            ->add('listingFields', 'collection', array(
+                'type'         => new ProjectListingFieldType(),
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'by_reference' => false
+            ))
+                
+            ->add('detailsFields', 'collection', array(
+                'type'         => new ProjectDetailsFieldType(),
                 'allow_add'    => true,
                 'allow_delete' => true,
                 'prototype'    => true,
@@ -56,12 +69,12 @@ class ProjectType extends AbstractType
             ->add('btnCancel', 'button', array('label' => 'Cancel'))
                 
                 
-            ->add('links', 'collection', array(
-                'type' => new ProjectLinkType(),
-                'data' => $options["data"]->getLinks(),
-                'mapped'=> false,
-                'required' => false
-            ))
+//            ->add('links', 'collection', array(
+//                'type' => new ProjectLinkType(),
+//                'data' => $options["data"]->getLinks(),
+//                'mapped'=> false,
+//                'required' => false
+//            ))
         ;
         
         
@@ -82,8 +95,12 @@ class ProjectType extends AbstractType
             'FormProject_pagerLink'   => 'Pager Link'
         );
         $i = 0;
-        foreach($project->getFields() as $field) {
-            $choices['FormProject_fields_'.$i++.'_xquery'] = $field->getTitle();
+        foreach($project->getListingFields() as $field) {
+            $choices['FormProject_listingFields_'.$i++.'_xquery'] = $field->getTitle();
+        }
+        $i = 0;
+        foreach($project->getDetailsFields() as $field) {
+            $choices['FormProject_detailsFields_'.$i++.'_xquery'] = $field->getTitle();
         }
         
         

@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * WctProjectfields
  *
- * @ORM\Table(name="WCT_ProjectFields")
+ * @ORM\Table(name="WCT_ProjectDetailsFields")
  * @ORM\Entity
  */
-class ProjectField
+class ProjectDetailsField
 {
     
     /**

@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use IA\Bundle\WebContentThiefBundle\Form\Elements\FieldsetFieldType;
+
 class FieldsetType extends AbstractType
 {
 
