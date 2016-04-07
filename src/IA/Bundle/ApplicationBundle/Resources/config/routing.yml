@@ -1,3 +1,7 @@
 ia_application_homepage:
     path:     /hello/{name}
     defaults: { _controller: IAApplicationBundle:Default:index }
+    
+ia_application_auth_login:
+    path:     /login
+    defaults: { _controller: IAApplicationBundle:Auth:login }
