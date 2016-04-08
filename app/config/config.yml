@@ -56,7 +56,8 @@ framework:
         resource: "%kernel.root_dir%/config/routing.yml"
         strict_requirements: ~
     form:            ~
-    csrf_protection: ~
+    csrf_protection: 
+        enabled: true
     validation:      { enable_annotations: true }
     templating:
         engines: ['twig']
@@ -102,6 +103,7 @@ doctrine:
                 dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
                 alias: GedmoTranslatable # this one is optional and will default to the name set for the mapping
                 is_bundle: false
+            FOSUserBundle: ~
                 
 # Swiftmailer Configuration
 swiftmailer:

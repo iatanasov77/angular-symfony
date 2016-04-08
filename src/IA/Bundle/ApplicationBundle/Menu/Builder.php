@@ -50,6 +50,17 @@ class Builder implements ContainerAwareInterface
 
         return $menu;
     }
+    
+    public function profileMenu(FactoryInterface $factory, array $options)
+    {
+        $menu = $factory->createItem('root');
+        
+        $menu->addChild('My Profile', array('uri' => 'javascript:;', 'attributes' => array('iconClass' => 'icon_profile')));
+        $menu->addChild('Log Out', array('route' => 'logout', 'attributes' => array('iconClass' => 'icon_key_alt')));
+        $menu->addChild('Documentation', array('uri' => 'javascript:;', 'attributes' => array('iconClass' => 'icon_key_alt')));
+        
+        return $menu;
+    }
 
     public function breadcrumbsMenu(FactoryInterface $factory, array $options)
     {

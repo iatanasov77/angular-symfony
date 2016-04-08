@@ -39,7 +39,32 @@
     <body>
         <section id="container" class="">
             <header class="header dark-bg">
-                Web Content Thief
+                <div class="toggle-nav">
+                    <div data-placement="bottom" data-original-title="Toggle Navigation" class="icon-reorder tooltips"><i class="icon_menu"></i></div>
+                </div>
+                <a class="logo" href="{{ path('ia_application_home') }}">
+                    <h1><span style="font-weight: bold;">Web Content Thief</span></h1>
+                </a>
+                
+                <div class="top-nav notification-row">                
+                    <!-- notificatoin dropdown start-->
+                    <ul class="nav pull-right top-menu">
+
+                        <!-- user login dropdown start-->
+                        <li class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="profile-ava">
+                                    <img src="{{ asset('bundles/iaapplication/img/avatar1_small.jpg') }}" alt="">
+                                </span>
+                                <span class="username">{{ app.user.username }}</span>
+                                <b class="caret"></b>
+                            </a>
+                            {{ knp_menu_render('IAApplicationBundle:Builder:profileMenu', {'template': 'IAApplicationBundle:Menu:menu-top-profile.html.twig'}) }}
+                        </li>
+                        <!-- user login dropdown end -->
+                    </ul>
+                    <!-- notificatoin dropdown end-->
+                </div>
             </header>
 
             <!--sidebar start-->

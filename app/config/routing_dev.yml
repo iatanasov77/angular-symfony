@@ -13,7 +13,8 @@ _configurator:
 
 _main:
     resource: routing.yml
+    
 # Import FOS User Bundle Routing for Testing and Research purposes
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-    prefix:   /fos/users
+#fos_user:
+#    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+#    prefix:   /fos/users

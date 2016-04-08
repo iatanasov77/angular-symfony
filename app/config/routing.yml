@@ -17,6 +17,10 @@ ia_web_content_thief:
 ia_users:
     resource: "@IAUsersBundle/Resources/config/routing.yml"
     prefix:   /
+    
+logout:
+   path: /logout
+   
 #ia_angular_admin_panel:
 #    resource: "@IAAngularAdminPanelBundle/Resources/config/routing.yml"
 #    prefix:   /

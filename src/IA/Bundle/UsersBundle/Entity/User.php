@@ -2,24 +2,25 @@
 
 namespace IA\Bundle\UsersBundle\Entity;
 
+use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * User
- *
+ * @ORM\Entity
  * @ORM\Table(name="Users")
- * @ORM\Entity(repositoryClass="IA\Bundle\UsersBundle\Entity\Repository\UsersRepository")
  */
-class User
+class User extends BaseUser
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
-
-
+    protected $id;
+    
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+    }
 }

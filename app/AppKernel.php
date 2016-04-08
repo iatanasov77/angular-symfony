@@ -39,19 +39,19 @@ class AppKernel extends Kernel
             /*
              * IA Bundles
              */
-            //new ServerGrove\Bundle\TranslationEditorBundle\ServerGroveTranslationEditorBundle(),
             //new IA\Bundle\AngularApplicationBundle\IAAngularApplicationBundle(),
             //new IA\Bundle\ServerBundle\IAServerBundle(),
             //new IA\Bundle\CmsBundle\IACmsBundle(),
             //new IA\Bundle\NavigationBundle\IANavigationBundle(),
             //new IA\Bundle\AngularAdminPanelBundle\IAAngularAdminPanelBundle(),
-            new IA\Bundle\UsersBundle\IAUsersBundle(),
+            
             //new IA\Bundle\MultiLanguageBundle\IAMultiLanguageBundle(),
+            //new ServerGrove\Bundle\TranslationEditorBundle\ServerGroveTranslationEditorBundle(),
+            new IA\Bundle\UsersBundle\IAUsersBundle(),
+            
             new IA\Bundle\WebContentThiefBundle\IAWebContentThiefBundle(),
             new IA\Bundle\ApplicationBundle\IAApplicationBundle(),
             new IA\Bundle\DoctrineBundle\IADoctrineBundle(),
-            
-            
             
             
             /*
