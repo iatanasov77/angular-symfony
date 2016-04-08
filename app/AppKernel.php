@@ -50,6 +50,19 @@ class AppKernel extends Kernel
             new IA\Bundle\WebContentThiefBundle\IAWebContentThiefBundle(),
             new IA\Bundle\ApplicationBundle\IAApplicationBundle(),
             new IA\Bundle\DoctrineBundle\IADoctrineBundle(),
+            
+            
+            
+            
+            /*
+             * AWS Research
+             */
+            new AmazonWebServicesBundle\ThePhalconsAmazonWebServicesBundle(),
+            new IA\Bundle\AwsTestBundle\IAAwsTestBundle(),
+            
+            
+            
+            
         );
 
         /*
