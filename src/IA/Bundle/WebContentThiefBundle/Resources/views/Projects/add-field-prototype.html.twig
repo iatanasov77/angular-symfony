@@ -1,0 +1,19 @@
+<div class="fieldsRow">
+    <div class="col-sm-10">
+        <div class="col-lg-1">
+            <label></label>
+        </div>
+        <div class="col-lg-2">
+            {{ form_widget(form.title, {'attr': {'class': 'form-control fieldTitle'}}) }}
+        </div>
+        <div class="col-lg-2">
+            {{ form_widget(form.type, {'attr': {'class': 'form-control m-bot15 fieldType'}}) }}
+        </div>
+        <div class="col-lg-6">
+            {{ form_widget(form.xquery, {'attr': {'class': 'form-control m-bot15'}}) }}
+        </div>
+
+        <a href="javascript:;" class="btn btn-success btnAddField"><i class="icon_plus_alt2"></i></a>
+        <a href="javascript:;" class="btn btn-danger btnRemoveField"><i class="icon_close_alt2"></i></a>
+    </div>
+</div>

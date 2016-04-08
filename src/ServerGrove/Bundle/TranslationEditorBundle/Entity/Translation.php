@@ -2,14 +2,51 @@
 
 namespace ServerGrove\Bundle\TranslationEditorBundle\Entity;
 
-use ServerGrove\Bundle\TranslationEditorBundle\Model\Translation as AbstractTranslation;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Translation entity for Doctrine ORM
+ * Translation
  *
- * @author Guilherme Blanco <guilhermeblanco@hotmail.com>
+ * @ORM\Table(name="sg_translation_value")
+ * @ORM\Entity
  */
-class Translation extends AbstractTranslation
+class Translation
 {
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="value", type="text")
+     */
+    private $value;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \ServerGrove\Bundle\TranslationEditorBundle\Entity\Entry
+     *
+     * @ORM\ManyToOne(targetEntity="ServerGrove\Bundle\TranslationEditorBundle\Entity\Entry", inversedBy="translations", cascade={"persist","refresh"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="entry_id", referencedColumnName="id")
+     * })
+     */
+    private $entry;
+
+    /**
+     * @var \ServerGrove\Bundle\TranslationEditorBundle\Entity\Locale
+     *
+     * @ORM\ManyToOne(targetEntity="ServerGrove\Bundle\TranslationEditorBundle\Entity\Locale", inversedBy="translations", cascade={"persist","refresh"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="locale_id", referencedColumnName="id")
+     * })
+     */
+    private $locale;
+
 
 }

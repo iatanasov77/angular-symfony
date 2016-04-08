@@ -1,0 +1,12 @@
+ia_application_home:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /ia/wct
+        permanent: true
+    
+ia_application_auth_login:
+    path:     /login
+    defaults: { _controller: IAApplicationBundle:Auth:login }
+    
+ 

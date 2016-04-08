@@ -1,0 +1,18 @@
+parameters:
+#    ia_aws_test.example.class: IA\Bundle\AwsTestBundle\Example
+
+    aws_key:                 'AKIAIWFF3YTM2F2MTZTA'
+    aws_secret:              '7y1LMKG8pv4JgNA01KIz84AvPBl8+P9RhUmoi3Nz'
+    aws_account_id:           YOUR_ACCOUNT_ID
+    aws_canonical_id:         YOUR_CONONICAL_ID
+    aws_canonical_name:       YOUR_CONONICAL_NAME
+    aws_mfa_serial:           YOUR_MFA_SERIAL
+    aws_cloudfront_keypair:   YOUR_CLOUDFRONT_KEYPAIR_ID
+    aws_cloudfront_pem:       YOUR_CLOUDFRONT_PRIVATE_KEY_PEM
+    aws_region:               'us-east-1'
+    aws_version:              'latest' #or YOUR_VERSION 
+    
+services:
+#    ia_aws_test.example:
+#        class: %ia_aws_test.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

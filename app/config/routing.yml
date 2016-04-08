@@ -1,28 +1,43 @@
-SGTranslationEditorBundle:
-    resource: "@ServerGroveTranslationEditorBundle/Resources/config/routing.yml"
-    prefix:   /translations
+ia_aws_test:
+    resource: "@IAAwsTestBundle/Resources/config/routing.yml"
+    prefix:   /aws
+
+ia_application:
+    resource: "@IAApplicationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+ia_web_content_thief:
+    resource: "@IAWebContentThiefBundle/Resources/config/routing.yml"
+    prefix:   /ia/wct
+
+#SGTranslationEditorBundle:
+#    resource: "@ServerGroveTranslationEditorBundle/Resources/config/routing.yml"
+#    prefix:   /translations
     
 ia_users:
     resource: "@IAUsersBundle/Resources/config/routing.yml"
     prefix:   /
-ia_angular_admin_panel:
-    resource: "@IAAngularAdminPanelBundle/Resources/config/routing.yml"
-    prefix:   /
-
-ia_navigation:
-    resource: "@IANavigationBundle/Resources/config/routing.yml"
-    prefix:   /
-
-ia_angular_application:
-    resource: "@IAAngularApplicationBundle/Resources/config/routing.yml"
-    prefix:   /
-
-ia_cms:
-    resource: "@IACmsBundle/Resources/config/routing.yml"
-    prefix:   /
-
-IAServerBundle:
-    resource: "@IAServerBundle/Resources/config/routing.yml"
-    prefix:   /
     
-
+logout:
+   path: /logout
+   
+#ia_angular_admin_panel:
+#    resource: "@IAAngularAdminPanelBundle/Resources/config/routing.yml"
+#    prefix:   /
+#
+#ia_navigation:
+#    resource: "@IANavigationBundle/Resources/config/routing.yml"
+#    prefix:   /
+#
+#ia_angular_application:
+#    resource: "@IAAngularApplicationBundle/Resources/config/routing.yml"
+#    prefix:   /
+#
+#ia_cms:
+#    resource: "@IACmsBundle/Resources/config/routing.yml"
+#    prefix:   /
+#
+#IAServerBundle:
+#    resource: "@IAServerBundle/Resources/config/routing.yml"
+#    prefix:   /
+    

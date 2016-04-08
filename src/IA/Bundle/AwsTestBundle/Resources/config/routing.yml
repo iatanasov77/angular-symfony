@@ -1,0 +1,3 @@
+ia_aws_test_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: IAAwsTestBundle:Default:index }

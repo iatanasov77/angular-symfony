@@ -1,0 +1,14 @@
+{% extends 'knp_menu.html.twig' %}
+
+{% block root %}
+<!-- sidebar menu start-->
+<ul class="dropdown-menu extended logout">
+    <div class="log-arrow-up"></div>
+    {% for parentItem in item.children %}
+    <li class="eborder-top">
+        <a href="{{ parentItem.uri }}"><i class="{{ parentItem.attributes.iconClass }}"></i> {{ parentItem.name }}</a>
+    </li>
+    {% endfor %}
+</ul>
+<!-- sidebar menu end-->
+{% endblock %}

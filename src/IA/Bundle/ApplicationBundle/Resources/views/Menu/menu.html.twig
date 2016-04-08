@@ -1,0 +1,24 @@
+{% extends 'knp_menu.html.twig' %}
+
+{% block root %}
+<!-- sidebar menu start-->
+<ul class="sidebar-menu">
+    {% for parentItem in item.children %}
+    <li class="sub-menu">
+        <a class="" href="{{ parentItem.uri }}">
+            <i class="{{ parentItem.attributes.iconClass }}"></i>
+            <span>{{ parentItem.name }}</span>
+            <span class="menu-arrow arrow_carrot-right"></span>
+        </a>
+        {% if(parentItem.hasChildren) %}
+        <ul class="sub">
+            {% for childItem in parentItem.children %}
+            <li><a class="" href="{{ childItem.uri }}">{{ childItem.name }}</a></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+<!-- sidebar menu end-->
+{% endblock %}

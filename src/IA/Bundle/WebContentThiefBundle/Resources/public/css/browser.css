@@ -1,0 +1,10 @@
+
+body {
+    cursor:grab;
+}
+
+.parserMarker {
+	display:block;
+        border: 1px solid red;
+}
+
