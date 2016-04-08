@@ -1,5 +1,5 @@
 
-$(function () {    
+$(function () { 
     $('.btnBrowse').on('click', function () {
         var browserUrl = $(this).attr('data-browserUrl');
         var url = $($(this).attr('data-urlInput')).val();

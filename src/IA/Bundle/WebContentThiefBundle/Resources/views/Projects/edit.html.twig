@@ -15,6 +15,20 @@
 
 {% block content %}
     <div class="col-lg-12">
+        <section class="panel">
+            <div class="panel-body">
+                <a class="btn btn-primary btnRunProject" data-projectId="{{ item.getId() }}" 
+                        href="{{ path('ia_web_content_thief_parser_run', {'projectId': item.getId()}) }}">
+                    Run Project
+                </a>
+                <a class="btn  btn-warning btnPreviewProject" data-projectId="{{ item.getId() }}" href="javascript:;">
+                    Preview Project
+                </a>
+                <a class="btn  btn-danger btnCopyProject" data-projectId="{{ item.getId() }}" href="javascript:;">
+                    Copy Project
+                </a>
+            </div>
+        </section>
         {{ form_start(form, { 'attr': {'class': 'form-horizontal '} }) }}
             <section class="panel">
                 <header class="panel-heading"> Edit Project </header>
