@@ -129,7 +129,8 @@ class Project
      */
     public function __construct()
     {
-        $this->fields = new ArrayCollection();
+        $this->listingFields = new ArrayCollection();
+        $this->detailsFields = new ArrayCollection();
     }
 
     /**
