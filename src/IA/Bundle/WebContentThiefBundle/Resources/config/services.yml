@@ -1,7 +1,0 @@
-parameters:
-#    ia_web_content_thief.example.class: IA\Bundle\WebContentThiefBundle\Example
-
-services:
-#    ia_web_content_thief.example:
-#        class: %ia_web_content_thief.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
