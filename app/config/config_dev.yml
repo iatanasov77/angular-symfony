@@ -1,8 +1,8 @@
 imports:
     - { resource: config.yml }
 
-assetic:
-    use_controller: true
+#assetic:
+#    use_controller: true
     
 framework:
     router:
@@ -27,22 +27,22 @@ web_profiler:
 #            type:  chromephp
 #            level: info
 
-swiftmailer:
-    delivery_address: me@example.com
+#swiftmailer:
+#    delivery_address: me@example.com
 
 # SP Bower Configuration
-sp_bower:
-    install_on_warmup: false
-    keep_bowerrc: false
-    bin: /usr/bin/bower
-    offline: false 
-    allow_root: false
-    bundles:
-        IAApplicationBundle:
-            config_dir: Resources/config
-            asset_dir: ../public/vendor
-            cache: "%kernel.cache_dir%/"
-        IAWebContentThiefBundle:
-            config_dir: Resources/config
-            asset_dir: ../public/vendor
-            cache: "%kernel.cache_dir%/"
+#sp_bower:
+#    install_on_warmup: false
+#    keep_bowerrc: false
+#    bin: /usr/bin/bower
+#    offline: false 
+#    allow_root: false
+#    bundles:
+#        IAApplicationBundle:
+#            config_dir: Resources/config
+#            asset_dir: ../public/vendor
+#            cache: "%kernel.cache_dir%/"
+#        IAWebContentThiefBundle:
+#            config_dir: Resources/config
+#            asset_dir: ../public/vendor
+#            cache: "%kernel.cache_dir%/"

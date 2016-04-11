@@ -1,6 +1,6 @@
 imports:
     - { resource: parameters.yml }
-    - { resource: security.yml }  
+#    - { resource: security.yml }  
 
 # Amazon Web Services Configuration
 the_phalcons_amazon_web_services:
@@ -28,24 +28,24 @@ the_phalcons_amazon_web_services:
 #    type: server_grove_translation_editor.storage.orm
 #    manager: doctrine.orm.entity_manager
     
-fos_user:
-    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
-    firewall_name: main
-    user_class: IA\Bundle\UsersBundle\Entity\User
+#fos_user:
+#    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+#    firewall_name: main
+#    user_class: IA\Bundle\UsersBundle\Entity\User
             
 # Assetic Configuration
-assetic:
-    debug: '%kernel.debug%'
-    use_controller: false
-    filters:
-        # rewrite CSS
-        cssrewrite: ~
-        uglifycss:
-            # sudo npm install -g uglifycss
-            bin: /usr/bin/uglifycss
-        uglifyjs2:
-            # sudo npm install -g uglify-js
-            bin: /usr/bin/uglifyjs
+#assetic:
+#    debug: '%kernel.debug%'
+#    use_controller: false
+#    filters:
+#        # rewrite CSS
+#        cssrewrite: ~
+#        uglifycss:
+#            # sudo npm install -g uglifycss
+#            bin: /usr/bin/uglifycss
+#        uglifyjs2:
+#            # sudo npm install -g uglify-js
+#            bin: /usr/bin/uglifyjs
     
 
 framework:
@@ -74,41 +74,41 @@ twig:
     strict_variables: %kernel.debug%
 
 # Doctrine Configuration
-doctrine:
-    dbal:
-        default_connection: default
-        connections:
-            default:
-                driver:   %database_driver%
-                host:     %database_host%
-                port:     %database_port%
-                dbname:   %database_name%
-                user:     %database_user%
-                password: %database_password%
-                charset:  UTF8
-            dynamic:
-                driver:   %database_driver%
-                host:     %database_host%
-                port:     %database_port%
-                dbname:   'empty_database'
-                charset:  UTF8
-                wrapper_class: 'IA\Bundle\DoctrineBundle\Connection\ConnectionWrapper'
-    orm:
-        auto_generate_proxy_classes: %kernel.debug%
-        auto_mapping: true
-        mappings:
-            gedmo_translatable:
-                type: annotation
-                prefix: Gedmo\Translatable\Entity
-                dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
-                alias: GedmoTranslatable # this one is optional and will default to the name set for the mapping
-                is_bundle: false
-            FOSUserBundle: ~
+#doctrine:
+#    dbal:
+#        default_connection: default
+#        connections:
+#            default:
+#                driver:   %database_driver%
+#                host:     %database_host%
+#                port:     %database_port%
+#                dbname:   %database_name%
+#                user:     %database_user%
+#                password: %database_password%
+#                charset:  UTF8
+#            dynamic:
+#                driver:   %database_driver%
+#                host:     %database_host%
+#                port:     %database_port%
+#                dbname:   'empty_database'
+#                charset:  UTF8
+#                wrapper_class: 'IA\Bundle\DoctrineBundle\Connection\ConnectionWrapper'
+#    orm:
+#        auto_generate_proxy_classes: %kernel.debug%
+#        auto_mapping: true
+#        mappings:
+#            gedmo_translatable:
+#                type: annotation
+#                prefix: Gedmo\Translatable\Entity
+#                dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
+#                alias: GedmoTranslatable # this one is optional and will default to the name set for the mapping
+#                is_bundle: false
+#            FOSUserBundle: ~
                 
 # Swiftmailer Configuration
-swiftmailer:
-    transport: %mailer_transport%
-    host:      %mailer_host%
-    username:  %mailer_user%
-    password:  %mailer_password%
-    spool:     { type: memory }
+#swiftmailer:
+#    transport: %mailer_transport%
+#    host:      %mailer_host%
+#    username:  %mailer_user%
+#    password:  %mailer_password%
+#    spool:     { type: memory }

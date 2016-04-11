@@ -37,7 +37,8 @@
         "knplabs/knp-menu-bundle": "dev-master",
         "knplabs/knp-paginator-bundle": "~2.3",
         
-        "thephalcons/amazon-webservices-bundle": "~2.2"
+        "thephalcons/amazon-webservices-bundle": "~2.2",
+        "cpliakas/dynamo-db-odm": "*"
     },
     "scripts": {
         "post-install-cmd": [

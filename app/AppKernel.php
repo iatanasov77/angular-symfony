@@ -12,28 +12,29 @@ class AppKernel extends Kernel
              * Symfony Bundles
              */
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-            new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
-            //new Symfony\Bundle\MonologBundle\MonologBundle(),
-            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
-            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             
-            /*
-             * Doctrine Bundles
-             */
-            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
-            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
-            
-            /*
-             * Other Vendor Bundles
-             */
-            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new AppVentus\AsseticInjectorBundle\AvAsseticInjectorBundle(),
-            //new Hearsay\RequireJSBundle\HearsayRequireJSBundle(),
-            new FOS\UserBundle\FOSUserBundle(),
-            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+//            new Symfony\Bundle\SecurityBundle\SecurityBundle(),
+//            //new Symfony\Bundle\MonologBundle\MonologBundle(),
+//            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
+//            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+//            
+//            /*
+//             * Doctrine Bundles
+//             */
+//            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+//            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+//            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+//            
+//            /*
+//             * Other Vendor Bundles
+//             */
+//            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+//            new AppVentus\AsseticInjectorBundle\AvAsseticInjectorBundle(),
+//            //new Hearsay\RequireJSBundle\HearsayRequireJSBundle(),
+//            new FOS\UserBundle\FOSUserBundle(),
+//            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+//            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             
             
             /*
@@ -47,11 +48,11 @@ class AppKernel extends Kernel
             
             //new IA\Bundle\MultiLanguageBundle\IAMultiLanguageBundle(),
             //new ServerGrove\Bundle\TranslationEditorBundle\ServerGroveTranslationEditorBundle(),
-            new IA\Bundle\UsersBundle\IAUsersBundle(),
+//          new IA\Bundle\UsersBundle\IAUsersBundle(),
             
-            new IA\Bundle\WebContentThiefBundle\IAWebContentThiefBundle(),
-            new IA\Bundle\ApplicationBundle\IAApplicationBundle(),
-            new IA\Bundle\DoctrineBundle\IADoctrineBundle(),
+//            new IA\Bundle\WebContentThiefBundle\IAWebContentThiefBundle(),
+//            new IA\Bundle\ApplicationBundle\IAApplicationBundle(),
+//            new IA\Bundle\DoctrineBundle\IADoctrineBundle(),
             
             
             /*
@@ -72,7 +73,7 @@ class AppKernel extends Kernel
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
-            $bundles[] = new Sp\BowerBundle\SpBowerBundle();
+            //$bundles[] = new Sp\BowerBundle\SpBowerBundle();
         }
 
         return $bundles;
