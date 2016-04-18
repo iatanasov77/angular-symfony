@@ -4,9 +4,9 @@ namespace IA\Bundle\AwsTestBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultController extends Controller
+class S3Controller extends Controller
 {
-    public function indexAction($name)
+    public function indexAction()
     {
         // Get a AmazonSQS object
         $s3 = $this->container->get('aws_s3');

@@ -49,7 +49,6 @@ class AppKernel extends Kernel
             //new ServerGrove\Bundle\TranslationEditorBundle\ServerGroveTranslationEditorBundle(),
             new IA\Bundle\UsersBundle\IAUsersBundle(),
             
-            new IA\Bundle\WebContentThiefBundle\IAWebContentThiefBundle(),
             new IA\Bundle\ApplicationBundle\IAApplicationBundle(),
             new IA\Bundle\DoctrineBundle\IADoctrineBundle(),
             
