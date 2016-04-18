@@ -1,14 +1,10 @@
 ia_aws_test:
     resource: "@IAAwsTestBundle/Resources/config/routing.yml"
-    prefix:   /aws
+    prefix:   /
 
 ia_application:
     resource: "@IAApplicationBundle/Resources/config/routing.yml"
     prefix:   /
-
-ia_web_content_thief:
-    resource: "@IAWebContentThiefBundle/Resources/config/routing.yml"
-    prefix:   /ia/wct
 
 #SGTranslationEditorBundle:
 #    resource: "@ServerGroveTranslationEditorBundle/Resources/config/routing.yml"

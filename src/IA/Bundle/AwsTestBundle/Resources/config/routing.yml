@@ -4,3 +4,7 @@ ia_aws_test_homepage:
 ia_aws_s3_index:
     path:     /s3
     defaults: { _controller: IAAwsTestBundle:S3:index }
+    
+ia_aws_dynamodb_index:
+    path:     /dynamodb
+    defaults: { _controller: IAAwsTestBundle:DynamoDb:index }
